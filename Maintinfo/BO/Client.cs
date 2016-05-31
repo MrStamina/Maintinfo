@@ -13,6 +13,8 @@ namespace BO
 
         string AdresseClient { get; set; }
 
-        
+        string NumTel { get; set; }
+
+        List<CentreInformatique> CentreInformatique { get; set; }
     }
 }
