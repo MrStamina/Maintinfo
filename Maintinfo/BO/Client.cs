@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Client
+    public class Client
     {
+        int NumClient { get; set; }
+        string NomClient { get; set; }
+
+        string AdresseClient { get; set; }
+
+        
     }
 }
