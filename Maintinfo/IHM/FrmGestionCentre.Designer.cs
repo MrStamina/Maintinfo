@@ -37,13 +37,15 @@
             this.comboBoxEquipements = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Configuration = new System.Windows.Forms.GroupBox();
-            this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
-            this.labelQuantite = new System.Windows.Forms.Label();
             this.buttonAjouter = new System.Windows.Forms.Button();
+            this.labelQuantite = new System.Windows.Forms.Label();
+            this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
             this.listBoxEquipements = new System.Windows.Forms.ListBox();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.buttonEnregistrer = new System.Windows.Forms.Button();
+            this.textBoxVille = new System.Windows.Forms.TextBox();
+            this.labelVille = new System.Windows.Forms.Label();
             this.Configuration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
             this.SuspendLayout();
@@ -67,16 +69,16 @@
             // 
             // textBoxAdresse
             // 
-            this.textBoxAdresse.Location = new System.Drawing.Point(142, 105);
+            this.textBoxAdresse.Location = new System.Drawing.Point(142, 97);
             this.textBoxAdresse.Multiline = true;
             this.textBoxAdresse.Name = "textBoxAdresse";
-            this.textBoxAdresse.Size = new System.Drawing.Size(97, 51);
+            this.textBoxAdresse.Size = new System.Drawing.Size(100, 51);
             this.textBoxAdresse.TabIndex = 2;
             // 
             // labelAdresse
             // 
             this.labelAdresse.AutoSize = true;
-            this.labelAdresse.Location = new System.Drawing.Point(12, 129);
+            this.labelAdresse.Location = new System.Drawing.Point(12, 117);
             this.labelAdresse.Name = "labelAdresse";
             this.labelAdresse.Size = new System.Drawing.Size(45, 13);
             this.labelAdresse.TabIndex = 3;
@@ -85,15 +87,15 @@
             // comboBoxSecteurGeographique
             // 
             this.comboBoxSecteurGeographique.FormattingEnabled = true;
-            this.comboBoxSecteurGeographique.Location = new System.Drawing.Point(142, 193);
+            this.comboBoxSecteurGeographique.Location = new System.Drawing.Point(142, 208);
             this.comboBoxSecteurGeographique.Name = "comboBoxSecteurGeographique";
-            this.comboBoxSecteurGeographique.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSecteurGeographique.Size = new System.Drawing.Size(100, 21);
             this.comboBoxSecteurGeographique.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 196);
+            this.label1.Location = new System.Drawing.Point(12, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 5;
@@ -130,12 +132,14 @@
             this.Configuration.TabStop = false;
             this.Configuration.Text = "Configuration centre";
             // 
-            // numericUpDownQuantite
+            // buttonAjouter
             // 
-            this.numericUpDownQuantite.Location = new System.Drawing.Point(109, 86);
-            this.numericUpDownQuantite.Name = "numericUpDownQuantite";
-            this.numericUpDownQuantite.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDownQuantite.TabIndex = 8;
+            this.buttonAjouter.Location = new System.Drawing.Point(109, 127);
+            this.buttonAjouter.Name = "buttonAjouter";
+            this.buttonAjouter.Size = new System.Drawing.Size(75, 23);
+            this.buttonAjouter.TabIndex = 10;
+            this.buttonAjouter.Text = "Ajouter";
+            this.buttonAjouter.UseVisualStyleBackColor = true;
             // 
             // labelQuantite
             // 
@@ -146,14 +150,12 @@
             this.labelQuantite.TabIndex = 9;
             this.labelQuantite.Text = "Quantité";
             // 
-            // buttonAjouter
+            // numericUpDownQuantite
             // 
-            this.buttonAjouter.Location = new System.Drawing.Point(109, 127);
-            this.buttonAjouter.Name = "buttonAjouter";
-            this.buttonAjouter.Size = new System.Drawing.Size(75, 23);
-            this.buttonAjouter.TabIndex = 10;
-            this.buttonAjouter.Text = "Ajouter";
-            this.buttonAjouter.UseVisualStyleBackColor = true;
+            this.numericUpDownQuantite.Location = new System.Drawing.Point(109, 86);
+            this.numericUpDownQuantite.Name = "numericUpDownQuantite";
+            this.numericUpDownQuantite.Size = new System.Drawing.Size(41, 20);
+            this.numericUpDownQuantite.TabIndex = 8;
             // 
             // listBoxEquipements
             // 
@@ -190,11 +192,29 @@
             this.buttonEnregistrer.Text = "Enregistrer";
             this.buttonEnregistrer.UseVisualStyleBackColor = true;
             // 
+            // textBoxVille
+            // 
+            this.textBoxVille.Location = new System.Drawing.Point(142, 170);
+            this.textBoxVille.Name = "textBoxVille";
+            this.textBoxVille.Size = new System.Drawing.Size(100, 20);
+            this.textBoxVille.TabIndex = 14;
+            // 
+            // labelVille
+            // 
+            this.labelVille.AutoSize = true;
+            this.labelVille.Location = new System.Drawing.Point(12, 177);
+            this.labelVille.Name = "labelVille";
+            this.labelVille.Size = new System.Drawing.Size(26, 13);
+            this.labelVille.TabIndex = 15;
+            this.labelVille.Text = "Ville";
+            // 
             // FrmGestionCentre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 476);
+            this.Controls.Add(this.labelVille);
+            this.Controls.Add(this.textBoxVille);
             this.Controls.Add(this.buttonEnregistrer);
             this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonRemove);
@@ -234,5 +254,7 @@
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonRetour;
         private System.Windows.Forms.Button buttonEnregistrer;
+        private System.Windows.Forms.TextBox textBoxVille;
+        private System.Windows.Forms.Label labelVille;
     }
 }

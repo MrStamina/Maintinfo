@@ -13,7 +13,11 @@ namespace BO
         CentreInformatique CentreInfo { get; set; }
         Client Client { get; set; }
         decimal MontantHt { get; set; }
-        public double Tva = 0.2;
+
+        //si le contrat ne concerne pas tous les équipements
+
+        List<Equipement> Equipement { get; set; }
+      
         
     }
 }

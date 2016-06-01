@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Equipement
+    public class Tarif
     {
-        int NumeroSerie { get; set; }
-        Modele Modele { get; set; }
-        Tarif Tarif { get; set; }
-
-        
+        int codeTarif { get; set; }
+        DateTime DateTarif { get; set; }
+        decimal TarifModele { get; set; }
     }
 }

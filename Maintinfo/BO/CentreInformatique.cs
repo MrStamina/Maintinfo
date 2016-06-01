@@ -10,9 +10,10 @@ namespace BO
     {
         int NumCentre { get; set; }
         string AdresseCentre { get; set; }
-        string numTelCentre { get; set; }
+        string NumTelCentre { get; set; }
+        string Ville { get; set; }
 
-        public List<Equipement> Equipement { get; set; }
+        List<Equipement> Equipement { get; set; }
 
         SecteurGeographique Secteur { get; set; }
     }

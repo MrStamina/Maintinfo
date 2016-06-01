@@ -36,6 +36,10 @@
             this.labelTel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
+            this.maskedTextBoxCodePostal = new System.Windows.Forms.MaskedTextBox();
+            this.labelCodePostal = new System.Windows.Forms.Label();
+            this.textBoxVille = new System.Windows.Forms.TextBox();
+            this.labelVille = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxNom
@@ -73,7 +77,7 @@
             // 
             // maskedTextBoxTel
             // 
-            this.maskedTextBoxTel.Location = new System.Drawing.Point(114, 177);
+            this.maskedTextBoxTel.Location = new System.Drawing.Point(114, 247);
             this.maskedTextBoxTel.Mask = "00 00 00 00 00 00";
             this.maskedTextBoxTel.Name = "maskedTextBoxTel";
             this.maskedTextBoxTel.Size = new System.Drawing.Size(100, 20);
@@ -82,7 +86,7 @@
             // labelTel
             // 
             this.labelTel.AutoSize = true;
-            this.labelTel.Location = new System.Drawing.Point(12, 184);
+            this.labelTel.Location = new System.Drawing.Point(12, 250);
             this.labelTel.Name = "labelTel";
             this.labelTel.Size = new System.Drawing.Size(58, 13);
             this.labelTel.TabIndex = 5;
@@ -106,11 +110,49 @@
             this.buttonAnnuler.Text = "Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
             // 
+            // maskedTextBoxCodePostal
+            // 
+            this.maskedTextBoxCodePostal.Location = new System.Drawing.Point(114, 166);
+            this.maskedTextBoxCodePostal.Mask = "99999";
+            this.maskedTextBoxCodePostal.Name = "maskedTextBoxCodePostal";
+            this.maskedTextBoxCodePostal.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxCodePostal.TabIndex = 8;
+            this.maskedTextBoxCodePostal.ValidatingType = typeof(int);
+            // 
+            // labelCodePostal
+            // 
+            this.labelCodePostal.AutoSize = true;
+            this.labelCodePostal.Location = new System.Drawing.Point(12, 169);
+            this.labelCodePostal.Name = "labelCodePostal";
+            this.labelCodePostal.Size = new System.Drawing.Size(64, 13);
+            this.labelCodePostal.TabIndex = 9;
+            this.labelCodePostal.Text = "Code Postal";
+            // 
+            // textBoxVille
+            // 
+            this.textBoxVille.Location = new System.Drawing.Point(114, 207);
+            this.textBoxVille.Name = "textBoxVille";
+            this.textBoxVille.Size = new System.Drawing.Size(100, 20);
+            this.textBoxVille.TabIndex = 10;
+            // 
+            // labelVille
+            // 
+            this.labelVille.AutoSize = true;
+            this.labelVille.Location = new System.Drawing.Point(12, 210);
+            this.labelVille.Name = "labelVille";
+            this.labelVille.Size = new System.Drawing.Size(26, 13);
+            this.labelVille.TabIndex = 11;
+            this.labelVille.Text = "Ville";
+            // 
             // FrmGestionClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 325);
+            this.Controls.Add(this.labelVille);
+            this.Controls.Add(this.textBoxVille);
+            this.Controls.Add(this.labelCodePostal);
+            this.Controls.Add(this.maskedTextBoxCodePostal);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelTel);
@@ -136,5 +178,9 @@
         private System.Windows.Forms.Label labelTel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonAnnuler;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxCodePostal;
+        private System.Windows.Forms.Label labelCodePostal;
+        private System.Windows.Forms.TextBox textBoxVille;
+        private System.Windows.Forms.Label labelVille;
     }
 }

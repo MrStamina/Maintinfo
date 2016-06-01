@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Equipement
+    public class Modele
     {
-        int NumeroSerie { get; set; }
-        Modele Modele { get; set; }
-        Tarif Tarif { get; set; }
+        int IdModele { get; set; }
+        string LibelleModele { get; set; }
 
-        
+        Type Type { get; set; }
     }
 }

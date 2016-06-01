@@ -15,6 +15,10 @@ namespace BO
 
         string NumTel { get; set; }
 
+        string Ville { get; set; }
+
+        string CodePostal { get; set; }
+
         List<CentreInformatique> CentreInformatique { get; set; }
     }
 }
