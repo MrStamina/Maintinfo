@@ -8,10 +8,33 @@ namespace BO
 {
     public class Equipement
     {
-        int NumeroSerie { get; set; }
-        Modele Modele { get; set; }
-        Tarif Tarif { get; set; }
+        public int NumeroSerie { get; set; }
+        public Modele Modele { get; set; }
+        public Tarif Tarif { get; set; }
 
-        
+        public Equipement()
+        {
+
+        }
+
+        public Equipement(int numserie, Modele mod, Tarif tarif)
+        {
+            this.NumeroSerie = numserie;
+            this.Modele = mod;
+            this.Tarif = tarif;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is Equipement && NumeroSerie == ((Equipement)obj).NumeroSerie;
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

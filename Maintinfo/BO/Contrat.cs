@@ -8,16 +8,35 @@ namespace BO
 {
     public class Contrat
     {
-        int NumeroContrat { get; set; }
+        public int NumeroContrat { get; set; }
 
-        CentreInformatique CentreInfo { get; set; }
-        Client Client { get; set; }
-        decimal MontantHt { get; set; }
+        public CentreInformatique CentreInfo { get; set; }
+        public Client Client { get; set; }
+        public decimal MontantHt { get; set; }
 
         //si le contrat ne concerne pas tous les équipements
 
-        List<Equipement> Equipement { get; set; }
-      
-        
+        public List<Equipement> Equipement { get; set; }
+
+        public Contrat()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override bool Equals(Object obj)
+        {
+            return obj is Contrat && NumeroContrat == ((Contrat)obj).NumeroContrat;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+
     }
 }

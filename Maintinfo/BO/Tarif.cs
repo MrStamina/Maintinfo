@@ -8,8 +8,34 @@ namespace BO
 {
     public class Tarif
     {
-        int codeTarif { get; set; }
-        DateTime DateTarif { get; set; }
-        decimal TarifModele { get; set; }
+        public int CodeTarif { get; set; }
+        public DateTime DateTarif { get; set; }
+        public double TarifModele { get; set; }
+
+        public Tarif()
+        {
+
+        }
+
+        public Tarif(int code, DateTime date, double tarifMod)
+        {
+            this.CodeTarif = code;
+            this.DateTarif = date;
+            this.TarifModele = tarifMod;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override bool Equals(Object obj)
+        {
+            return obj is Tarif && CodeTarif == ((Tarif)obj).CodeTarif;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
