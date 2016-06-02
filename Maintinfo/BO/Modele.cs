@@ -13,16 +13,19 @@ namespace BO
 
         public Type Type { get; set; }
 
+        public Tarif Tarif { get; set; }
+
         public Modele()
         {
 
         }
 
-        public Modele(int id, string nomMod, Type type)
+        public Modele(int id, string nomMod, Type type, Tarif tarif)
         {
             this.IdModele = id;
             this.LibelleModele = nomMod;
             this.Type = type;
+            this.Tarif = tarif;
         }
 
         public override bool Equals(Object obj)

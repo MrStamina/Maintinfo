@@ -14,7 +14,7 @@ namespace DAL
         static public DbConnection GetConnectionSqlServer()
         {
 
-            ConnectionStringSettings oConfig = ConfigurationManager.ConnectionStrings["ConBricachoc"];
+            ConnectionStringSettings oConfig = ConfigurationManager.ConnectionStrings["IHM.Properties.Settings.ConMaintinfo"];
 
 
             if (oConfig == null)

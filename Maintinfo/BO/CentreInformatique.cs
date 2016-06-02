@@ -17,9 +17,31 @@ namespace BO
 
         SecteurGeographique Secteur { get; set; }
 
+        Client Client { get; set; }
+
         public CentreInformatique()
         {
 
+        }
+
+        public CentreInformatique(int num, string adresse,string ville, string numTel, List<Equipement> equip, SecteurGeographique sect)
+        {
+            this.NumCentre = num;
+            this.AdresseCentre = adresse;
+            this.Ville = ville;
+            this.NumTelCentre = numTel;
+            this.Equipement = equip;
+            this.Secteur = sect;
+        }
+
+        public CentreInformatique(int num, SecteurGeographique sect, Client client, string adresse,string ville,string tel )
+        {
+            this.NumCentre = num;
+            this.Secteur = sect;
+            this.Client = client;
+            this.AdresseCentre = adresse;
+            this.Ville = ville;
+            this.NumTelCentre = tel;
         }
 
         public override string ToString()
@@ -35,6 +57,11 @@ namespace BO
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public CentreInformatique Self
+        {
+            get { return this; }
         }
     }
 }

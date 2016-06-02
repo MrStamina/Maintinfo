@@ -50,5 +50,10 @@ namespace BO
         {
             return base.GetHashCode();
         }
+
+        public Client Self
+        {
+            get { return this; }
+        }
     }
 }

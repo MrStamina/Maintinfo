@@ -12,7 +12,10 @@ namespace BO
 
         public CentreInformatique CentreInfo { get; set; }
         public Client Client { get; set; }
-        public decimal MontantHt { get; set; }
+        public double MontantHt { get; set; }
+
+        public DateTime DateDebut { get; set; }
+        public DateTime DateEcheance { get; set; }
 
         //si le contrat ne concerne pas tous les équipements
 
@@ -21,6 +24,16 @@ namespace BO
         public Contrat()
         {
 
+        }
+        public Contrat(int id,Client client, CentreInformatique centre, double montant, DateTime dateDebut, DateTime dateEcheance)
+        {
+            this.NumeroContrat = id;
+            this.Client = client;
+            this.CentreInfo = centre;
+            this.MontantHt = montant;
+            this.DateDebut = dateDebut;
+            this.DateEcheance = dateEcheance;
+       
         }
 
         public override string ToString()

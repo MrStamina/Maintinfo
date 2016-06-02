@@ -41,14 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientDal.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="DalCentreInfo.cs" />
+    <Compile Include="DalContrat.cs" />
     <Compile Include="Exceptions\DalException.cs" />
     <Compile Include="Exceptions\DalExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\DalExceptionFinAppli.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServer\AddClient.sql" />
+    <Content Include="SqlServer\GetAllClient.sql" />
     <Content Include="SqlServer\JeuDeDonnéesMaintinfo2.sql" />
     <Content Include="SqlServer\Maintinfo.sql" />
   </ItemGroup>

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAccueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccueil.Designer.cs">
+      <DependentUpon>FrmAccueil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmContrat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,8 +82,17 @@
     <Compile Include="FrmGestionContrat.Designer.cs">
       <DependentUpon>FrmGestionContrat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAccueil.resx">
+      <DependentUpon>FrmAccueil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmContrat.resx">
       <DependentUpon>FrmContrat.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\BO.CentreInformatique.datasource" />
+    <None Include="Properties\DataSources\BO.Client.datasource" />
+    <None Include="Properties\DataSources\BO.Contrat.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,6 +129,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{be20900f-d732-43df-bf9f-e846a80da518}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{e6a85738-fd0b-45f4-bbaf-f1d501ef16a7}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

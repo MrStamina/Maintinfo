@@ -35,5 +35,10 @@ namespace BO
         {
             return base.ToString();
         }
+
+        public SecteurGeographique Self
+        {
+            get { return this; }
+        }
     }
 }
