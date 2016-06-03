@@ -13,13 +13,25 @@ namespace BLL
         List<CentreInformatique> listeCentre;
         DalCentreInfo dalCentre;
 
-
-        public List<CentreInformatique> chargerCentre()
+        public ManagerCentreInformatique()
         {
             listeCentre = new List<CentreInformatique>();
+        }
+
+
+        public List<CentreInformatique> ChargerCentre()
+        {
+            
             dalCentre = new DalCentreInfo();
             listeCentre = dalCentre.GetAllCentre();
             return listeCentre;
+        }
+
+        public List<CentreInformatique> AfficherCentreParClient(int idclient)
+        {
+            ChargerCentre();
+            List<CentreInformatique> listcentre = listeCentre.FindAll(delegate (CentreInformatique c) { return c.Client.NumClient == idclient; });
+            return listcentre;
         }
     }
 }

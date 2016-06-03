@@ -19,7 +19,7 @@ namespace BO
 
         public string CodePostal { get; set; }
 
-        List<CentreInformatique> CentreInformatique { get; set; }
+        public List<CentreInformatique> CentreInformatique { get; set; }
 
         public Client()
         {

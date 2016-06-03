@@ -46,13 +46,15 @@
             this.buttonEnregistrer = new System.Windows.Forms.Button();
             this.textBoxVille = new System.Windows.Forms.TextBox();
             this.labelVille = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.Configuration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
             this.SuspendLayout();
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(142, 55);
+            this.maskedTextBox1.Location = new System.Drawing.Point(142, 130);
             this.maskedTextBox1.Mask = "00 00 00 00 00 00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -61,15 +63,15 @@
             // labelTel
             // 
             this.labelTel.AutoSize = true;
-            this.labelTel.Location = new System.Drawing.Point(12, 58);
+            this.labelTel.Location = new System.Drawing.Point(11, 133);
             this.labelTel.Name = "labelTel";
-            this.labelTel.Size = new System.Drawing.Size(58, 13);
+            this.labelTel.Size = new System.Drawing.Size(113, 13);
             this.labelTel.TabIndex = 1;
-            this.labelTel.Text = "Numéro tel";
+            this.labelTel.Text = "Téléphone du Centre :";
             // 
             // textBoxAdresse
             // 
-            this.textBoxAdresse.Location = new System.Drawing.Point(142, 97);
+            this.textBoxAdresse.Location = new System.Drawing.Point(142, 62);
             this.textBoxAdresse.Multiline = true;
             this.textBoxAdresse.Name = "textBoxAdresse";
             this.textBoxAdresse.Size = new System.Drawing.Size(100, 51);
@@ -78,11 +80,11 @@
             // labelAdresse
             // 
             this.labelAdresse.AutoSize = true;
-            this.labelAdresse.Location = new System.Drawing.Point(12, 117);
+            this.labelAdresse.Location = new System.Drawing.Point(12, 75);
             this.labelAdresse.Name = "labelAdresse";
-            this.labelAdresse.Size = new System.Drawing.Size(45, 13);
+            this.labelAdresse.Size = new System.Drawing.Size(103, 13);
             this.labelAdresse.TabIndex = 3;
-            this.labelAdresse.Text = "Adresse";
+            this.labelAdresse.Text = "Adresse du Centre : ";
             // 
             // comboBoxSecteurGeographique
             // 
@@ -97,9 +99,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Secteur géographique";
+            this.label1.Text = "Secteur géographique :";
             // 
             // comboBoxEquipements
             // 
@@ -202,17 +204,36 @@
             // labelVille
             // 
             this.labelVille.AutoSize = true;
-            this.labelVille.Location = new System.Drawing.Point(12, 177);
+            this.labelVille.Location = new System.Drawing.Point(12, 173);
             this.labelVille.Name = "labelVille";
-            this.labelVille.Size = new System.Drawing.Size(26, 13);
+            this.labelVille.Size = new System.Drawing.Size(32, 13);
             this.labelVille.TabIndex = 15;
-            this.labelVille.Text = "Ville";
+            this.labelVille.Text = "Ville :";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(142, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Client :";
             // 
             // FrmGestionCentre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 476);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelVille);
             this.Controls.Add(this.textBoxVille);
             this.Controls.Add(this.buttonEnregistrer);
@@ -256,5 +277,7 @@
         private System.Windows.Forms.Button buttonEnregistrer;
         private System.Windows.Forms.TextBox textBoxVille;
         private System.Windows.Forms.Label labelVille;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

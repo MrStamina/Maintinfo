@@ -17,44 +17,35 @@ namespace IHM
 {
     public partial class FrmGestionContrat : Form
     {
-        ClientManager clientMan;
-        ManagerCentreInformatique manCentre;
-        ManagerContrat manContrat;
+        GestionnaireContrat gesContrat;
         public FrmGestionContrat()
         {
             InitializeComponent();
-            Chargement();           
-           
+            Chargement();
+
         }
 
-        private void buttonConsulter_Click(object sender, EventArgs e)
-        {
-           
-            comboBoxSelectionnerClient.Visible = true;
-            comboBoxSelectionnerClient.SelectedItem = null ;
-        }
+       
 
         private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if(comboBoxSelectionnerClient.SelectedItem != null)
+
+            if (comboBoxSelectionnerClient.SelectedItem != null)
             {
-                dataGridView1.Visible = true;
-                contratBindingSource.DataSource = manContrat.consulterContratParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+                contratBindingSource.DataSource = gesContrat.ConsulterContratParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+                AfficheMessage();
             }
-            
+
         }
 
         private void Chargement()
         {
-            clientMan = new ClientManager();
-            manCentre = new ManagerCentreInformatique();
-            manContrat = new ManagerContrat();
+            gesContrat = new GestionnaireContrat();
             try
             {
-                clientBindingSource.DataSource = clientMan.chargerClient();
-                centreInformatiqueBindingSource.DataSource = manCentre.chargerCentre();
-                contratBindingSource.DataSource = manContrat.chargerLesContrats();
+                clientBindingSource.DataSource = gesContrat.ChargerClient();
+                centreInformatiqueBindingSource.DataSource = gesContrat.ChargerCentre();
+                contratBindingSource.DataSource = gesContrat.ChargerContrat();
             }
             catch (DalExceptionAfficheMessage deaf)
             {
@@ -64,20 +55,39 @@ namespace IHM
             {
                 MessageBox.Show(ex.Message);
             }
-            
-            
+            comboBoxSelectionnerClient.SelectedItem = null;
+
+
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             var createContrat = Application.OpenForms.OfType<FrmContrat>().FirstOrDefault();
-            if(createContrat != null)
+            if (createContrat != null)
             {
                 createContrat.Activate();
             }
             else
             {
                 new FrmContrat().Show();
+            }
+        }
+
+        public void AfficheMessage()
+        {
+            int nbrContrat;
+            
+            nbrContrat = gesContrat.ConsulterContratParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient).Count;
+            if (nbrContrat == 0)
+            {
+                labelMessage.ForeColor = Color.Red;
+                labelMessage.Text = "Aucun contrat disponible pour ce client";
+                dataGridView1.Visible = false;
+            }
+            else
+            {
+                dataGridView1.Visible = true;
+                labelMessage.ResetText();
             }
         }
     }

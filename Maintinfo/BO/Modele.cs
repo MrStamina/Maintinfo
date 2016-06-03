@@ -19,6 +19,10 @@ namespace BO
         {
 
         }
+        public Modele Self
+        {
+            get { return this; }
+        }
 
         public Modele(int id, string nomMod, Type type, Tarif tarif)
         {

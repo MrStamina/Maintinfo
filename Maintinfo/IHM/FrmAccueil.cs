@@ -101,7 +101,33 @@ namespace IHM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.toolStripStatuslblDate.Text= DateTime.Now.ToString();
+            toolStripStatusLabel1.Text = DateTime.Now.ToString();
+        }
+
+        private void gérerEquipementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var equipement = Application.OpenForms.OfType<FrmGestionEquipement>().FirstOrDefault();
+            if (equipement != null)
+            {
+                equipement.Activate();
+            }
+            else
+            {
+                new FrmGestionEquipement().Show();
+            }
+        }
+
+        private void gérerTarifsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tarifs = Application.OpenForms.OfType<FrmGererTarifs>().FirstOrDefault();
+            if (tarifs != null)
+            {
+               tarifs.Activate();
+            }
+            else
+            {
+                new FrmGererTarifs().Show();
+            }
         }
     }
 }

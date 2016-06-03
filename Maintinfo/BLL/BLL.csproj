@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientManager.cs" />
+    <Compile Include="ManagerClient.cs" />
+    <Compile Include="GestionnaireContrat.cs" />
     <Compile Include="ManagerCentreInformatique.cs" />
     <Compile Include="ManagerContrat.cs" />
     <Compile Include="ManagerEquipement.cs" />

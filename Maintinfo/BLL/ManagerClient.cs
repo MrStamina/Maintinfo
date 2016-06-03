@@ -8,17 +8,17 @@ using DAL;
 
 namespace BLL
 {
-    public class ClientManager
+    public class ManagerClient
     {
         ClientDal clientDal = new ClientDal();
         List<Client> listClient = new List<Client>();
-        public List<Client> chargerClient()
+        public List<Client> ChargerClient()
         {
             listClient = clientDal.GetAllClient();
             return listClient;
         }
 
-        public int ajouterClient(Client client)
+        public int AjouterClient(Client client)
         {
             return clientDal.addClient(client);
             //ajouter à la liste ou recharger ?

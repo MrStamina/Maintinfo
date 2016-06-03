@@ -58,6 +58,12 @@
     <Compile Include="FrmContrat.Designer.cs">
       <DependentUpon>FrmContrat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGererTarifs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGererTarifs.Designer.cs">
+      <DependentUpon>FrmGererTarifs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGestionEquipement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,8 @@
     <None Include="Properties\DataSources\BO.CentreInformatique.datasource" />
     <None Include="Properties\DataSources\BO.Client.datasource" />
     <None Include="Properties\DataSources\BO.Contrat.datasource" />
+    <None Include="Properties\DataSources\BO.Equipement.datasource" />
+    <None Include="Properties\DataSources\BO.Modele.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

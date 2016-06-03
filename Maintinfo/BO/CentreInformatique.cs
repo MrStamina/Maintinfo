@@ -13,11 +13,11 @@ namespace BO
         public string NumTelCentre { get; set; }
         public string Ville { get; set; }
 
-        List<Equipement> Equipement { get; set; }
+        public List<Equipement> Equipement { get; set; }
 
-        SecteurGeographique Secteur { get; set; }
+        public SecteurGeographique Secteur { get; set; }
 
-        Client Client { get; set; }
+        public  Client Client { get; set; }
 
         public CentreInformatique()
         {

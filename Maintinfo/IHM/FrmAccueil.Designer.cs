@@ -48,8 +48,12 @@
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.gérerTarifsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gérerEquipementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -94,8 +98,9 @@
             this.gestionContratToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consulterLesContratsToolStripMenuItem,
             this.gérerClientsToolStripMenuItem,
-            this.gérerCentresInformatiqueToolStripMenuItem});
-            this.gestionContratToolStripMenuItem.Enabled = false;
+            this.gérerCentresInformatiqueToolStripMenuItem,
+            this.gérerTarifsToolStripMenuItem,
+            this.gérerEquipementsToolStripMenuItem});
             this.gestionContratToolStripMenuItem.Name = "gestionContratToolStripMenuItem";
             this.gestionContratToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.gestionContratToolStripMenuItem.Text = "Gestion Contrat";
@@ -141,7 +146,6 @@
             this.cascadeToolStripMenuItem,
             this.horizontalesToolStripMenuItem,
             this.verticalesToolStripMenuItem});
-            this.fenêtresToolStripMenuItem.Enabled = false;
             this.fenêtresToolStripMenuItem.Name = "fenêtresToolStripMenuItem";
             this.fenêtresToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.fenêtresToolStripMenuItem.Text = "Fenêtres";
@@ -189,6 +193,8 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 401);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(631, 22);
@@ -200,6 +206,26 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // gérerTarifsToolStripMenuItem
+            // 
+            this.gérerTarifsToolStripMenuItem.Name = "gérerTarifsToolStripMenuItem";
+            this.gérerTarifsToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.gérerTarifsToolStripMenuItem.Text = "Gérer Tarifs";
+            this.gérerTarifsToolStripMenuItem.Click += new System.EventHandler(this.gérerTarifsToolStripMenuItem_Click);
+            // 
+            // gérerEquipementsToolStripMenuItem
+            // 
+            this.gérerEquipementsToolStripMenuItem.Name = "gérerEquipementsToolStripMenuItem";
+            this.gérerEquipementsToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.gérerEquipementsToolStripMenuItem.Text = "Gérer Equipements";
+            this.gérerEquipementsToolStripMenuItem.Click += new System.EventHandler(this.gérerEquipementsToolStripMenuItem_Click);
             // 
             // FrmAccueil
             // 
@@ -216,6 +242,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +271,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatuslblDate;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripMenuItem gérerTarifsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gérerEquipementsToolStripMenuItem;
     }
 }

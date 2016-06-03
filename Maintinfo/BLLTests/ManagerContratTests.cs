@@ -148,27 +148,27 @@ namespace BLL.Tests
 
 
         [TestMethod()]
-        public void calculerMontantHtTest()
+        public void CalculerMontantHtTest()
         {
             double expected = 3275;
             double actual = 0;
             ManagerContrat manContrat = new ManagerContrat();
-            actual = manContrat.calculerMontantHt(listTest);
+            actual = manContrat.CalculerMontantHt(listTest);
             Assert.AreEqual(expected, actual);
 
 
         }
 
         [TestMethod()]
-        public void calculerMontantTtcTest()
+        public void CalculerMontantTtcTest()
         {
             double expected = 0;
             double montantHt = 0;
             double actual = 0;
             ManagerContrat manContrat = new ManagerContrat();
-            montantHt = manContrat.calculerMontantHt(listTest);
-            expected = (manContrat.calculerMontantHt(listTest)) + (manContrat.calculerMontantHt(listTest) * 0.2);
-            actual = manContrat.calculerMontantTtc(montantHt);
+            montantHt = manContrat.CalculerMontantHt(listTest);
+            expected = (manContrat.CalculerMontantHt(listTest)) + (manContrat.CalculerMontantHt(listTest) * 0.2);
+            actual = manContrat.CalculerMontantTtc(montantHt);
             Assert.AreEqual(expected, actual);
 
         }

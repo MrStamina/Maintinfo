@@ -10,7 +10,8 @@ namespace BO
     {
         public int NumeroSerie { get; set; }
         public Modele Modele { get; set; }
-        //public Tarif Tarif { get; set; }
+        public CentreInformatique Centre { get; set; }
+        public Contrat Contrat { get; set; }
 
         public Equipement()
         {
@@ -22,6 +23,12 @@ namespace BO
             this.NumeroSerie = numserie;
             this.Modele = mod;
             
+        }
+        public Equipement(int numserie, Modele mod, CentreInformatique centre)
+        {
+            this.NumeroSerie = numserie;
+            this.Modele = mod;
+            this.Centre = centre;
         }
 
         public override bool Equals(Object obj)

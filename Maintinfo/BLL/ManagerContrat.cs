@@ -14,25 +14,26 @@ namespace BLL
         List<Contrat> listeContrat = new List<Contrat>();
         DalContrat dalContrat = new DalContrat();
         
+        
 
-        public List<Contrat> chargerLesContrats()
+        public List<Contrat> ChargerLesContrats()
         {
             listeContrat = dalContrat.GetAllContrat();
             return listeContrat;
         }
-        public List<Contrat> consulterContratParClient(int idclient)
+        public List<Contrat> ConsulterContratParClient(int idclient)
         {
             List<Contrat> listcont = listeContrat.FindAll(delegate (Contrat c) { return c.Client.NumClient == idclient; });
             return listcont;
         }
 
-        public bool enregistrerContrat(Contrat contrat)
+        public bool EnregistrerContrat(Contrat contrat)
         {
           
             return true;
         }
 
-        public bool modifierContrat(Contrat contrat)
+        public bool ModifierContrat(Contrat contrat)
         {
             return true;
         }
@@ -43,7 +44,7 @@ namespace BLL
         }
 
     // méthodes pour calculer automatiquement les montants du contrat en fonction des equipements
-        public double calculerMontantHt(List<Equipement> listequip)
+        public double CalculerMontantHt(List<Equipement> listequip)
         {
             double montantHt = 0;
             foreach (Equipement equip in listequip)
@@ -56,7 +57,7 @@ namespace BLL
 
 
         }
-        public double calculerMontantTtc(double montantHt)
+        public double CalculerMontantTtc(double montantHt)
         {
             return (montantHt + (montantHt * tva));
         }
