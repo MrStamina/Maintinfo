@@ -54,7 +54,8 @@ namespace IHM
             gesContrat = new GestionnaireContrat();
             try
             {
-                clientBindingSource.DataSource = gesContrat.ChargerClient();                
+                clientBindingSource.DataSource = gesContrat.ChargerClient();
+                modeleBindingSource.DataSource = gesContrat.ChargerModele();                
                 
             }
             catch (DalExceptionAfficheMessage deaf)

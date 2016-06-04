@@ -36,7 +36,7 @@ namespace BLL.Tests
             Modele mod3 = new Modele(3, "Noptiplexme", type1, tarif3);
             Modele mod4 = new Modele(4, "Noptiplexme 12500", type1, tarif4);
 
-            
+
 
             List<Equipement> listEquip = new List<Equipement>()
             {
@@ -164,6 +164,7 @@ namespace BLL.Tests
         {
             double expected = 0;
             double montantHt = 0;
+
             double actual = 0;
             ManagerContrat manContrat = new ManagerContrat();
             montantHt = manContrat.CalculerMontantHt(listTest);
@@ -173,12 +174,9 @@ namespace BLL.Tests
 
         }
 
-        //[TestMethod()]
-        //public void consulterContratParClientTest()
-        //{
-        //    ManagerContrat manContrat = new ManagerContrat();
-        //    manContrat.consulterContratParClient(listClientTest.Find(a => a.NumClient == 1));
-        //}
+       
+
+        
     }
 
 

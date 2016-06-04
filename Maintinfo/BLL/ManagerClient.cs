@@ -10,10 +10,16 @@ namespace BLL
 {
     public class ManagerClient
     {
-        ClientDal clientDal = new ClientDal();
-        List<Client> listClient = new List<Client>();
+        ClientDal clientDal;
+        List<Client> listClient;
+
+        public ManagerClient()
+        {
+            listClient = new List<Client>();
+        }
         public List<Client> ChargerClient()
         {
+            clientDal = new ClientDal();
             listClient = clientDal.GetAllClient();
             return listClient;
         }

@@ -11,13 +11,18 @@ namespace BLL
     {
 
         private double tva = 0.2;
-        List<Contrat> listeContrat = new List<Contrat>();
-        DalContrat dalContrat = new DalContrat();
+        private double montantTtc;
+        List<Contrat> listeContrat;
+        private DalContrat dalContrat;
         
-        
+        public ManagerContrat()
+        {
+            listeContrat = new List<Contrat>();
+        }
 
         public List<Contrat> ChargerLesContrats()
         {
+            dalContrat =  new DalContrat();
             listeContrat = dalContrat.GetAllContrat();
             return listeContrat;
         }
@@ -59,7 +64,19 @@ namespace BLL
         }
         public double CalculerMontantTtc(double montantHt)
         {
-            return (montantHt + (montantHt * tva));
+            
+            montantTtc = (montantHt + (montantHt * tva));            
+            return montantTtc;
+        }
+
+        public double AppliquerRemise(double remise)
+        {
+            if (remise != 0)
+            {
+                return montantTtc - (montantTtc * remise);
+            }
+            else
+                return montantTtc;
         }
     }
 }

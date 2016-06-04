@@ -11,16 +11,16 @@ using System.Data;
 
 namespace DAL
 {
-    class DalTarifs
+    public class DalModele
     {
-        public List<Tarif> GetAllTarif()
+        public List<Modele> GetAllModele()
         {
-            List<Tarif> listTarif = new List<Tarif>();
+            List<Modele> listModele = new List<Modele>();
             using (DbConnection oConnection = Connection.GetConnectionSqlServer())
             {
                 using (DbCommand oCommand = oConnection.CreateCommand())
                 {
-                    oCommand.CommandText = "GetAllTarif";
+                    oCommand.CommandText = "GetAllModele";
                     oCommand.CommandType = CommandType.StoredProcedure;
 
                     try
@@ -28,15 +28,16 @@ namespace DAL
                         DbDataReader dbRdr = oCommand.ExecuteReader();
                         while (dbRdr.Read())
                         {
-                            int codeTarif = dbRdr.GetInt32(0);
-                            DateTime date = dbRdr.GetDateTime(1);
-                            decimal tarifMod = dbRdr.GetDecimal(2);
-                            Tarif tarif = new Tarif(codeTarif, date, Convert.ToDouble(tarifMod));
-                            listTarif.Add(tarif);
+                            int idModele = dbRdr.GetInt32(0);
+                            BO.Type type = new BO.Type() { IdType = dbRdr.GetInt32(1) };
+                            Tarif tarif = new Tarif() { CodeTarif = dbRdr.GetInt32(2) };
+                            string libelle = dbRdr.GetString(3);
+                            Modele mod = new Modele(idModele, libelle.TrimEnd(), type, tarif);
+                            listModele.Add(mod);
 
                         }
                         dbRdr.Close();
-                        return listTarif;
+                        return listModele;
                     }
                     catch (DbException de)
                     {

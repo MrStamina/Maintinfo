@@ -61,6 +61,7 @@
     <Compile Include="DalCentreInfo.cs" />
     <Compile Include="DalContrat.cs" />
     <Compile Include="DalEquipement.cs" />
+    <Compile Include="DalModele.cs" />
     <Compile Include="DalTarifs.cs" />
     <Compile Include="Exceptions\DalException.cs" />
     <Compile Include="Exceptions\DalExceptionAfficheMessage.cs" />
@@ -78,15 +79,11 @@
     <Content Include="SqlServer\GetAllCentre.sql" />
     <Content Include="SqlServer\GetAllClient.sql" />
     <Content Include="SqlServer\GetAllContrat.sql" />
+    <Content Include="SqlServer\GetAllModele.sql" />
+    <Content Include="SqlServer\GetAllTarif.sql" />
     <Content Include="SqlServer\GetEquipementByCentre.sql" />
     <Content Include="SqlServer\JeuDeDonnéesMaintinfo2.sql" />
-    <Content Include="SqlServer\Maintinfo.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="SqlServer\Maintinfo.sql" />
-    <Content Include="SqlServer\Maintinfo_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -12,6 +12,7 @@ namespace BLL
         private ManagerClient manClient;
         private ManagerCentreInformatique manCentre;
         private ManagerEquipement manEquip;
+        private ManagerModele manMod;
 
         public GestionnaireContrat()
         {
@@ -19,6 +20,7 @@ namespace BLL
             manClient = new ManagerClient();
             manCentre = new ManagerCentreInformatique();
             manEquip = new ManagerEquipement();
+            manMod = new ManagerModele();
         }
 
         public List<Client> ChargerClient()
@@ -49,6 +51,11 @@ namespace BLL
         public List<Equipement> AfficherEquipementParCentre (int idCentre)
         {
             return manEquip.AfficherEquipementParCentre(idCentre);
+        }
+
+        public List<Modele> ChargerModele()
+        {
+            return manMod.ChargerModele();
         }
     }
 }

@@ -270,7 +270,7 @@
         private System.Windows.Forms.ToolStripMenuItem verticalesToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatuslblDate;
+       
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem gérerTarifsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gérerEquipementsToolStripMenuItem;

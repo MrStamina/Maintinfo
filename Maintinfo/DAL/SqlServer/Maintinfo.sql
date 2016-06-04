@@ -256,6 +256,9 @@ create table CONTRAT (
    NUMCLIENT            int                  not null,
    NUMEROCENTRE         int                  not null,
    MONTANTCONTRAT       money                not null,
+   DATEDEBUT            datetime			not null,
+   DATEECHEANCE			datetime			not null,
+   COMMENTAIRE			char(100)			null,
    constraint PK_CONTRAT primary key nonclustered (NUMCONTRAT)
 )
 go

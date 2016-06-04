@@ -58,6 +58,7 @@
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.numeroSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipementsSousContrat)).BeginInit();
@@ -84,7 +85,7 @@
             // 
             // buttonCreateClient
             // 
-            this.buttonCreateClient.Location = new System.Drawing.Point(400, 52);
+            this.buttonCreateClient.Location = new System.Drawing.Point(452, 52);
             this.buttonCreateClient.Name = "buttonCreateClient";
             this.buttonCreateClient.Size = new System.Drawing.Size(75, 61);
             this.buttonCreateClient.TabIndex = 1;
@@ -193,7 +194,7 @@
             // 
             // buttonGererCentre
             // 
-            this.buttonGererCentre.Location = new System.Drawing.Point(400, 128);
+            this.buttonGererCentre.Location = new System.Drawing.Point(452, 128);
             this.buttonGererCentre.Name = "buttonGererCentre";
             this.buttonGererCentre.Size = new System.Drawing.Size(75, 61);
             this.buttonGererCentre.TabIndex = 14;
@@ -203,7 +204,7 @@
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(493, 52);
+            this.buttonRegister.Location = new System.Drawing.Point(542, 52);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(75, 61);
             this.buttonRegister.TabIndex = 15;
@@ -212,7 +213,7 @@
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(493, 128);
+            this.buttonRetour.Location = new System.Drawing.Point(542, 128);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(75, 61);
             this.buttonRetour.TabIndex = 16;
@@ -222,16 +223,18 @@
             // dataGridViewEquipementsSousContrat
             // 
             this.dataGridViewEquipementsSousContrat.AllowUserToAddRows = false;
+            this.dataGridViewEquipementsSousContrat.AllowUserToDeleteRows = false;
             this.dataGridViewEquipementsSousContrat.AutoGenerateColumns = false;
             this.dataGridViewEquipementsSousContrat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEquipementsSousContrat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroSerieDataGridViewTextBoxColumn,
-            this.modeleDataGridViewTextBoxColumn});
+            this.modeleDataGridViewTextBoxColumn,
+            this.Retirer});
             this.dataGridViewEquipementsSousContrat.DataSource = this.equipementBindingSource;
             this.dataGridViewEquipementsSousContrat.Location = new System.Drawing.Point(118, 128);
             this.dataGridViewEquipementsSousContrat.Name = "dataGridViewEquipementsSousContrat";
             this.dataGridViewEquipementsSousContrat.ReadOnly = true;
-            this.dataGridViewEquipementsSousContrat.Size = new System.Drawing.Size(252, 89);
+            this.dataGridViewEquipementsSousContrat.Size = new System.Drawing.Size(285, 89);
             this.dataGridViewEquipementsSousContrat.TabIndex = 17;
             // 
             // modeleBindingSource
@@ -252,16 +255,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(368, 360);
+            this.textBox1.Location = new System.Drawing.Point(452, 360);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 20);
+            this.textBox1.Size = new System.Drawing.Size(127, 58);
             this.textBox1.TabIndex = 19;
             // 
             // labelCommentaire
             // 
             this.labelCommentaire.AutoSize = true;
-            this.labelCommentaire.Location = new System.Drawing.Point(428, 332);
+            this.labelCommentaire.Location = new System.Drawing.Point(490, 332);
             this.labelCommentaire.Name = "labelCommentaire";
             this.labelCommentaire.Size = new System.Drawing.Size(74, 13);
             this.labelCommentaire.TabIndex = 20;
@@ -271,7 +274,7 @@
             // 
             this.groupBoxRemise.Controls.Add(this.numericUpDownRemise);
             this.groupBoxRemise.Controls.Add(this.buttonAppliquer);
-            this.groupBoxRemise.Location = new System.Drawing.Point(368, 243);
+            this.groupBoxRemise.Location = new System.Drawing.Point(434, 243);
             this.groupBoxRemise.Name = "groupBoxRemise";
             this.groupBoxRemise.Size = new System.Drawing.Size(183, 74);
             this.groupBoxRemise.TabIndex = 21;
@@ -300,6 +303,7 @@
             this.numeroSerieDataGridViewTextBoxColumn.HeaderText = "NumeroSerie";
             this.numeroSerieDataGridViewTextBoxColumn.Name = "numeroSerieDataGridViewTextBoxColumn";
             this.numeroSerieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numeroSerieDataGridViewTextBoxColumn.Width = 70;
             // 
             // modeleDataGridViewTextBoxColumn
             // 
@@ -314,11 +318,20 @@
             this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
             // 
+            // Retirer
+            // 
+            this.Retirer.HeaderText = "";
+            this.Retirer.Name = "Retirer";
+            this.Retirer.ReadOnly = true;
+            this.Retirer.Text = "Retirer";
+            this.Retirer.UseColumnTextForButtonValue = true;
+            this.Retirer.Width = 70;
+            // 
             // FrmContrat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 447);
+            this.ClientSize = new System.Drawing.Size(654, 447);
             this.Controls.Add(this.groupBoxRemise);
             this.Controls.Add(this.labelCommentaire);
             this.Controls.Add(this.textBox1);
@@ -385,5 +398,6 @@
         private System.Windows.Forms.BindingSource modeleBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroSerieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn modeleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Retirer;
     }
 }
