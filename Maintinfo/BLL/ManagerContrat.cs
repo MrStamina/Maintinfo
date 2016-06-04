@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BO;
 using DAL;
+
 namespace BLL
 {
     public class ManagerContrat
@@ -77,6 +78,11 @@ namespace BLL
             }
             else
                 return montantTtc;
+        }
+
+        public DateTime CalculerDateEcheance(DateTime datedebut)
+        {
+            return datedebut.AddYears(1);
         }
     }
 }

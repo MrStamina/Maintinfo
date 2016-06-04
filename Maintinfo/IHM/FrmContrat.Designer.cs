@@ -34,9 +34,7 @@
             this.buttonCreateClient = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerDateValidite = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxMontantHt = new System.Windows.Forms.TextBox();
             this.textBoxMontantTtc = new System.Windows.Forms.TextBox();
@@ -49,20 +47,24 @@
             this.buttonRetour = new System.Windows.Forms.Button();
             this.dataGridViewEquipementsSousContrat = new System.Windows.Forms.DataGridView();
             this.modeleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelEquipements = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxCommentaire = new System.Windows.Forms.TextBox();
             this.labelCommentaire = new System.Windows.Forms.Label();
             this.groupBoxRemise = new System.Windows.Forms.GroupBox();
             this.numericUpDownRemise = new System.Windows.Forms.NumericUpDown();
             this.buttonAppliquer = new System.Windows.Forms.Button();
+            this.buttonValider = new System.Windows.Forms.Button();
             this.numeroSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Tarif = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipementsSousContrat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
             this.groupBoxRemise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).BeginInit();
@@ -85,7 +87,7 @@
             // 
             // buttonCreateClient
             // 
-            this.buttonCreateClient.Location = new System.Drawing.Point(452, 52);
+            this.buttonCreateClient.Location = new System.Drawing.Point(474, 52);
             this.buttonCreateClient.Name = "buttonCreateClient";
             this.buttonCreateClient.Size = new System.Drawing.Size(75, 61);
             this.buttonCreateClient.TabIndex = 1;
@@ -104,42 +106,24 @@
             // 
             // dateTimePickerDateValidite
             // 
-            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(119, 243);
+            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(119, 278);
             this.dateTimePickerDateValidite.Name = "dateTimePickerDateValidite";
             this.dateTimePickerDateValidite.Size = new System.Drawing.Size(183, 20);
             this.dateTimePickerDateValidite.TabIndex = 3;
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(119, 285);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(183, 20);
-            this.maskedTextBox1.TabIndex = 4;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 250);
+            this.label2.Location = new System.Drawing.Point(12, 284);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Date début :";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 292);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Date d\'échéance :";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 328);
+            this.label4.Location = new System.Drawing.Point(12, 332);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 8;
@@ -149,20 +133,20 @@
             // 
             this.textBoxMontantHt.Location = new System.Drawing.Point(119, 325);
             this.textBoxMontantHt.Name = "textBoxMontantHt";
-            this.textBoxMontantHt.Size = new System.Drawing.Size(183, 20);
+            this.textBoxMontantHt.Size = new System.Drawing.Size(77, 20);
             this.textBoxMontantHt.TabIndex = 9;
             // 
             // textBoxMontantTtc
             // 
-            this.textBoxMontantTtc.Location = new System.Drawing.Point(119, 360);
+            this.textBoxMontantTtc.Location = new System.Drawing.Point(119, 380);
             this.textBoxMontantTtc.Name = "textBoxMontantTtc";
-            this.textBoxMontantTtc.Size = new System.Drawing.Size(183, 20);
+            this.textBoxMontantTtc.Size = new System.Drawing.Size(77, 20);
             this.textBoxMontantTtc.TabIndex = 10;
             // 
             // labelMontantTTC
             // 
             this.labelMontantTTC.AutoSize = true;
-            this.labelMontantTTC.Location = new System.Drawing.Point(12, 363);
+            this.labelMontantTTC.Location = new System.Drawing.Point(12, 387);
             this.labelMontantTTC.Name = "labelMontantTTC";
             this.labelMontantTTC.Size = new System.Drawing.Size(71, 13);
             this.labelMontantTTC.TabIndex = 11;
@@ -194,7 +178,7 @@
             // 
             // buttonGererCentre
             // 
-            this.buttonGererCentre.Location = new System.Drawing.Point(452, 128);
+            this.buttonGererCentre.Location = new System.Drawing.Point(474, 128);
             this.buttonGererCentre.Name = "buttonGererCentre";
             this.buttonGererCentre.Size = new System.Drawing.Size(75, 61);
             this.buttonGererCentre.TabIndex = 14;
@@ -204,7 +188,7 @@
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(542, 52);
+            this.buttonRegister.Location = new System.Drawing.Point(555, 52);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(75, 61);
             this.buttonRegister.TabIndex = 15;
@@ -213,7 +197,7 @@
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(542, 128);
+            this.buttonRetour.Location = new System.Drawing.Point(555, 132);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(75, 61);
             this.buttonRetour.TabIndex = 16;
@@ -229,17 +213,22 @@
             this.dataGridViewEquipementsSousContrat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroSerieDataGridViewTextBoxColumn,
             this.modeleDataGridViewTextBoxColumn,
+            this.Tarif,
             this.Retirer});
             this.dataGridViewEquipementsSousContrat.DataSource = this.equipementBindingSource;
             this.dataGridViewEquipementsSousContrat.Location = new System.Drawing.Point(118, 128);
             this.dataGridViewEquipementsSousContrat.Name = "dataGridViewEquipementsSousContrat";
             this.dataGridViewEquipementsSousContrat.ReadOnly = true;
-            this.dataGridViewEquipementsSousContrat.Size = new System.Drawing.Size(285, 89);
+            this.dataGridViewEquipementsSousContrat.Size = new System.Drawing.Size(314, 89);
             this.dataGridViewEquipementsSousContrat.TabIndex = 17;
             // 
             // modeleBindingSource
             // 
             this.modeleBindingSource.DataSource = typeof(BO.Modele);
+            // 
+            // tarifBindingSource
+            // 
+            this.tarifBindingSource.DataSource = typeof(BO.Tarif);
             // 
             // equipementBindingSource
             // 
@@ -247,24 +236,25 @@
             // 
             // labelEquipements
             // 
-            this.labelEquipements.Location = new System.Drawing.Point(12, 141);
+            this.labelEquipements.Location = new System.Drawing.Point(12, 156);
             this.labelEquipements.Name = "labelEquipements";
             this.labelEquipements.Size = new System.Drawing.Size(100, 33);
             this.labelEquipements.TabIndex = 18;
             this.labelEquipements.Text = "Equipements sous contrat :";
             // 
-            // textBox1
+            // textBoxCommentaire
             // 
-            this.textBox1.Location = new System.Drawing.Point(452, 360);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 58);
-            this.textBox1.TabIndex = 19;
+            this.textBoxCommentaire.Location = new System.Drawing.Point(452, 360);
+            this.textBoxCommentaire.MaxLength = 100;
+            this.textBoxCommentaire.Multiline = true;
+            this.textBoxCommentaire.Name = "textBoxCommentaire";
+            this.textBoxCommentaire.Size = new System.Drawing.Size(127, 58);
+            this.textBoxCommentaire.TabIndex = 19;
             // 
             // labelCommentaire
             // 
             this.labelCommentaire.AutoSize = true;
-            this.labelCommentaire.Location = new System.Drawing.Point(490, 332);
+            this.labelCommentaire.Location = new System.Drawing.Point(477, 332);
             this.labelCommentaire.Name = "labelCommentaire";
             this.labelCommentaire.Size = new System.Drawing.Size(74, 13);
             this.labelCommentaire.TabIndex = 20;
@@ -297,6 +287,16 @@
             this.buttonAppliquer.Text = "Appliquer";
             this.buttonAppliquer.UseVisualStyleBackColor = true;
             // 
+            // buttonValider
+            // 
+            this.buttonValider.Location = new System.Drawing.Point(215, 223);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(75, 23);
+            this.buttonValider.TabIndex = 22;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            // 
             // numeroSerieDataGridViewTextBoxColumn
             // 
             this.numeroSerieDataGridViewTextBoxColumn.DataPropertyName = "NumeroSerie";
@@ -318,6 +318,17 @@
             this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
             // 
+            // Tarif
+            // 
+            this.Tarif.DataSource = this.tarifBindingSource;
+            this.Tarif.DisplayMember = "TarifModele";
+            this.Tarif.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Tarif.HeaderText = "Tarif";
+            this.Tarif.Name = "Tarif";
+            this.Tarif.ReadOnly = true;
+            this.Tarif.ValueMember = "TarifModele";
+            this.Tarif.Width = 50;
+            // 
             // Retirer
             // 
             this.Retirer.HeaderText = "";
@@ -332,9 +343,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 447);
+            this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.groupBoxRemise);
             this.Controls.Add(this.labelCommentaire);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxCommentaire);
             this.Controls.Add(this.labelEquipements);
             this.Controls.Add(this.dataGridViewEquipementsSousContrat);
             this.Controls.Add(this.buttonRetour);
@@ -346,9 +358,7 @@
             this.Controls.Add(this.textBoxMontantTtc);
             this.Controls.Add(this.textBoxMontantHt);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.dateTimePickerDateValidite);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCreateClient);
@@ -359,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipementsSousContrat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).EndInit();
             this.groupBoxRemise.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).EndInit();
@@ -373,9 +384,7 @@
         private System.Windows.Forms.Button buttonCreateClient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDateValidite;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxMontantHt;
         private System.Windows.Forms.TextBox textBoxMontantTtc;
@@ -387,7 +396,7 @@
         private System.Windows.Forms.Button buttonRetour;
         private System.Windows.Forms.DataGridView dataGridViewEquipementsSousContrat;
         private System.Windows.Forms.Label labelEquipements;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxCommentaire;
         private System.Windows.Forms.BindingSource clientBindingSource;
         private System.Windows.Forms.BindingSource equipementBindingSource;
         private System.Windows.Forms.Label labelCommentaire;
@@ -396,8 +405,11 @@
         private System.Windows.Forms.Button buttonAppliquer;
         private System.Windows.Forms.BindingSource centreInformatiqueBindingSource;
         private System.Windows.Forms.BindingSource modeleBindingSource;
+        private System.Windows.Forms.Button buttonValider;
+        private System.Windows.Forms.BindingSource tarifBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroSerieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn modeleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Tarif;
         private System.Windows.Forms.DataGridViewButtonColumn Retirer;
     }
 }

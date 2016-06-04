@@ -17,6 +17,9 @@ namespace IHM
     public partial class FrmContrat : Form
     {
         GestionnaireContrat gesContrat;
+        List<Equipement> listEquip;
+        double montantHt;
+        double montantTtc;
         public FrmContrat()
         {
             InitializeComponent();
@@ -52,10 +55,12 @@ namespace IHM
         private void chargement()
         {
             gesContrat = new GestionnaireContrat();
+            listEquip = new List<Equipement>();
             try
             {
                 clientBindingSource.DataSource = gesContrat.ChargerClient();
-                modeleBindingSource.DataSource = gesContrat.ChargerModele();                
+                modeleBindingSource.DataSource = gesContrat.ChargerModele();
+                tarifBindingSource.DataSource = gesContrat.ChargerTarif();                
                 
             }
             catch (DalExceptionAfficheMessage deaf)
@@ -93,10 +98,24 @@ namespace IHM
         {
             if(comboBoxCentreInfo.SelectedItem != null)
             {
-                //modeleBindingSource.DataSource = 
-                equipementBindingSource.DataSource = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                listEquip = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                equipementBindingSource.DataSource = listEquip;
 
             }
+        }
+
+        private void verification()
+        {
+
+        }
+
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+            
+            montantHt =  gesContrat.CalculerMontantHt(listEquip);
+            textBoxMontantHt.Text = Convert.ToString(montantHt);
+            montantTtc = gesContrat.CalculerMontantTtc(montantHt);
+            textBoxMontantTtc.Text = Convert.ToString(montantTtc);
         }
     }
 }

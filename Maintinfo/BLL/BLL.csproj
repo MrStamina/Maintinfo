@@ -46,6 +46,7 @@
     <Compile Include="ManagerContrat.cs" />
     <Compile Include="ManagerEquipement.cs" />
     <Compile Include="ManagerModele.cs" />
+    <Compile Include="ManagerTarif.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

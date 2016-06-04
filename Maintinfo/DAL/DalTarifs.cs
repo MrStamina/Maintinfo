@@ -11,7 +11,7 @@ using System.Data;
 
 namespace DAL
 {
-    class DalTarifs
+    public class DalTarifs
     {
         public List<Tarif> GetAllTarif()
         {

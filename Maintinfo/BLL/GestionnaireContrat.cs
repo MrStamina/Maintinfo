@@ -13,6 +13,7 @@ namespace BLL
         private ManagerCentreInformatique manCentre;
         private ManagerEquipement manEquip;
         private ManagerModele manMod;
+        private ManagerTarif manTar;
 
         public GestionnaireContrat()
         {
@@ -21,6 +22,7 @@ namespace BLL
             manCentre = new ManagerCentreInformatique();
             manEquip = new ManagerEquipement();
             manMod = new ManagerModele();
+            manTar = new ManagerTarif();
         }
 
         public List<Client> ChargerClient()
@@ -56,6 +58,26 @@ namespace BLL
         public List<Modele> ChargerModele()
         {
             return manMod.ChargerModele();
+        }
+
+        public List<Tarif> ChargerTarif()
+        {
+            return manTar.ChargerTarif();
+        }
+
+        public double CalculerMontantHt(List<Equipement> listEquip)
+        {
+           return manContrat.CalculerMontantHt(listEquip);
+        }
+
+        public double CalculerMontantTtc(double montantht)
+        {
+            return manContrat.CalculerMontantTtc(montantht);
+        }
+
+        public DateTime CalculerDateEcheance(DateTime dateDebut)
+        {
+            return manContrat.CalculerDateEcheance(dateDebut);
         }
     }
 }

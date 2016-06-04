@@ -125,6 +125,7 @@
     <None Include="Properties\DataSources\BO.Contrat.datasource" />
     <None Include="Properties\DataSources\BO.Equipement.datasource" />
     <None Include="Properties\DataSources\BO.Modele.datasource" />
+    <None Include="Properties\DataSources\BO.Tarif.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

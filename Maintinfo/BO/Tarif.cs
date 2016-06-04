@@ -37,5 +37,10 @@ namespace BO
         {
             return base.GetHashCode();
         }
+
+        public Tarif Self
+        {
+            get { return this; }
+        }
     }
 }
