@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServer\AddClient.sql" />
+    <Content Include="SqlServer\AddContrat.sql" />
     <Content Include="SqlServer\GetAllCentre.sql" />
     <Content Include="SqlServer\GetAllClient.sql" />
     <Content Include="SqlServer\GetAllContrat.sql" />
@@ -84,6 +85,7 @@
     <Content Include="SqlServer\GetEquipementByCentre.sql" />
     <Content Include="SqlServer\JeuDeDonnéesMaintinfo2.sql" />
     <Content Include="SqlServer\Maintinfo.sql" />
+    <Content Include="SqlServer\UpdEquipement.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

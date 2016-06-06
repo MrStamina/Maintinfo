@@ -12,10 +12,12 @@ namespace BO
 
         public CentreInformatique CentreInfo { get; set; }
         public Client Client { get; set; }
-        public double MontantHt { get; set; }
+        public double MontantTtc { get; set; }
 
         public DateTime DateDebut { get; set; }
         public DateTime DateEcheance { get; set; }
+
+        public string Commentaire { get; set; }
 
         //si le contrat ne concerne pas tous les équipements
 
@@ -25,14 +27,15 @@ namespace BO
         {
 
         }
-        public Contrat(int id,Client client, CentreInformatique centre, double montant, DateTime dateDebut, DateTime dateEcheance)
+        public Contrat(int id,Client client, CentreInformatique centre, double montant, DateTime dateDebut, DateTime dateEcheance,string comment)
         {
             this.NumeroContrat = id;
             this.Client = client;
             this.CentreInfo = centre;
-            this.MontantHt = montant;
+            this.MontantTtc = montant;
             this.DateDebut = dateDebut;
             this.DateEcheance = dateEcheance;
+            this.Commentaire = comment;
        
         }
 

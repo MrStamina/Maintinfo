@@ -50,7 +50,7 @@ namespace BLL
             return manCentre.AfficherCentreParClient(idClient);
         }
 
-        public List<Equipement> AfficherEquipementParCentre (int idCentre)
+        public List<Equipement> AfficherEquipementParCentre(int idCentre)
         {
             return manEquip.AfficherEquipementParCentre(idCentre);
         }
@@ -78,6 +78,21 @@ namespace BLL
         public DateTime CalculerDateEcheance(DateTime dateDebut)
         {
             return manContrat.CalculerDateEcheance(dateDebut);
+        }
+
+        public double AppliquerRemise(double remise)
+        {
+            return manContrat.AppliquerRemise(remise);
+        }
+
+        public int EnregistrerContrat(Contrat contrat)
+        {
+            return manContrat.EnregistrerContrat(contrat);
+        }
+
+        public void AjouterEquipementAuContrat(List<Equipement> listEquip, int numcontrat)
+        {
+            manEquip.AjouterEquipementAuContrat(listEquip, numcontrat);
         }
     }
 }

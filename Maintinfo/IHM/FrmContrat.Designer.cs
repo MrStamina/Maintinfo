@@ -45,10 +45,9 @@
             this.buttonGererCentre = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonRetour = new System.Windows.Forms.Button();
-            this.dataGridViewEquipementsSousContrat = new System.Windows.Forms.DataGridView();
             this.modeleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelEquipements = new System.Windows.Forms.Label();
             this.textBoxCommentaire = new System.Windows.Forms.TextBox();
             this.labelCommentaire = new System.Windows.Forms.Label();
@@ -56,18 +55,18 @@
             this.numericUpDownRemise = new System.Windows.Forms.NumericUpDown();
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
+            this.dataGridViewEquipement = new System.Windows.Forms.DataGridView();
             this.numeroSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Tarif = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Supprimer = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipementsSousContrat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).BeginInit();
             this.groupBoxRemise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxSelectionnerClient
@@ -194,45 +193,28 @@
             this.buttonRegister.TabIndex = 15;
             this.buttonRegister.Text = "Enregistrer Contrat";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(555, 132);
+            this.buttonRetour.Location = new System.Drawing.Point(555, 128);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(75, 61);
             this.buttonRetour.TabIndex = 16;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewEquipementsSousContrat
-            // 
-            this.dataGridViewEquipementsSousContrat.AllowUserToAddRows = false;
-            this.dataGridViewEquipementsSousContrat.AllowUserToDeleteRows = false;
-            this.dataGridViewEquipementsSousContrat.AutoGenerateColumns = false;
-            this.dataGridViewEquipementsSousContrat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEquipementsSousContrat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.numeroSerieDataGridViewTextBoxColumn,
-            this.modeleDataGridViewTextBoxColumn,
-            this.Tarif,
-            this.Retirer});
-            this.dataGridViewEquipementsSousContrat.DataSource = this.equipementBindingSource;
-            this.dataGridViewEquipementsSousContrat.Location = new System.Drawing.Point(118, 128);
-            this.dataGridViewEquipementsSousContrat.Name = "dataGridViewEquipementsSousContrat";
-            this.dataGridViewEquipementsSousContrat.ReadOnly = true;
-            this.dataGridViewEquipementsSousContrat.Size = new System.Drawing.Size(314, 89);
-            this.dataGridViewEquipementsSousContrat.TabIndex = 17;
-            // 
             // modeleBindingSource
             // 
             this.modeleBindingSource.DataSource = typeof(BO.Modele);
             // 
-            // tarifBindingSource
-            // 
-            this.tarifBindingSource.DataSource = typeof(BO.Tarif);
-            // 
             // equipementBindingSource
             // 
             this.equipementBindingSource.DataSource = typeof(BO.Equipement);
+            // 
+            // tarifBindingSource
+            // 
+            this.tarifBindingSource.DataSource = typeof(BO.Tarif);
             // 
             // labelEquipements
             // 
@@ -269,11 +251,21 @@
             this.groupBoxRemise.Size = new System.Drawing.Size(183, 74);
             this.groupBoxRemise.TabIndex = 21;
             this.groupBoxRemise.TabStop = false;
-            this.groupBoxRemise.Text = "Remise";
+            this.groupBoxRemise.Text = "Remise %";
             // 
             // numericUpDownRemise
             // 
+            this.numericUpDownRemise.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numericUpDownRemise.Location = new System.Drawing.Point(20, 39);
+            this.numericUpDownRemise.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.numericUpDownRemise.Name = "numericUpDownRemise";
             this.numericUpDownRemise.Size = new System.Drawing.Size(41, 20);
             this.numericUpDownRemise.TabIndex = 1;
@@ -286,6 +278,7 @@
             this.buttonAppliquer.TabIndex = 0;
             this.buttonAppliquer.Text = "Appliquer";
             this.buttonAppliquer.UseVisualStyleBackColor = true;
+            this.buttonAppliquer.Click += new System.EventHandler(this.buttonAppliquer_Click);
             // 
             // buttonValider
             // 
@@ -297,13 +290,30 @@
             this.buttonValider.UseVisualStyleBackColor = true;
             this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
+            // dataGridViewEquipement
+            // 
+            this.dataGridViewEquipement.AllowUserToAddRows = false;
+            this.dataGridViewEquipement.AllowUserToDeleteRows = false;
+            this.dataGridViewEquipement.AutoGenerateColumns = false;
+            this.dataGridViewEquipement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEquipement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroSerieDataGridViewTextBoxColumn,
+            this.modeleDataGridViewTextBoxColumn,
+            this.Supprimer});
+            this.dataGridViewEquipement.DataSource = this.equipementBindingSource;
+            this.dataGridViewEquipement.Location = new System.Drawing.Point(118, 115);
+            this.dataGridViewEquipement.Name = "dataGridViewEquipement";
+            this.dataGridViewEquipement.ReadOnly = true;
+            this.dataGridViewEquipement.Size = new System.Drawing.Size(350, 102);
+            this.dataGridViewEquipement.TabIndex = 23;
+            // 
             // numeroSerieDataGridViewTextBoxColumn
             // 
             this.numeroSerieDataGridViewTextBoxColumn.DataPropertyName = "NumeroSerie";
             this.numeroSerieDataGridViewTextBoxColumn.HeaderText = "NumeroSerie";
             this.numeroSerieDataGridViewTextBoxColumn.Name = "numeroSerieDataGridViewTextBoxColumn";
             this.numeroSerieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroSerieDataGridViewTextBoxColumn.Width = 70;
+            this.numeroSerieDataGridViewTextBoxColumn.Width = 80;
             // 
             // modeleDataGridViewTextBoxColumn
             // 
@@ -317,38 +327,28 @@
             this.modeleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
+            this.modeleDataGridViewTextBoxColumn.Width = 120;
             // 
-            // Tarif
+            // Supprimer
             // 
-            this.Tarif.DataSource = this.tarifBindingSource;
-            this.Tarif.DisplayMember = "TarifModele";
-            this.Tarif.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.Tarif.HeaderText = "Tarif";
-            this.Tarif.Name = "Tarif";
-            this.Tarif.ReadOnly = true;
-            this.Tarif.ValueMember = "TarifModele";
-            this.Tarif.Width = 50;
-            // 
-            // Retirer
-            // 
-            this.Retirer.HeaderText = "";
-            this.Retirer.Name = "Retirer";
-            this.Retirer.ReadOnly = true;
-            this.Retirer.Text = "Retirer";
-            this.Retirer.UseColumnTextForButtonValue = true;
-            this.Retirer.Width = 70;
+            this.Supprimer.HeaderText = "";
+            this.Supprimer.Name = "Supprimer";
+            this.Supprimer.ReadOnly = true;
+            this.Supprimer.Text = "Supprimer";
+            this.Supprimer.UseColumnTextForButtonValue = true;
+            this.Supprimer.Width = 80;
             // 
             // FrmContrat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 447);
+            this.Controls.Add(this.dataGridViewEquipement);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.groupBoxRemise);
             this.Controls.Add(this.labelCommentaire);
             this.Controls.Add(this.textBoxCommentaire);
             this.Controls.Add(this.labelEquipements);
-            this.Controls.Add(this.dataGridViewEquipementsSousContrat);
             this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.buttonGererCentre);
@@ -367,12 +367,12 @@
             this.Text = "FrmContrat";
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipementsSousContrat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).EndInit();
             this.groupBoxRemise.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,7 +394,6 @@
         private System.Windows.Forms.Button buttonGererCentre;
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Button buttonRetour;
-        private System.Windows.Forms.DataGridView dataGridViewEquipementsSousContrat;
         private System.Windows.Forms.Label labelEquipements;
         private System.Windows.Forms.TextBox textBoxCommentaire;
         private System.Windows.Forms.BindingSource clientBindingSource;
@@ -407,9 +406,9 @@
         private System.Windows.Forms.BindingSource modeleBindingSource;
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.BindingSource tarifBindingSource;
+        private System.Windows.Forms.DataGridView dataGridViewEquipement;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroSerieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn modeleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Tarif;
-        private System.Windows.Forms.DataGridViewButtonColumn Retirer;
+        private System.Windows.Forms.DataGridViewButtonColumn Supprimer;
     }
 }

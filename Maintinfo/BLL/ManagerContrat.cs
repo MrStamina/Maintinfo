@@ -33,10 +33,11 @@ namespace BLL
             return listcont;
         }
 
-        public bool EnregistrerContrat(Contrat contrat)
+        public int EnregistrerContrat(Contrat contrat)
         {
-          
-            return true;
+            dalContrat = new DalContrat();
+            return dalContrat.AddContrat(contrat);
+           
         }
 
         public bool ModifierContrat(Contrat contrat)

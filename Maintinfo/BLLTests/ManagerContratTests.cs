@@ -123,7 +123,7 @@ namespace BLL.Tests
                     NumeroContrat = 1,
                     Client = listeClient.First(a => a.NumClient == 1),
                     CentreInfo = centre1,
-                    MontantHt = 5245
+                    MontantTtc = 5245
 
                 },
                 new Contrat()
@@ -131,7 +131,7 @@ namespace BLL.Tests
                     NumeroContrat = 2,
                     Client = listeClient.First(a => a.NumClient == 1),
                     CentreInfo = centre2,
-                    MontantHt = 4245
+                    MontantTtc = 4245
 
                 },
                 new Contrat()
@@ -139,7 +139,7 @@ namespace BLL.Tests
                     NumeroContrat = 3,
                     Client = listeClient.First(a => a.NumClient == 2),
                     CentreInfo = centre3,
-                    MontantHt = 6245
+                    MontantTtc = 6245
 
                 },
             };

@@ -23,5 +23,15 @@ namespace BLL
             dalEquip = new DalEquipement();
             return listEquip = dalEquip.GetEquipementByCentre(idCentre);
         }
+
+        public void AjouterEquipementAuContrat(List<Equipement> listEquip,int numContrat)
+        {
+            
+            dalEquip = new DalEquipement();
+            foreach(Equipement eq in listEquip)
+            {
+                dalEquip.UpdEquipement(eq.NumeroSerie, numContrat);
+            }
+        }
     }
 }

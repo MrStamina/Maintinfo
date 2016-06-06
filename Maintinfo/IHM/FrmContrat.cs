@@ -78,7 +78,20 @@ namespace IHM
         {
             if(comboBoxSelectionnerClient.SelectedItem != null)
             {
-                centreInformatiqueBindingSource.DataSource = gesContrat.AfficherCentreParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+                try
+                {
+                    centreInformatiqueBindingSource.DataSource = gesContrat.AfficherCentreParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+
+                }
+                catch (DalExceptionAfficheMessage deaf)
+                {
+                    MessageBox.Show(deaf.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 comboBoxCentreInfo.SelectedItem = null;
 
             }
@@ -98,7 +111,19 @@ namespace IHM
         {
             if(comboBoxCentreInfo.SelectedItem != null)
             {
-                listEquip = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                try
+                {
+                    listEquip = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                }
+                catch (DalExceptionAfficheMessage deaf)
+                {
+                    MessageBox.Show(deaf.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 equipementBindingSource.DataSource = listEquip;
 
             }
@@ -113,9 +138,49 @@ namespace IHM
         {
             
             montantHt =  gesContrat.CalculerMontantHt(listEquip);
-            textBoxMontantHt.Text = Convert.ToString(montantHt);
+            textBoxMontantHt.Text = Convert.ToString(montantHt) + " euros";
             montantTtc = gesContrat.CalculerMontantTtc(montantHt);
-            textBoxMontantTtc.Text = Convert.ToString(montantTtc);
+            textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
+        }
+
+        private void buttonAppliquer_Click(object sender, EventArgs e)
+        {
+            double result = 0.01;
+            
+            montantTtc = gesContrat.AppliquerRemise(Convert.ToDouble(numericUpDownRemise.Value) * result);
+            textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if(comboBoxCentreInfo.SelectedItem != null && comboBoxSelectionnerClient.SelectedItem != null)
+            {
+                int idContrat = 0;
+                DateTime dateEcheance = gesContrat.CalculerDateEcheance(dateTimePickerDateValidite.Value);
+                Contrat contrat = new Contrat(idContrat, (Client)comboBoxSelectionnerClient.SelectedItem,
+                    (CentreInformatique)comboBoxCentreInfo.SelectedItem, montantTtc,
+                    dateTimePickerDateValidite.Value,dateEcheance, textBoxCommentaire.Text);
+                try
+                {
+                    idContrat = gesContrat.EnregistrerContrat(contrat);
+                    contrat.NumeroContrat = idContrat;
+                    gesContrat.AjouterEquipementAuContrat(listEquip, contrat.NumeroContrat);
+                } 
+                catch(DalExceptionFinAppli defa)
+                {
+                    MessageBox.Show(defa.Message, "Erreur applicative");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                this.Close();     
+                                 
+                
+
+                 
+            }
         }
     }
 }

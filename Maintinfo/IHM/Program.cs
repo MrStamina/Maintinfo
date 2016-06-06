@@ -16,7 +16,7 @@ namespace IHM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmAccueil());
+            Application.Run(new FrmContrat());
         }
     }
 }

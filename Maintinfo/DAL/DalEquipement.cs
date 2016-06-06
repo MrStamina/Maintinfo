@@ -35,9 +35,12 @@ namespace DAL
                         while (dbRdr.Read())
                         {
                             int numSerie = dbRdr.GetInt32(0);
-                            Modele mod = new Modele() { IdModele = dbRdr.GetInt32(1) };
-                            CentreInformatique centre = new CentreInformatique() { NumCentre = dbRdr.GetInt32(2) };
-                            Equipement equip = new Equipement(numSerie, mod, centre);
+                            int numModele = dbRdr.GetInt32(1);
+                            int numTarif = dbRdr.GetInt32(2);
+                            decimal montant = dbRdr.GetDecimal(3);
+                            Tarif tarif = new Tarif() { CodeTarif = numTarif, TarifModele = Convert.ToDouble(montant) };
+                            Modele mod = new Modele() { IdModele = numModele, Tarif = tarif };
+                            Equipement equip = new Equipement(numSerie, mod);
                             listEquip.Add(equip);
 
                         }
@@ -53,6 +56,88 @@ namespace DAL
                 }
             }
         }
+
+        public void UpdEquipement(int numSerie, int numContrat)
+        {
+            using (DbConnection oConnection = Connection.GetConnectionSqlServer())
+            {
+                using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+                    oCommand.CommandText = "UpdEquipement";
+                    oCommand.CommandType = CommandType.StoredProcedure;
+                    DbParameter odbp1 = oCommand.CreateParameter();
+                    odbp1.DbType = DbType.Int32;
+                    odbp1.Direction = ParameterDirection.Input;
+                    odbp1.ParameterName = "@numSerie";
+                    odbp1.Value = numSerie;
+                    oCommand.Parameters.Add(odbp1);
+                    DbParameter odbp2 = oCommand.CreateParameter();
+                    odbp2.DbType = DbType.Int32;
+                    odbp2.Direction = ParameterDirection.Input;
+                    odbp2.ParameterName = "@numContrat";
+                    odbp2.Value = numContrat;
+                    oCommand.Parameters.Add(odbp2);
+
+                    try
+                    {
+                        int n = oCommand.ExecuteNonQuery();
+                        if (n != 1)
+                            throw new DalExceptionAfficheMessage
+                                ("L'opération de modification n'a pas été réalisée");
+                      
+
+                    }
+                    catch (DbException de)
+                    {
+                        throw new DalExceptionAfficheMessage
+                            ("Une erreur s'est produite sur la base : \n"
+                                     + de.Message, de);
+                    }
+                }
+            }
+        }
     }
+
+        //private void AffectParam(Client client, DbCommand oCommand)
+        //{
+        //    // 
+        //    DbParameter odbp1 = oCommand.CreateParameter();
+        //    odbp1.DbType = DbType.String;
+        //    odbp1.Direction = ParameterDirection.Input;
+        //    odbp1.ParameterName = "@nomClient";
+        //    odbp1.Value = client.NomClient;
+        //    oCommand.Parameters.Add(odbp1);
+        //    //
+        //    DbParameter odbp2 = oCommand.CreateParameter();
+        //    odbp2.DbType = DbType.String;
+        //    odbp2.Direction = ParameterDirection.Input;
+        //    odbp2.ParameterName = "@adresseClient";
+        //    odbp2.Value = client.AdresseClient;
+        //    oCommand.Parameters.Add(odbp2);
+        //    //
+        //    DbParameter odbp3 = oCommand.CreateParameter();
+        //    odbp3.DbType = DbType.String;
+        //    odbp3.Direction = ParameterDirection.Input;
+        //    odbp3.ParameterName = "@villeClient";
+        //    odbp3.Value = client.Ville;
+        //    oCommand.Parameters.Add(odbp3);
+        //    //
+        //    DbParameter odbp4 = oCommand.CreateParameter();
+        //    odbp4.DbType = DbType.String;
+        //    odbp4.Direction = ParameterDirection.Input;
+        //    odbp4.ParameterName = "@codePostal";
+        //    odbp4.Value = client.CodePostal;
+        //    oCommand.Parameters.Add(odbp4);
+        //    //
+        //    DbParameter odbp5 = oCommand.CreateParameter();
+        //    odbp5.DbType = DbType.String;
+        //    odbp5.Direction = ParameterDirection.Input;
+        //    odbp5.ParameterName = "@telClient";
+        //    odbp5.Value = client.NumTel;
+        //    oCommand.Parameters.Add(odbp5);
+
+
+        
+    
 }
 
