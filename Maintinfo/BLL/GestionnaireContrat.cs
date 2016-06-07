@@ -50,7 +50,7 @@ namespace BLL
             return manCentre.AfficherCentreParClient(idClient);
         }
 
-        public List<Equipement> AfficherEquipementParCentre(int idCentre)
+        public List<LigneEquipement> AfficherEquipementParCentre(int idCentre)
         {
             return manEquip.AfficherEquipementParCentre(idCentre);
         }
@@ -65,7 +65,7 @@ namespace BLL
             return manTar.ChargerTarif();
         }
 
-        public double CalculerMontantHt(List<Equipement> listEquip)
+        public double CalculerMontantHt(List<LigneEquipement> listEquip)
         {
            return manContrat.CalculerMontantHt(listEquip);
         }

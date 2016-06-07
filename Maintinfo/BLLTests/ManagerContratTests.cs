@@ -147,32 +147,32 @@ namespace BLL.Tests
         }
 
 
-        [TestMethod()]
-        public void CalculerMontantHtTest()
-        {
-            double expected = 3275;
-            double actual = 0;
-            ManagerContrat manContrat = new ManagerContrat();
-            actual = manContrat.CalculerMontantHt(listTest);
-            Assert.AreEqual(expected, actual);
+        //[TestMethod()]
+        //public void CalculerMontantHtTest()
+        //{
+        //    double expected = 3275;
+        //    double actual = 0;
+        //    ManagerContrat manContrat = new ManagerContrat();
+        //    actual = manContrat.CalculerMontantHt(listTest);
+        //    Assert.AreEqual(expected, actual);
 
 
-        }
+        //}
 
-        [TestMethod()]
-        public void CalculerMontantTtcTest()
-        {
-            double expected = 0;
-            double montantHt = 0;
+        //[TestMethod()]
+        //public void CalculerMontantTtcTest()
+        //{
+        //    double expected = 0;
+        //    double montantHt = 0;
 
-            double actual = 0;
-            ManagerContrat manContrat = new ManagerContrat();
-            montantHt = manContrat.CalculerMontantHt(listTest);
-            expected = (manContrat.CalculerMontantHt(listTest)) + (manContrat.CalculerMontantHt(listTest) * 0.2);
-            actual = manContrat.CalculerMontantTtc(montantHt);
-            Assert.AreEqual(expected, actual);
+        //    double actual = 0;
+        //    ManagerContrat manContrat = new ManagerContrat();
+        //    montantHt = manContrat.CalculerMontantHt(listTest);
+        //    expected = (manContrat.CalculerMontantHt(listTest)) + (manContrat.CalculerMontantHt(listTest) * 0.2);
+        //    actual = manContrat.CalculerMontantTtc(montantHt);
+        //    Assert.AreEqual(expected, actual);
 
-        }
+        //}
 
        
     }

@@ -15,10 +15,12 @@ namespace BLL
         private double montantTtc;
         List<Contrat> listeContrat;
         private DalContrat dalContrat;
+       
         
         public ManagerContrat()
         {
             listeContrat = new List<Contrat>();
+            
         }
 
         public List<Contrat> ChargerLesContrats()
@@ -51,13 +53,13 @@ namespace BLL
         }
 
     // méthodes pour calculer automatiquement les montants du contrat en fonction des equipements
-        public double CalculerMontantHt(List<Equipement> listequip)
+        public double CalculerMontantHt(List<LigneEquipement> listequip)
         {
             double montantHt = 0;
-            foreach (Equipement equip in listequip)
+            foreach (LigneEquipement equip in listequip)
             {
 
-                montantHt += equip.Modele.Tarif.TarifModele;
+                montantHt += equip.Tarif*equip.Qte;
             }
             return montantHt;
 

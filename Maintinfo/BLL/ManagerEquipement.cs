@@ -11,17 +11,20 @@ namespace BLL
     public class ManagerEquipement
     {
 
-        DalEquipement dalEquip;
+        private DalEquipement dalEquip;
         List<Equipement> listEquip;
+        private ManagerLigneEquipement manLigne;
 
         public ManagerEquipement()
         {
             listEquip = new List<Equipement>();
+            manLigne = new ManagerLigneEquipement();
         }
-        public List<Equipement> AfficherEquipementParCentre(int idCentre)
+        public List<LigneEquipement> AfficherEquipementParCentre(int idCentre)
         {
             dalEquip = new DalEquipement();
-            return listEquip = dalEquip.GetEquipementByCentre(idCentre);
+            listEquip = dalEquip.GetEquipementByCentre(idCentre);
+            return manLigne.TrierListe(listEquip);
         }
 
         public void AjouterEquipementAuContrat(List<Equipement> listEquip,int numContrat)

@@ -47,7 +47,6 @@
             this.buttonRetour = new System.Windows.Forms.Button();
             this.modeleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelEquipements = new System.Windows.Forms.Label();
             this.textBoxCommentaire = new System.Windows.Forms.TextBox();
             this.labelCommentaire = new System.Windows.Forms.Label();
@@ -56,17 +55,19 @@
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.dataGridViewEquipement = new System.Windows.Forms.DataGridView();
-            this.numeroSerieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supprimer = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).BeginInit();
             this.groupBoxRemise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipementByCentreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxSelectionnerClient
@@ -74,7 +75,7 @@
             this.comboBoxSelectionnerClient.DataSource = this.clientBindingSource;
             this.comboBoxSelectionnerClient.DisplayMember = "NomClient";
             this.comboBoxSelectionnerClient.FormattingEnabled = true;
-            this.comboBoxSelectionnerClient.Location = new System.Drawing.Point(119, 25);
+            this.comboBoxSelectionnerClient.Location = new System.Drawing.Point(119, 48);
             this.comboBoxSelectionnerClient.Name = "comboBoxSelectionnerClient";
             this.comboBoxSelectionnerClient.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSelectionnerClient.TabIndex = 0;
@@ -86,7 +87,7 @@
             // 
             // buttonCreateClient
             // 
-            this.buttonCreateClient.Location = new System.Drawing.Point(474, 52);
+            this.buttonCreateClient.Location = new System.Drawing.Point(480, 119);
             this.buttonCreateClient.Name = "buttonCreateClient";
             this.buttonCreateClient.Size = new System.Drawing.Size(75, 61);
             this.buttonCreateClient.TabIndex = 1;
@@ -97,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Location = new System.Drawing.Point(56, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 2;
@@ -105,7 +106,7 @@
             // 
             // dateTimePickerDateValidite
             // 
-            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(119, 278);
+            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(118, 307);
             this.dateTimePickerDateValidite.Name = "dateTimePickerDateValidite";
             this.dateTimePickerDateValidite.Size = new System.Drawing.Size(183, 20);
             this.dateTimePickerDateValidite.TabIndex = 3;
@@ -113,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 284);
+            this.label2.Location = new System.Drawing.Point(12, 313);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 6;
@@ -122,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 332);
+            this.label4.Location = new System.Drawing.Point(12, 352);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 8;
@@ -130,7 +131,7 @@
             // 
             // textBoxMontantHt
             // 
-            this.textBoxMontantHt.Location = new System.Drawing.Point(119, 325);
+            this.textBoxMontantHt.Location = new System.Drawing.Point(119, 345);
             this.textBoxMontantHt.Name = "textBoxMontantHt";
             this.textBoxMontantHt.Size = new System.Drawing.Size(77, 20);
             this.textBoxMontantHt.TabIndex = 9;
@@ -156,7 +157,7 @@
             this.comboBoxCentreInfo.DataSource = this.centreInformatiqueBindingSource;
             this.comboBoxCentreInfo.DisplayMember = "Ville";
             this.comboBoxCentreInfo.FormattingEnabled = true;
-            this.comboBoxCentreInfo.Location = new System.Drawing.Point(119, 63);
+            this.comboBoxCentreInfo.Location = new System.Drawing.Point(386, 45);
             this.comboBoxCentreInfo.Name = "comboBoxCentreInfo";
             this.comboBoxCentreInfo.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCentreInfo.TabIndex = 12;
@@ -169,7 +170,7 @@
             // labelCentreInformatique
             // 
             this.labelCentreInformatique.AutoSize = true;
-            this.labelCentreInformatique.Location = new System.Drawing.Point(12, 71);
+            this.labelCentreInformatique.Location = new System.Drawing.Point(276, 48);
             this.labelCentreInformatique.Name = "labelCentreInformatique";
             this.labelCentreInformatique.Size = new System.Drawing.Size(104, 13);
             this.labelCentreInformatique.TabIndex = 13;
@@ -177,7 +178,7 @@
             // 
             // buttonGererCentre
             // 
-            this.buttonGererCentre.Location = new System.Drawing.Point(474, 128);
+            this.buttonGererCentre.Location = new System.Drawing.Point(480, 198);
             this.buttonGererCentre.Name = "buttonGererCentre";
             this.buttonGererCentre.Size = new System.Drawing.Size(75, 61);
             this.buttonGererCentre.TabIndex = 14;
@@ -187,7 +188,7 @@
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(555, 52);
+            this.buttonRegister.Location = new System.Drawing.Point(568, 119);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(75, 61);
             this.buttonRegister.TabIndex = 15;
@@ -197,7 +198,7 @@
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(555, 128);
+            this.buttonRetour.Location = new System.Drawing.Point(568, 198);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(75, 61);
             this.buttonRetour.TabIndex = 16;
@@ -212,13 +213,9 @@
             // 
             this.equipementBindingSource.DataSource = typeof(BO.Equipement);
             // 
-            // tarifBindingSource
-            // 
-            this.tarifBindingSource.DataSource = typeof(BO.Tarif);
-            // 
             // labelEquipements
             // 
-            this.labelEquipements.Location = new System.Drawing.Point(12, 156);
+            this.labelEquipements.Location = new System.Drawing.Point(12, 143);
             this.labelEquipements.Name = "labelEquipements";
             this.labelEquipements.Size = new System.Drawing.Size(100, 33);
             this.labelEquipements.TabIndex = 18;
@@ -226,7 +223,7 @@
             // 
             // textBoxCommentaire
             // 
-            this.textBoxCommentaire.Location = new System.Drawing.Point(452, 360);
+            this.textBoxCommentaire.Location = new System.Drawing.Point(315, 342);
             this.textBoxCommentaire.MaxLength = 100;
             this.textBoxCommentaire.Multiline = true;
             this.textBoxCommentaire.Name = "textBoxCommentaire";
@@ -236,7 +233,7 @@
             // labelCommentaire
             // 
             this.labelCommentaire.AutoSize = true;
-            this.labelCommentaire.Location = new System.Drawing.Point(477, 332);
+            this.labelCommentaire.Location = new System.Drawing.Point(235, 365);
             this.labelCommentaire.Name = "labelCommentaire";
             this.labelCommentaire.Size = new System.Drawing.Size(74, 13);
             this.labelCommentaire.TabIndex = 20;
@@ -246,7 +243,7 @@
             // 
             this.groupBoxRemise.Controls.Add(this.numericUpDownRemise);
             this.groupBoxRemise.Controls.Add(this.buttonAppliquer);
-            this.groupBoxRemise.Location = new System.Drawing.Point(434, 243);
+            this.groupBoxRemise.Location = new System.Drawing.Point(460, 291);
             this.groupBoxRemise.Name = "groupBoxRemise";
             this.groupBoxRemise.Size = new System.Drawing.Size(183, 74);
             this.groupBoxRemise.TabIndex = 21;
@@ -282,7 +279,7 @@
             // 
             // buttonValider
             // 
-            this.buttonValider.Location = new System.Drawing.Point(215, 223);
+            this.buttonValider.Location = new System.Drawing.Point(253, 265);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(75, 23);
             this.buttonValider.TabIndex = 22;
@@ -297,37 +294,44 @@
             this.dataGridViewEquipement.AutoGenerateColumns = false;
             this.dataGridViewEquipement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEquipement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.numeroSerieDataGridViewTextBoxColumn,
-            this.modeleDataGridViewTextBoxColumn,
+            this.qteDataGridViewTextBoxColumn,
+            this.libelleModeleDataGridViewTextBoxColumn,
+            this.tarifDataGridViewTextBoxColumn,
             this.Supprimer});
-            this.dataGridViewEquipement.DataSource = this.equipementBindingSource;
-            this.dataGridViewEquipement.Location = new System.Drawing.Point(118, 115);
+            this.dataGridViewEquipement.DataSource = this.equipementByCentreBindingSource;
+            this.dataGridViewEquipement.Location = new System.Drawing.Point(119, 108);
             this.dataGridViewEquipement.Name = "dataGridViewEquipement";
             this.dataGridViewEquipement.ReadOnly = true;
-            this.dataGridViewEquipement.Size = new System.Drawing.Size(350, 102);
+            this.dataGridViewEquipement.Size = new System.Drawing.Size(336, 151);
             this.dataGridViewEquipement.TabIndex = 23;
             // 
-            // numeroSerieDataGridViewTextBoxColumn
+            // equipementByCentreBindingSource
             // 
-            this.numeroSerieDataGridViewTextBoxColumn.DataPropertyName = "NumeroSerie";
-            this.numeroSerieDataGridViewTextBoxColumn.HeaderText = "NumeroSerie";
-            this.numeroSerieDataGridViewTextBoxColumn.Name = "numeroSerieDataGridViewTextBoxColumn";
-            this.numeroSerieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroSerieDataGridViewTextBoxColumn.Width = 80;
+            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
             // 
-            // modeleDataGridViewTextBoxColumn
+            // qteDataGridViewTextBoxColumn
             // 
-            this.modeleDataGridViewTextBoxColumn.DataPropertyName = "Modele";
-            this.modeleDataGridViewTextBoxColumn.DataSource = this.modeleBindingSource;
-            this.modeleDataGridViewTextBoxColumn.DisplayMember = "LibelleModele";
-            this.modeleDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.modeleDataGridViewTextBoxColumn.HeaderText = "Modele";
-            this.modeleDataGridViewTextBoxColumn.Name = "modeleDataGridViewTextBoxColumn";
-            this.modeleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modeleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.modeleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.modeleDataGridViewTextBoxColumn.ValueMember = "Self";
-            this.modeleDataGridViewTextBoxColumn.Width = 120;
+            this.qteDataGridViewTextBoxColumn.DataPropertyName = "Qte";
+            this.qteDataGridViewTextBoxColumn.HeaderText = "Quantité";
+            this.qteDataGridViewTextBoxColumn.Name = "qteDataGridViewTextBoxColumn";
+            this.qteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qteDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // libelleModeleDataGridViewTextBoxColumn
+            // 
+            this.libelleModeleDataGridViewTextBoxColumn.DataPropertyName = "Libelle_Modele";
+            this.libelleModeleDataGridViewTextBoxColumn.HeaderText = "      Modele";
+            this.libelleModeleDataGridViewTextBoxColumn.Name = "libelleModeleDataGridViewTextBoxColumn";
+            this.libelleModeleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.libelleModeleDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // tarifDataGridViewTextBoxColumn
+            // 
+            this.tarifDataGridViewTextBoxColumn.DataPropertyName = "Tarif";
+            this.tarifDataGridViewTextBoxColumn.HeaderText = "Tarif";
+            this.tarifDataGridViewTextBoxColumn.Name = "tarifDataGridViewTextBoxColumn";
+            this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tarifDataGridViewTextBoxColumn.Width = 50;
             // 
             // Supprimer
             // 
@@ -342,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 447);
+            this.ClientSize = new System.Drawing.Size(703, 447);
             this.Controls.Add(this.dataGridViewEquipement);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.groupBoxRemise);
@@ -364,15 +368,15 @@
             this.Controls.Add(this.buttonCreateClient);
             this.Controls.Add(this.comboBoxSelectionnerClient);
             this.Name = "FrmContrat";
-            this.Text = "FrmContrat";
+            this.Text = "Enregistrer Contrat";
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tarifBindingSource)).EndInit();
             this.groupBoxRemise.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equipementByCentreBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,10 +409,12 @@
         private System.Windows.Forms.BindingSource centreInformatiqueBindingSource;
         private System.Windows.Forms.BindingSource modeleBindingSource;
         private System.Windows.Forms.Button buttonValider;
-        private System.Windows.Forms.BindingSource tarifBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewEquipement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroSerieDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn modeleDataGridViewTextBoxColumn;
+        //private MaintinfoDataSetTableAdapters.GetEquipementByCentreTableAdapter getEquipementByCentreTableAdapter;
+        private System.Windows.Forms.BindingSource equipementByCentreBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Supprimer;
     }
 }

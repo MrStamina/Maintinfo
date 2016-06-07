@@ -17,7 +17,8 @@ namespace IHM
     public partial class FrmContrat : Form
     {
         GestionnaireContrat gesContrat;
-        List<Equipement> listEquip;
+        //List<Equipement> listEquip;
+        List<LigneEquipement> listEquipByCentre;
         double montantHt;
         double montantTtc;
         public FrmContrat()
@@ -55,13 +56,14 @@ namespace IHM
         private void chargement()
         {
             gesContrat = new GestionnaireContrat();
-            listEquip = new List<Equipement>();
+            //listEquip = new List<Equipement>();
+            listEquipByCentre = new List<LigneEquipement>();
             try
             {
                 clientBindingSource.DataSource = gesContrat.ChargerClient();
                 modeleBindingSource.DataSource = gesContrat.ChargerModele();
-                tarifBindingSource.DataSource = gesContrat.ChargerTarif();                
                 
+
             }
             catch (DalExceptionAfficheMessage deaf)
             {
@@ -113,7 +115,7 @@ namespace IHM
             {
                 try
                 {
-                    listEquip = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                    listEquipByCentre = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
                 }
                 catch (DalExceptionAfficheMessage deaf)
                 {
@@ -124,7 +126,10 @@ namespace IHM
                     MessageBox.Show(ex.Message);
                 }
 
-                equipementBindingSource.DataSource = listEquip;
+
+                //equipementBindingSource.DataSource = listEquip;
+                equipementByCentreBindingSource.DataSource = listEquipByCentre;
+                
 
             }
         }
@@ -136,8 +141,8 @@ namespace IHM
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
-            
-            montantHt =  gesContrat.CalculerMontantHt(listEquip);
+
+            montantHt = gesContrat.CalculerMontantHt(listEquipByCentre);
             textBoxMontantHt.Text = Convert.ToString(montantHt) + " euros";
             montantTtc = gesContrat.CalculerMontantTtc(montantHt);
             textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
@@ -164,7 +169,7 @@ namespace IHM
                 {
                     idContrat = gesContrat.EnregistrerContrat(contrat);
                     contrat.NumeroContrat = idContrat;
-                    gesContrat.AjouterEquipementAuContrat(listEquip, contrat.NumeroContrat);
+                    //gesContrat.AjouterEquipementAuContrat(listEquip, contrat.NumeroContrat);
                 } 
                 catch(DalExceptionFinAppli defa)
                 {

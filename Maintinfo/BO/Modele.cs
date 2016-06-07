@@ -38,7 +38,7 @@ namespace BO
         }
         public override string ToString()
         {
-            return base.ToString();
+            return LibelleModele;
         }
         public override int GetHashCode()
         {

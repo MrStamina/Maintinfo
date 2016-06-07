@@ -38,8 +38,9 @@ namespace DAL
                             int numModele = dbRdr.GetInt32(1);
                             int numTarif = dbRdr.GetInt32(2);
                             decimal montant = dbRdr.GetDecimal(3);
+                            string libelle = dbRdr.GetString(4);
                             Tarif tarif = new Tarif() { CodeTarif = numTarif, TarifModele = Convert.ToDouble(montant) };
-                            Modele mod = new Modele() { IdModele = numModele, Tarif = tarif };
+                            Modele mod = new Modele() { IdModele = numModele, LibelleModele=libelle.TrimEnd(), Tarif = tarif };
                             Equipement equip = new Equipement(numSerie, mod);
                             listEquip.Add(equip);
 
