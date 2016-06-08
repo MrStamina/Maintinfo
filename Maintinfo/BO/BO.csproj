@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvisReconResil.cs" />
+    <Compile Include="AvisRenouvellement.cs" />
     <Compile Include="CentreInformatique.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Contrat.cs" />
@@ -48,8 +50,12 @@
     <Compile Include="Modele.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecteurGeographique.cs" />
+    <Compile Include="StatutContrat.cs" />
     <Compile Include="Tarif.cs" />
     <Compile Include="Type.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

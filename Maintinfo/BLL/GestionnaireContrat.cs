@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 using BO;
 namespace BLL
 {
@@ -50,9 +54,9 @@ namespace BLL
             return manCentre.AfficherCentreParClient(idClient);
         }
 
-        public List<LigneEquipement> AfficherEquipementParCentre(int idCentre)
+        public List<LigneEquipement> AfficherEquipementParCentre(List<Equipement> listEquip)
         {
-            return manEquip.AfficherEquipementParCentre(idCentre);
+            return manEquip.AfficherEquipementParCentre(listEquip);
         }
 
         public List<Modele> ChargerModele()
@@ -90,9 +94,19 @@ namespace BLL
             return manContrat.EnregistrerContrat(contrat);
         }
 
-        public void AjouterEquipementAuContrat(List<Equipement> listEquip, int numcontrat)
+        public void AjouterEquipementAuContrat(List<Equipement> listEquip2,int numcontrat)
         {
-            manEquip.AjouterEquipementAuContrat(listEquip, numcontrat);
+            manEquip.AjouterEquipementAuContrat(listEquip2,numcontrat);
+        }
+
+        public List<Equipement> RetirerEquipementDuContrat(List<Equipement> listEquip,LigneEquipement ligneEquip)
+        {
+            return manEquip.RetirerEquipementDuContrat(listEquip,ligneEquip);
+        }
+
+        public List<Equipement> ChargerEquipementParCentre(int numCentre)
+        {
+            return manEquip.ChargerEquipementParCentre(numCentre);
         }
     }
 }

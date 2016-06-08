@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BO.CentreInformatique" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAABAAACEAAASIABAAAAgAAAAAQ=</HashCode>
+      <FileName>CentreInformatique.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Client" Collapsed="true">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQIAAAAAAAEgAABAQAAEAAAAIAAgAAAIAAAAAA=</HashCode>
+      <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Contrat" Collapsed="true">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAAgAAAFgQAAAAAAAAAAiIAAQAAAAAAAAAQ=</HashCode>
+      <FileName>Contrat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Equipement" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAEAAAEgAAAAAAAAAAAAIAAAAgAAAAAAEA=</HashCode>
+      <FileName>Equipement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.LigneEquipement" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAEgAAAAAAAgAAAAIAAAAAAAAEAAAA=</HashCode>
+      <FileName>LigneEquipement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Modele" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQAAAAAAAAAAEgAABAAAAAAAAAIIAAQAAAAAAAAA=</HashCode>
+      <FileName>Modele.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.SecteurGeographique" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAEgAABAAIAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>SecteurGeographique.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Tarif" Collapsed="true">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEgAABAAAAAAAAIIAQAAAAAAAAAAA=</HashCode>
+      <FileName>Tarif.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BO.Type" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAEgAAAAAAAAAAAAIAAAAAAAAAABAA=</HashCode>
+      <FileName>Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

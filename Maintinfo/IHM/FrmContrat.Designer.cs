@@ -55,11 +55,11 @@
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.dataGridViewEquipement = new System.Windows.Forms.DataGridView();
-            this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Supprimer = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
@@ -243,7 +243,7 @@
             // 
             this.groupBoxRemise.Controls.Add(this.numericUpDownRemise);
             this.groupBoxRemise.Controls.Add(this.buttonAppliquer);
-            this.groupBoxRemise.Location = new System.Drawing.Point(460, 291);
+            this.groupBoxRemise.Location = new System.Drawing.Point(460, 326);
             this.groupBoxRemise.Name = "groupBoxRemise";
             this.groupBoxRemise.Size = new System.Drawing.Size(183, 74);
             this.groupBoxRemise.TabIndex = 21;
@@ -297,17 +297,14 @@
             this.qteDataGridViewTextBoxColumn,
             this.libelleModeleDataGridViewTextBoxColumn,
             this.tarifDataGridViewTextBoxColumn,
-            this.Supprimer});
+            this.Retirer});
             this.dataGridViewEquipement.DataSource = this.equipementByCentreBindingSource;
             this.dataGridViewEquipement.Location = new System.Drawing.Point(119, 108);
             this.dataGridViewEquipement.Name = "dataGridViewEquipement";
             this.dataGridViewEquipement.ReadOnly = true;
             this.dataGridViewEquipement.Size = new System.Drawing.Size(336, 151);
             this.dataGridViewEquipement.TabIndex = 23;
-            // 
-            // equipementByCentreBindingSource
-            // 
-            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
+            this.dataGridViewEquipement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEquipement_CellContentClick);
             // 
             // qteDataGridViewTextBoxColumn
             // 
@@ -333,14 +330,18 @@
             this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
             this.tarifDataGridViewTextBoxColumn.Width = 50;
             // 
-            // Supprimer
+            // Retirer
             // 
-            this.Supprimer.HeaderText = "";
-            this.Supprimer.Name = "Supprimer";
-            this.Supprimer.ReadOnly = true;
-            this.Supprimer.Text = "Supprimer";
-            this.Supprimer.UseColumnTextForButtonValue = true;
-            this.Supprimer.Width = 80;
+            this.Retirer.HeaderText = "";
+            this.Retirer.Name = "Retirer";
+            this.Retirer.ReadOnly = true;
+            this.Retirer.Text = "Retirer";
+            this.Retirer.UseColumnTextForButtonValue = true;
+            this.Retirer.Width = 80;
+            // 
+            // equipementByCentreBindingSource
+            // 
+            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
             // 
             // FrmContrat
             // 
@@ -415,6 +416,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Supprimer;
+        private System.Windows.Forms.DataGridViewButtonColumn Retirer;
     }
 }

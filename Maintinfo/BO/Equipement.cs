@@ -13,9 +13,7 @@ namespace BO
         public CentreInformatique Centre { get; set; }
         public Contrat Contrat { get; set; }
 
-        //// Pour la datagridview sinon je ne trouve pas comment afficher le tarif
-        //public Tarif Tarif { get; set; }
-
+        
         public Equipement()
         {
 

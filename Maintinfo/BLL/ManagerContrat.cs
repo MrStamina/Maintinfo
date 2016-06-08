@@ -59,7 +59,7 @@ namespace BLL
             foreach (LigneEquipement equip in listequip)
             {
 
-                montantHt += equip.Tarif*equip.Qte;
+                montantHt += equip.Tarif;
             }
             return montantHt;
 

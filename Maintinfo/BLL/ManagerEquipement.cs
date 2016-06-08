@@ -12,29 +12,43 @@ namespace BLL
     {
 
         private DalEquipement dalEquip;
-        List<Equipement> listEquip;
+        public List<Equipement> listEquip;
         private ManagerLigneEquipement manLigne;
 
         public ManagerEquipement()
         {
             listEquip = new List<Equipement>();
             manLigne = new ManagerLigneEquipement();
-        }
-        public List<LigneEquipement> AfficherEquipementParCentre(int idCentre)
-        {
             dalEquip = new DalEquipement();
-            listEquip = dalEquip.GetEquipementByCentre(idCentre);
+        }
+        public List<LigneEquipement> AfficherEquipementParCentre(List<Equipement> listEquip)
+        {
+                       
             return manLigne.TrierListe(listEquip);
         }
 
-        public void AjouterEquipementAuContrat(List<Equipement> listEquip,int numContrat)
+        public List<Equipement> ChargerEquipementParCentre(int idCentre)
         {
-            
-            dalEquip = new DalEquipement();
-            foreach(Equipement eq in listEquip)
+            return dalEquip.GetEquipementByCentre(idCentre);
+        }
+
+       
+
+        public void AjouterEquipementAuContrat(List<Equipement> listEquip2, int numContrat)
+        {
+                        
+            foreach(Equipement eq in listEquip2)
             {
                 dalEquip.UpdEquipement(eq.NumeroSerie, numContrat);
             }
+        }
+
+        public List<Equipement> RetirerEquipementDuContrat(List<Equipement> listEquip,LigneEquipement ligneEquip)
+        {
+
+            listEquip.RemoveAll(x => x.Modele.LibelleModele == ligneEquip.Libelle_Modele);
+            return listEquip;
+            
         }
     }
 }

@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+
 using BLL;
 using DAL.Exceptions;
 using BO;
@@ -17,7 +22,7 @@ namespace IHM
     public partial class FrmContrat : Form
     {
         GestionnaireContrat gesContrat;
-        //List<Equipement> listEquip;
+        List<Equipement> listEquip;
         List<LigneEquipement> listEquipByCentre;
         double montantHt;
         double montantTtc;
@@ -94,14 +99,16 @@ namespace IHM
                     MessageBox.Show(ex.Message);
                 }
 
-                comboBoxCentreInfo.SelectedItem = null;
+                
 
             }
+            
         }
 
         private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
         {
             alimenterCentre();
+            comboBoxCentreInfo.SelectedItem = null;
         }
 
         private void comboBoxCentreInfo_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +122,7 @@ namespace IHM
             {
                 try
                 {
-                    listEquipByCentre = gesContrat.AfficherEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+                    listEquip = gesContrat.ChargerEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
                 }
                 catch (DalExceptionAfficheMessage deaf)
                 {
@@ -126,9 +133,8 @@ namespace IHM
                     MessageBox.Show(ex.Message);
                 }
 
-
-                //equipementBindingSource.DataSource = listEquip;
-                equipementByCentreBindingSource.DataSource = listEquipByCentre;
+                listEquipByCentre = gesContrat.AfficherEquipementParCentre(listEquip);
+               equipementByCentreBindingSource.DataSource = listEquipByCentre;
                 
 
             }
@@ -169,7 +175,8 @@ namespace IHM
                 {
                     idContrat = gesContrat.EnregistrerContrat(contrat);
                     contrat.NumeroContrat = idContrat;
-                    //gesContrat.AjouterEquipementAuContrat(listEquip, contrat.NumeroContrat);
+                    gesContrat.AjouterEquipementAuContrat(listEquip,contrat.NumeroContrat);
+                    MessageBox.Show("Le Contrat est enregistré");
                 } 
                 catch(DalExceptionFinAppli defa)
                 {
@@ -180,6 +187,7 @@ namespace IHM
                 {
                     MessageBox.Show(ex.Message);
                 }
+                
                 this.Close();     
                                  
                 
@@ -187,5 +195,50 @@ namespace IHM
                  
             }
         }
+
+        private void dataGridViewEquipement_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == dataGridViewEquipement.Columns["Retirer"].Index && e.RowIndex >= 0)
+            {
+                string message = "Etes-vous sûr de vouloir retirer le(s) équipement(s) ?";
+                string caption = "Retrait d'Equipement(s)";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    LigneEquipement lignEquip = new LigneEquipement();
+                    lignEquip = (dataGridViewEquipement.Rows[e.RowIndex].DataBoundItem) as LigneEquipement;
+                    listEquip = gesContrat.RetirerEquipementDuContrat(listEquip,lignEquip);
+                    equipementByCentreBindingSource.Remove(lignEquip);
+                    textBoxMontantHt.Clear();
+                    textBoxMontantTtc.Clear();
+                }
+                
+            }
+            dataGridViewEquipement.Refresh();
+        }
+
+        //private void buttonImprimer_Click(object sender, EventArgs e)
+        //{
+        //    FileStream fs = new FileStream("Contrat.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+        //    Document nouveauDoc = new Document();
+
+        //    PdfWriter writer = PdfWriter.GetInstance(nouveauDoc, fs);
+        //    nouveauDoc.Open();
+        //    nouveauDoc.Add(new Paragraph("Tout va bien ?"));
+        //    nouveauDoc.Close();
+
+        //    //}
+        //    //catch (DocumentException de)
+        //    //{
+        //    //    MessageBox.Show("erreur" + de.Message);
+        //    //}
+        //    //catch (IOException ioe)
+        //    //{
+        //    //    MessageBox.Show("erreur" + ioe.Message);
+        //    //}
+        //    //nouveauDoc.Close();
+
+
+        //}
     }
 }

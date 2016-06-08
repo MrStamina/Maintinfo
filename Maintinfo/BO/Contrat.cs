@@ -19,6 +19,7 @@ namespace BO
 
         public string Commentaire { get; set; }
 
+        public StatutContrat statut { get; set; }
         //si le contrat ne concerne pas tous les équipements
 
         public List<Equipement> Equipement { get; set; }
