@@ -10,8 +10,8 @@ namespace BLL
 {
     public class ManagerTarif
     {
-        DalTarifs dalTarif;
-        List<Tarif> listTarifs;
+        private DalTarifs dalTarif;
+        private List<Tarif> listTarifs;
 
         public ManagerTarif()
         {

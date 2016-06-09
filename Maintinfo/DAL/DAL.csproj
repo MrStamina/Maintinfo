@@ -85,6 +85,7 @@
     <Content Include="SqlServer\GetEquipementByCentre.sql" />
     <Content Include="SqlServer\JeuDeDonnéesMaintinfo2.sql" />
     <Content Include="SqlServer\Maintinfo.sql" />
+    <Content Include="SqlServer\ScriptMaintinfo.sql" />
     <Content Include="SqlServer\UpdEquipement.sql" />
   </ItemGroup>
   <ItemGroup>

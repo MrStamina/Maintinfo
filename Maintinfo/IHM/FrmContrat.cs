@@ -24,6 +24,7 @@ namespace IHM
         GestionnaireContrat gesContrat;
         List<Equipement> listEquip;
         List<LigneEquipement> listEquipByCentre;
+        List<CentreInformatique> listCentre;
         double montantHt;
         double montantTtc;
         public FrmContrat()
@@ -32,6 +33,7 @@ namespace IHM
             chargement();
         }
 
+        #region Gestion des bouton vers d'autres formes
         private void buttonCreateClient_Click(object sender, EventArgs e)
         {
             var newclient = Application.OpenForms.OfType<FrmGestionClient>().FirstOrDefault();
@@ -57,7 +59,9 @@ namespace IHM
                 new FrmGestionCentre().Show();
             }
         }
+        #endregion
 
+        #region Gestion du chargement de la form
         private void chargement()
         {
             gesContrat = new GestionnaireContrat();
@@ -81,13 +85,16 @@ namespace IHM
             comboBoxSelectionnerClient.SelectedItem = null;            
             
         }
+        #endregion
+
+        #region Gestion des deux comboboxs
         private void alimenterCentre()
         {
             if(comboBoxSelectionnerClient.SelectedItem != null)
             {
                 try
                 {
-                    centreInformatiqueBindingSource.DataSource = gesContrat.AfficherCentreParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+                    listCentre = gesContrat.AfficherCentreParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
 
                 }
                 catch (DalExceptionAfficheMessage deaf)
@@ -100,25 +107,39 @@ namespace IHM
                 }
 
                 
+                if(listCentre.Count == 0)
+                {
+                    string message = "Les centres rattachés au client possèdent déja un contrat de maintenance. \n Souhaitez-vous créer un nouveau centre ?";
+                    string caption = "Information";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        var centre = Application.OpenForms.OfType<FrmGestionCentre>().FirstOrDefault();
+                        if (centre != null)
+                        {
+                            centre.Activate();
+                        }
+                        else
+                        {
+                            new FrmGestionCentre().Show();
+                        }
+                    }
+
+                }
+                else
+                {
+                    labelMessage.ForeColor = Color.Red;
+                    labelMessage.Text = "Il y a " + listCentre.Count.ToString() + " centre(s) disponible(s) pour un contrat de maintenance";
+                    centreInformatiqueBindingSource.DataSource = listCentre;
+                }
+                    
 
             }
             
         }
-
-        private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            alimenterCentre();
-            comboBoxCentreInfo.SelectedItem = null;
-        }
-
-        private void comboBoxCentreInfo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            alimenterEquipement();
-        }
-
         private void alimenterEquipement()
         {
-            if(comboBoxCentreInfo.SelectedItem != null)
+            if (comboBoxCentreInfo.SelectedItem != null)
             {
                 try
                 {
@@ -134,17 +155,30 @@ namespace IHM
                 }
 
                 listEquipByCentre = gesContrat.AfficherEquipementParCentre(listEquip);
-               equipementByCentreBindingSource.DataSource = listEquipByCentre;
-                
+                equipementByCentreBindingSource.DataSource = listEquipByCentre;
+                labelMessage.ResetText();
+
 
             }
         }
 
-        private void verification()
+        private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            alimenterCentre();
+            comboBoxCentreInfo.SelectedItem = null;
         }
 
+        private void comboBoxCentreInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            alimenterEquipement();
+           
+        }
+        #endregion
+
+
+
+
+        #region Gestion des boutons de calculs montant + remise      
         private void buttonValider_Click(object sender, EventArgs e)
         {
 
@@ -161,7 +195,11 @@ namespace IHM
             montantTtc = gesContrat.AppliquerRemise(Convert.ToDouble(numericUpDownRemise.Value) * result);
             textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
         }
+        #endregion
 
+        #region Gestion de l'enregistrement du contrat
+
+       
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             if(comboBoxCentreInfo.SelectedItem != null && comboBoxSelectionnerClient.SelectedItem != null)
@@ -195,7 +233,9 @@ namespace IHM
                  
             }
         }
+        #endregion
 
+        #region Gestion du DatagridView
         private void dataGridViewEquipement_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex == dataGridViewEquipement.Columns["Retirer"].Index && e.RowIndex >= 0)
@@ -217,28 +257,6 @@ namespace IHM
             dataGridViewEquipement.Refresh();
         }
 
-        //private void buttonImprimer_Click(object sender, EventArgs e)
-        //{
-        //    FileStream fs = new FileStream("Contrat.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
-        //    Document nouveauDoc = new Document();
-
-        //    PdfWriter writer = PdfWriter.GetInstance(nouveauDoc, fs);
-        //    nouveauDoc.Open();
-        //    nouveauDoc.Add(new Paragraph("Tout va bien ?"));
-        //    nouveauDoc.Close();
-
-        //    //}
-        //    //catch (DocumentException de)
-        //    //{
-        //    //    MessageBox.Show("erreur" + de.Message);
-        //    //}
-        //    //catch (IOException ioe)
-        //    //{
-        //    //    MessageBox.Show("erreur" + ioe.Message);
-        //    //}
-        //    //nouveauDoc.Close();
-
-
-        //}
+        #endregion
     }
 }

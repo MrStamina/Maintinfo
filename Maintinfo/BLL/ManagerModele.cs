@@ -11,8 +11,8 @@ namespace BLL
     public class ManagerModele
     {
 
-        List<Modele> listModele;
-        DalModele dalMod;
+        private List<Modele> listModele;
+        private DalModele dalMod;
         public ManagerModele()
         {
             listModele = new List<Modele>();

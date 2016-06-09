@@ -12,7 +12,7 @@ namespace BLL
     {
 
         private DalEquipement dalEquip;
-        public List<Equipement> listEquip;
+        private List<Equipement> listEquip;
         private ManagerLigneEquipement manLigne;
 
         public ManagerEquipement()

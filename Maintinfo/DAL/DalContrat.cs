@@ -34,7 +34,7 @@ namespace DAL
                             decimal montant = dbRdr.GetDecimal(3);
                             DateTime dateDebut = dbRdr.GetDateTime(4);
                             DateTime dateEcheance = dbRdr.GetDateTime(5);
-                            string comment = (!dbRdr.IsDBNull(10)) ? dbRdr.GetString(10) : string.Empty;
+                            string comment = (!dbRdr.IsDBNull(6)) ? dbRdr.GetString(6) : string.Empty;
                             Contrat contrat = new Contrat(numContrat, client, centre, Convert.ToDouble(montant),dateDebut,dateEcheance, comment);
                             listeContrat.Add(contrat);
                         }

@@ -60,6 +60,7 @@
             this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
             this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
@@ -343,11 +344,20 @@
             // 
             this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
             // 
+            // labelMessage
+            // 
+            this.labelMessage.AutoSize = true;
+            this.labelMessage.Location = new System.Drawing.Point(149, 92);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(0, 13);
+            this.labelMessage.TabIndex = 24;
+            // 
             // FrmContrat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 447);
+            this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.dataGridViewEquipement);
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.groupBoxRemise);
@@ -417,5 +427,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Retirer;
+        private System.Windows.Forms.Label labelMessage;
     }
 }

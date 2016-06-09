@@ -10,8 +10,9 @@ namespace BLL
 {
     public class ManagerCentreInformatique
     {
-        List<CentreInformatique> listeCentre;
-        DalCentreInfo dalCentre;
+         private List<CentreInformatique> listeCentre;
+         private DalCentreInfo dalCentre;
+        
 
         public ManagerCentreInformatique()
         {

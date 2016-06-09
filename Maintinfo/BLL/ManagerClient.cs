@@ -10,8 +10,8 @@ namespace BLL
 {
     public class ManagerClient
     {
-        ClientDal clientDal;
-        List<Client> listClient;
+       private ClientDal clientDal;
+        private List<Client> listClient;
 
         public ManagerClient()
         {

@@ -15,6 +15,8 @@ namespace BLL
 
         }
 
+        // Méthode pour trier la liste d'équipements du centre afin de les afficher par modèle
+        // et quantité.
         public List<LigneEquipement> TrierListe(List<Equipement> listEquip)
         {
             List<LigneEquipement> listLigne = new List<LigneEquipement>();

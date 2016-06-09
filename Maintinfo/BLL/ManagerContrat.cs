@@ -13,7 +13,7 @@ namespace BLL
 
         private double tva = 0.2;
         private double montantTtc;
-        List<Contrat> listeContrat;
+        private List<Contrat> listeContrat;
         private DalContrat dalContrat;
        
         
