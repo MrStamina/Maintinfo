@@ -10,14 +10,14 @@ namespace BO
     {
         public int Qte { get; set; }
         public string Libelle_Modele { get; set; }
-        public double Tarif { get; set; }
+        public decimal Tarif { get; set; }
 
         public LigneEquipement()
         {
 
         }
 
-        public LigneEquipement(int qte, string libelle, double tarif)
+        public LigneEquipement(int qte, string libelle, decimal tarif)
         {
             this.Qte = qte;
             this.Libelle_Modele = libelle;

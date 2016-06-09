@@ -31,7 +31,7 @@ namespace DAL
                             int codeTarif = dbRdr.GetInt32(0);
                             DateTime date = dbRdr.GetDateTime(1);
                             decimal tarifMod = dbRdr.GetDecimal(2);
-                            Tarif tarif = new Tarif(codeTarif, date, Convert.ToDouble(tarifMod));
+                            Tarif tarif = new Tarif(codeTarif, date, tarifMod);
                             listTarif.Add(tarif);
 
                         }

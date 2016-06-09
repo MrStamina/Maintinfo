@@ -93,12 +93,12 @@ namespace BLL
 
        
         // Méthodes pour calculer automatiquement les montants et la date d'échéance
-        public double CalculerMontantHt(List<LigneEquipement> listEquip)
+        public decimal CalculerMontantHt(List<LigneEquipement> listEquip)
         {
            return manContrat.CalculerMontantHt(listEquip);
         }
 
-        public double CalculerMontantTtc(double montantht)
+        public decimal CalculerMontantTtc(decimal montantht)
         {
             return manContrat.CalculerMontantTtc(montantht);
         }
@@ -109,7 +109,7 @@ namespace BLL
         }
 
         //Méthode qui applique une remise sur le montant Ttc
-        public double AppliquerRemise(double remise)
+        public decimal AppliquerRemise(decimal remise)
         {
             return manContrat.AppliquerRemise(remise);
         }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.comboBoxSelectionnerClient = new System.Windows.Forms.ComboBox();
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -39,9 +42,9 @@
             this.labelChoixClient = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
             this.centreInfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.montantHtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateDebut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateEcheance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontantTtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modifier = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
@@ -83,16 +86,16 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.centreInfoDataGridViewTextBoxColumn,
-            this.montantHtDataGridViewTextBoxColumn,
             this.DateDebut,
             this.DateEcheance,
+            this.MontantTtc,
             this.Modifier,
             this.Column1});
             this.dataGridView1.DataSource = this.contratBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(34, 198);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 198);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(586, 171);
+            this.dataGridView1.Size = new System.Drawing.Size(597, 171);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
             // 
@@ -139,33 +142,47 @@
             this.centreInfoDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.centreInfoDataGridViewTextBoxColumn.HeaderText = "Centre Informatique";
             this.centreInfoDataGridViewTextBoxColumn.Name = "centreInfoDataGridViewTextBoxColumn";
+            this.centreInfoDataGridViewTextBoxColumn.ReadOnly = true;
             this.centreInfoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.centreInfoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.centreInfoDataGridViewTextBoxColumn.ValueMember = "Self";
             // 
-            // montantHtDataGridViewTextBoxColumn
-            // 
-            this.montantHtDataGridViewTextBoxColumn.DataPropertyName = "MontantHt";
-            this.montantHtDataGridViewTextBoxColumn.HeaderText = "MontantHt";
-            this.montantHtDataGridViewTextBoxColumn.Name = "montantHtDataGridViewTextBoxColumn";
-            this.montantHtDataGridViewTextBoxColumn.Width = 80;
-            // 
             // DateDebut
             // 
             this.DateDebut.DataPropertyName = "DateDebut";
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.DateDebut.DefaultCellStyle = dataGridViewCellStyle7;
             this.DateDebut.HeaderText = "DateDebut";
             this.DateDebut.Name = "DateDebut";
+            this.DateDebut.ReadOnly = true;
             // 
             // DateEcheance
             // 
             this.DateEcheance.DataPropertyName = "DateEcheance";
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            this.DateEcheance.DefaultCellStyle = dataGridViewCellStyle8;
             this.DateEcheance.HeaderText = "DateEcheance";
             this.DateEcheance.Name = "DateEcheance";
+            this.DateEcheance.ReadOnly = true;
+            // 
+            // MontantTtc
+            // 
+            this.MontantTtc.DataPropertyName = "MontantTtc";
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.MontantTtc.DefaultCellStyle = dataGridViewCellStyle9;
+            this.MontantTtc.HeaderText = "MontantTtc";
+            this.MontantTtc.Name = "MontantTtc";
+            this.MontantTtc.ReadOnly = true;
             // 
             // Modifier
             // 
             this.Modifier.HeaderText = "";
             this.Modifier.Name = "Modifier";
+            this.Modifier.ReadOnly = true;
             this.Modifier.Text = "Modifier";
             this.Modifier.UseColumnTextForButtonValue = true;
             this.Modifier.Width = 80;
@@ -174,6 +191,7 @@
             // 
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Text = "Supprimer";
             this.Column1.UseColumnTextForButtonValue = true;
             this.Column1.Width = 80;
@@ -211,10 +229,11 @@
         private System.Windows.Forms.BindingSource centreInformatiqueBindingSource;
         private System.Windows.Forms.Label labelChoixClient;
         private System.Windows.Forms.Label labelMessage;
-        private System.Windows.Forms.DataGridViewComboBoxColumn centreInfoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montantHtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn centreInfoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateDebut;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateEcheance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontantTtc;
         private System.Windows.Forms.DataGridViewButtonColumn Modifier;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
     }

@@ -21,12 +21,12 @@ namespace IHM
     
     public partial class FrmContrat : Form
     {
-        GestionnaireContrat gesContrat;
-        List<Equipement> listEquip;
-        List<LigneEquipement> listEquipByCentre;
-        List<CentreInformatique> listCentre;
-        double montantHt;
-        double montantTtc;
+        private GestionnaireContrat gesContrat;
+        private List<Equipement> listEquip;
+        private List<LigneEquipement> listEquipByCentre;
+        private List<CentreInformatique> listCentre;
+        private decimal montantHt;
+        private decimal montantTtc;
         public FrmContrat()
         {
             InitializeComponent();
@@ -164,12 +164,15 @@ namespace IHM
 
         private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
         {
+            equipementByCentreBindingSource.Clear();
             alimenterCentre();
             comboBoxCentreInfo.SelectedItem = null;
+            
         }
 
         private void comboBoxCentreInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            equipementByCentreBindingSource.Clear();
             alimenterEquipement();
            
         }
@@ -183,17 +186,17 @@ namespace IHM
         {
 
             montantHt = gesContrat.CalculerMontantHt(listEquipByCentre);
-            textBoxMontantHt.Text = Convert.ToString(montantHt) + " euros";
+            textBoxMontantHt.Text = montantHt.ToString("#.##") + " €";
             montantTtc = gesContrat.CalculerMontantTtc(montantHt);
-            textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
+            textBoxMontantTtc.Text = montantTtc.ToString("#.##") + " €";
         }
 
         private void buttonAppliquer_Click(object sender, EventArgs e)
         {
-            double result = 0.01;
+            decimal result = 0.01M;
             
-            montantTtc = gesContrat.AppliquerRemise(Convert.ToDouble(numericUpDownRemise.Value) * result);
-            textBoxMontantTtc.Text = Convert.ToString(montantTtc) + " euros";
+            montantTtc = gesContrat.AppliquerRemise(Convert.ToDecimal(numericUpDownRemise.Value) * result);
+            textBoxMontantTtc.Text = montantTtc.ToString("#.##") + " €";
         }
         #endregion
 
@@ -258,5 +261,10 @@ namespace IHM
         }
 
         #endregion
+
+        private void buttonRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

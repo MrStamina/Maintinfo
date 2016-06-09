@@ -23,7 +23,7 @@ namespace BLL
             List<Equipement> listTriage;
             int quantite;
             string libelle;
-            double tarif;
+            decimal tarif;
             for (int i = 1; i <= 5; i++)
             {
                 listTriage = new List<Equipement>();

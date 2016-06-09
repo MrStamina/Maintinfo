@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxSelectionnerClient = new System.Windows.Forms.ComboBox();
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonCreateClient = new System.Windows.Forms.Button();
@@ -55,12 +56,12 @@
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.dataGridViewEquipement = new System.Windows.Forms.DataGridView();
+            this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelMessage = new System.Windows.Forms.Label();
             this.qteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
@@ -107,10 +108,11 @@
             // 
             // dateTimePickerDateValidite
             // 
-            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(118, 307);
+            this.dateTimePickerDateValidite.Location = new System.Drawing.Point(118, 313);
             this.dateTimePickerDateValidite.Name = "dateTimePickerDateValidite";
-            this.dateTimePickerDateValidite.Size = new System.Drawing.Size(183, 20);
+            this.dateTimePickerDateValidite.Size = new System.Drawing.Size(178, 20);
             this.dateTimePickerDateValidite.TabIndex = 3;
+            this.dateTimePickerDateValidite.Value = new System.DateTime(2016, 6, 9, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -132,14 +134,16 @@
             // 
             // textBoxMontantHt
             // 
-            this.textBoxMontantHt.Location = new System.Drawing.Point(119, 345);
+            this.textBoxMontantHt.ForeColor = System.Drawing.Color.Red;
+            this.textBoxMontantHt.Location = new System.Drawing.Point(119, 349);
             this.textBoxMontantHt.Name = "textBoxMontantHt";
             this.textBoxMontantHt.Size = new System.Drawing.Size(77, 20);
             this.textBoxMontantHt.TabIndex = 9;
             // 
             // textBoxMontantTtc
             // 
-            this.textBoxMontantTtc.Location = new System.Drawing.Point(119, 380);
+            this.textBoxMontantTtc.ForeColor = System.Drawing.Color.Red;
+            this.textBoxMontantTtc.Location = new System.Drawing.Point(118, 384);
             this.textBoxMontantTtc.Name = "textBoxMontantTtc";
             this.textBoxMontantTtc.Size = new System.Drawing.Size(77, 20);
             this.textBoxMontantTtc.TabIndex = 10;
@@ -205,6 +209,7 @@
             this.buttonRetour.TabIndex = 16;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = true;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
             // modeleBindingSource
             // 
@@ -300,12 +305,24 @@
             this.tarifDataGridViewTextBoxColumn,
             this.Retirer});
             this.dataGridViewEquipement.DataSource = this.equipementByCentreBindingSource;
-            this.dataGridViewEquipement.Location = new System.Drawing.Point(119, 108);
+            this.dataGridViewEquipement.Location = new System.Drawing.Point(107, 108);
             this.dataGridViewEquipement.Name = "dataGridViewEquipement";
             this.dataGridViewEquipement.ReadOnly = true;
-            this.dataGridViewEquipement.Size = new System.Drawing.Size(336, 151);
+            this.dataGridViewEquipement.Size = new System.Drawing.Size(354, 151);
             this.dataGridViewEquipement.TabIndex = 23;
             this.dataGridViewEquipement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEquipement_CellContentClick);
+            // 
+            // equipementByCentreBindingSource
+            // 
+            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
+            // 
+            // labelMessage
+            // 
+            this.labelMessage.AutoSize = true;
+            this.labelMessage.Location = new System.Drawing.Point(149, 92);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(0, 13);
+            this.labelMessage.TabIndex = 24;
             // 
             // qteDataGridViewTextBoxColumn
             // 
@@ -326,10 +343,14 @@
             // tarifDataGridViewTextBoxColumn
             // 
             this.tarifDataGridViewTextBoxColumn.DataPropertyName = "Tarif";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.tarifDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.tarifDataGridViewTextBoxColumn.HeaderText = "Tarif";
             this.tarifDataGridViewTextBoxColumn.Name = "tarifDataGridViewTextBoxColumn";
             this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tarifDataGridViewTextBoxColumn.Width = 50;
+            this.tarifDataGridViewTextBoxColumn.Width = 70;
             // 
             // Retirer
             // 
@@ -339,18 +360,6 @@
             this.Retirer.Text = "Retirer";
             this.Retirer.UseColumnTextForButtonValue = true;
             this.Retirer.Width = 80;
-            // 
-            // equipementByCentreBindingSource
-            // 
-            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
-            // 
-            // labelMessage
-            // 
-            this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(149, 92);
-            this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(0, 13);
-            this.labelMessage.TabIndex = 24;
             // 
             // FrmContrat
             // 
@@ -423,10 +432,10 @@
         private System.Windows.Forms.DataGridView dataGridViewEquipement;
         //private MaintinfoDataSetTableAdapters.GetEquipementByCentreTableAdapter getEquipementByCentreTableAdapter;
         private System.Windows.Forms.BindingSource equipementByCentreBindingSource;
+        private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn qteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Retirer;
-        private System.Windows.Forms.Label labelMessage;
     }
 }

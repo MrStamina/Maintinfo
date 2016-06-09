@@ -11,8 +11,8 @@ namespace BLL
     public class ManagerContrat
     {
 
-        private double tva = 0.2;
-        private double montantTtc;
+        private decimal tva = 0.2M;
+        private decimal montantTtc;
         private List<Contrat> listeContrat;
         private DalContrat dalContrat;
        
@@ -53,9 +53,9 @@ namespace BLL
         }
 
     // méthodes pour calculer automatiquement les montants du contrat en fonction des equipements
-        public double CalculerMontantHt(List<LigneEquipement> listequip)
+        public decimal CalculerMontantHt(List<LigneEquipement> listequip)
         {
-            double montantHt = 0;
+            decimal montantHt = 0;
             foreach (LigneEquipement equip in listequip)
             {
 
@@ -66,14 +66,14 @@ namespace BLL
 
 
         }
-        public double CalculerMontantTtc(double montantHt)
+        public decimal CalculerMontantTtc(decimal montantHt)
         {
             
             montantTtc = (montantHt + (montantHt * tva));            
             return montantTtc;
         }
 
-        public double AppliquerRemise(double remise)
+        public decimal AppliquerRemise(decimal remise)
         {
             if (remise != 0)
             {

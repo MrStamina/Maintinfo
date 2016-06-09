@@ -10,14 +10,14 @@ namespace BO
     {
         public int CodeTarif { get; set; }
         public DateTime DateTarif { get; set; }
-        public double TarifModele { get; set; }
+        public decimal TarifModele { get; set; }
 
         public Tarif()
         {
 
         }
 
-        public Tarif(int code, DateTime date, double tarifMod)
+        public Tarif(int code, DateTime date, decimal tarifMod)
         {
             this.CodeTarif = code;
             this.DateTarif = date;

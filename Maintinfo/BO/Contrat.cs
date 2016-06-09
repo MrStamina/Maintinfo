@@ -12,7 +12,7 @@ namespace BO
 
         public CentreInformatique CentreInfo { get; set; }
         public Client Client { get; set; }
-        public double MontantTtc { get; set; }
+        public decimal MontantTtc { get; set; }
 
         public DateTime DateDebut { get; set; }
         public DateTime DateEcheance { get; set; }
@@ -28,7 +28,7 @@ namespace BO
         {
 
         }
-        public Contrat(int id,Client client, CentreInformatique centre, double montant, DateTime dateDebut, DateTime dateEcheance,string comment)
+        public Contrat(int id,Client client, CentreInformatique centre, decimal montant, DateTime dateDebut, DateTime dateEcheance,string comment)
         {
             this.NumeroContrat = id;
             this.Client = client;
