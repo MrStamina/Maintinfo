@@ -167,6 +167,7 @@ namespace IHM
             equipementByCentreBindingSource.Clear();
             alimenterCentre();
             comboBoxCentreInfo.SelectedItem = null;
+            //plop
             
         }
 
