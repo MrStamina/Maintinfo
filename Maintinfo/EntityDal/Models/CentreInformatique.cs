@@ -38,5 +38,25 @@ namespace EntityDal
 
         
         public virtual ICollection<Equipement> Equipements { get; set; }
+
+        public CentreInformatique Self
+        {
+            get { return this; }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is CentreInformatique && Id == ((CentreInformatique)obj).Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

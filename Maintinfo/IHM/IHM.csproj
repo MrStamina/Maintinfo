@@ -140,6 +140,8 @@
     <None Include="Properties\DataSources\BO.EquipementByCentre.datasource" />
     <None Include="Properties\DataSources\BO.Modele.datasource" />
     <None Include="Properties\DataSources\BO.Tarif.datasource" />
+    <None Include="Properties\DataSources\EntityDal.CentreInformatique.datasource" />
+    <None Include="Properties\DataSources\EntityDal.Contrat.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,9 +164,9 @@
       <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
       <Name>BO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{e6a85738-fd0b-45f4-bbaf-f1d501ef16a7}</Project>
-      <Name>DAL</Name>
+    <ProjectReference Include="..\EntityDal\EntityDal.csproj">
+      <Project>{2F2B8523-3913-4EEC-BAE8-E5353E8D935A}</Project>
+      <Name>EntityDal</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,36 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
-using DAL;
+//using BO;
+//using DAL;
+using EntityDal;
 
 namespace BLL
 {
     public class ManagerCentreInformatique
     {
-         private List<CentreInformatique> listeCentre;
-         private DalCentreInfo dalCentre;
+         //private List<CentreInformatique> listeCentre;
+         //private DalCentreInfo dalCentre;
+        private MaintinfoContext context;
         
 
         public ManagerCentreInformatique()
         {
-            listeCentre = new List<CentreInformatique>();
+            context = new MaintinfoContext();
         }
 
 
-        public List<CentreInformatique> ChargerCentre()
+        public IEnumerable<CentreInformatique> ChargerCentre()
         {
-            
-            dalCentre = new DalCentreInfo();
-            listeCentre = dalCentre.GetAllCentre();
-            return listeCentre;
+
+            var lesCentres = context.CentreInformatiques.ToList();
+            return lesCentres;
+
         }
 
-        public List<CentreInformatique> AfficherCentreParClient(int idclient)
+        public IEnumerable<CentreInformatique> AfficherCentreParClient(int idclient)
         {
-            ChargerCentre();
-            List<CentreInformatique> listcentre = listeCentre.FindAll(delegate (CentreInformatique c) { return c.Client.NumClient == idclient; });
-            return listcentre;
+            var lesCentresByClient = context.CentreInformatiques
+                .Where(c => c.ClientId == idclient)
+                .OrderBy(c => c.VilleCentre);
+            return lesCentresByClient;
         }
     }
 }

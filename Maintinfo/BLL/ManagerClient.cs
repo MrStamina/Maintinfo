@@ -3,32 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
-using DAL;
+//using BO;
+//using DAL;
+using EntityDal;
 
 namespace BLL
 {
     public class ManagerClient
     {
-       private ClientDal clientDal;
-        private List<Client> listClient;
+        //private ClientDal clientDal;
+        //private List<Client> listClient;
+        private MaintinfoContext context;
 
         public ManagerClient()
         {
-            listClient = new List<Client>();
+            //listClient = new List<Client>();
+            context = new MaintinfoContext();
         }
-        public List<Client> ChargerClient()
+        public IEnumerable<Client> ChargerClient()
         {
-            clientDal = new ClientDal();
-            listClient = clientDal.GetAllClient();
-            return listClient;
+            
+            
+            var lesClients = context.Clients.ToList();
+            return lesClients;
+
+
         }
 
-        public int AjouterClient(Client client)
-        {
-            return clientDal.addClient(client);
-            //ajouter à la liste ou recharger ?
-        }
+        //public int AjouterClient(Client client)
+        //{
+        //    return clientDal.addClient(client);
+        //    //ajouter à la liste ou recharger ?
+        //}
 
 
     }

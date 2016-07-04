@@ -25,5 +25,24 @@ namespace EntityDal
 
         
         public virtual Modele Modele { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override bool Equals(Object obj)
+        {
+            return obj is Tarif && Id == ((Tarif)obj).Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public Tarif Self
+        {
+            get { return this; }
+        }
     }
 }

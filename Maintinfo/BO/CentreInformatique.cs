@@ -59,9 +59,6 @@ namespace BO
             return base.GetHashCode();
         }
 
-        public CentreInformatique Self
-        {
-            get { return this; }
-        }
+        
     }
 }

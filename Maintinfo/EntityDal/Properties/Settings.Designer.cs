@@ -26,10 +26,10 @@ namespace EntityDal.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=MaintinfoCodeFirst;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=MaintinfoContext;Integrated Security=True")]
         public string MaintinfoCodeFirst {
             get {
-                return ((string)(this["MaintinfoCodeFirst"]));
+                return ((string)(this["MaintinfoContext"]));
             }
         }
     }

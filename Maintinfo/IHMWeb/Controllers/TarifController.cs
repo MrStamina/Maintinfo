@@ -11,11 +11,11 @@ namespace IHMWeb.Controllers
     public class TarifController : Controller
     {
         // GET: Tarif
-        private MaintinfoCodeFirst _context;
+        private MaintinfoContext _context;
 
         public TarifController()
         {
-            _context = new MaintinfoCodeFirst();
+            _context = new MaintinfoContext();
         }
 
         protected override void Dispose(bool disposing)

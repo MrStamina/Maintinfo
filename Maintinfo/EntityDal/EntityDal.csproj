@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CentreInformatique.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Contrat.cs" />
+    <Compile Include="Models\CentreInformatique.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Contrat.cs" />
     <Compile Include="EntityConfigurations\CentreInformatiqueConfiguration.cs" />
     <Compile Include="EntityConfigurations\ClientConfiguration.cs" />
     <Compile Include="EntityConfigurations\ContratConfiguration.cs" />
@@ -61,23 +61,39 @@
     <Compile Include="EntityConfigurations\SecteurConfiguration.cs" />
     <Compile Include="EntityConfigurations\TarifConfiguration.cs" />
     <Compile Include="EntityConfigurations\TypeEquipementConfiguration.cs" />
-    <Compile Include="Equipement.cs" />
-    <Compile Include="MaintinfoCodeFirst.cs" />
-    <Compile Include="Migrations\201607010852542_InitialModel.cs" />
-    <Compile Include="Migrations\201607010852542_InitialModel.Designer.cs">
-      <DependentUpon>201607010852542_InitialModel.cs</DependentUpon>
+    <Compile Include="Models\Equipement.cs" />
+    <Compile Include="MaintinfoContext.cs" />
+    <Compile Include="Migrations\201607041200103_InitialModel.cs" />
+    <Compile Include="Migrations\201607041200103_InitialModel.Designer.cs">
+      <DependentUpon>201607041200103_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607041203461_PopulateClient.cs" />
+    <Compile Include="Migrations\201607041203461_PopulateClient.Designer.cs">
+      <DependentUpon>201607041203461_PopulateClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607041210530_PopulateSecteur.cs" />
+    <Compile Include="Migrations\201607041210530_PopulateSecteur.Designer.cs">
+      <DependentUpon>201607041210530_PopulateSecteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607041212574_PopulateCentre.cs" />
+    <Compile Include="Migrations\201607041212574_PopulateCentre.Designer.cs">
+      <DependentUpon>201607041212574_PopulateCentre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607041223129_PopulateContrats.cs" />
+    <Compile Include="Migrations\201607041223129_PopulateContrats.Designer.cs">
+      <DependentUpon>201607041223129_PopulateContrats.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Modele.cs" />
+    <Compile Include="Models\Modele.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Secteur.cs" />
-    <Compile Include="Tarif.cs" />
-    <Compile Include="TypeEquipement.cs" />
+    <Compile Include="Models\Secteur.cs" />
+    <Compile Include="Models\Tarif.cs" />
+    <Compile Include="Models\TypeEquipement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,8 +104,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607010852542_InitialModel.resx">
-      <DependentUpon>201607010852542_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607041200103_InitialModel.resx">
+      <DependentUpon>201607041200103_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607041203461_PopulateClient.resx">
+      <DependentUpon>201607041203461_PopulateClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607041210530_PopulateSecteur.resx">
+      <DependentUpon>201607041210530_PopulateSecteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607041212574_PopulateCentre.resx">
+      <DependentUpon>201607041212574_PopulateCentre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607041223129_PopulateContrats.resx">
+      <DependentUpon>201607041223129_PopulateContrats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

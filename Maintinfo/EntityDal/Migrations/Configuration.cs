@@ -5,14 +5,14 @@ namespace EntityDal.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EntityDal.MaintinfoCodeFirst>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntityDal.MaintinfoContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(EntityDal.MaintinfoCodeFirst context)
+        protected override void Seed(EntityDal.MaintinfoContext context)
         {
             //  This method will be called after migrating to the latest version.
 

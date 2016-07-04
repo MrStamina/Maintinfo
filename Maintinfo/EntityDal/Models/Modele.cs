@@ -12,7 +12,7 @@ namespace EntityDal
         
         public Modele()
         {
-            ;
+            
         }
 
         public int Id { get; set; }
@@ -30,5 +30,18 @@ namespace EntityDal
         public virtual TypeEquipement TypeEquipement { get; set; }
 
         public virtual Tarif Tarif { get; set; }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is Modele && Id == ((Modele)obj).Id;
+        }
+        public override string ToString()
+        {
+            return Libelle;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

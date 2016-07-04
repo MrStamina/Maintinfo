@@ -7,21 +7,21 @@ namespace EntityDal
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class MaintinfoCodeFirst : DbContext
+    public class MaintinfoContext : DbContext
     {
-        public MaintinfoCodeFirst()
-            : base("name=EntityDal.Properties.Settings.MaintinfoCodeFirst")
+        public MaintinfoContext()
+            : base("name=EntityDal.Properties.Settings.MaintinfoContext")
         {
         }
 
-        public virtual DbSet<CentreInformatique> CentreInformatiques { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Contrat> Contrats { get; set; }
-        public virtual DbSet<Equipement> Equipements { get; set; }
-        public virtual DbSet<Modele> Modeles { get; set; }
-        public virtual DbSet<Secteur> Secteurs { get; set; }
-        public virtual DbSet<Tarif> Tarifs { get; set; }
-        public virtual DbSet<TypeEquipement> TypeEquipements { get; set; }
+        public  DbSet<CentreInformatique> CentreInformatiques { get; set; }
+        public  DbSet<Client> Clients { get; set; }
+        public  DbSet<Contrat> Contrats { get; set; }
+        public  DbSet<Equipement> Equipements { get; set; }
+        public  DbSet<Modele> Modeles { get; set; }
+        public  DbSet<Secteur> Secteurs { get; set; }
+        public  DbSet<Tarif> Tarifs { get; set; }
+        public  DbSet<TypeEquipement> TypeEquipements { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,16 +34,7 @@ namespace EntityDal
             modelBuilder.Configurations.Add(new TarifConfiguration());
             modelBuilder.Configurations.Add(new TypeEquipementConfiguration());
 
-
-
-
-
-
-
-
-
-
-
+            base.OnModelCreating(modelBuilder);
 
         }
     }

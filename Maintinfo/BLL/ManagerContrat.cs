@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
-using DAL;
+//using BO;
+//using DAL;
+using EntityDal;
 
 namespace BLL
 {
@@ -14,78 +15,83 @@ namespace BLL
         private decimal tva = 0.2M;
         private decimal montantTtc;
         private List<Contrat> listeContrat;
-        private DalContrat dalContrat;
+        //private DalContrat dalContrat;
+        private MaintinfoContext context;
        
         
         public ManagerContrat()
         {
-            listeContrat = new List<Contrat>();
+           context = new MaintinfoContext();
             
         }
 
         public List<Contrat> ChargerLesContrats()
         {
-            dalContrat =  new DalContrat();
-            listeContrat = dalContrat.GetAllContrat();
-            return listeContrat;
+            var listContrat = context.Contrats.ToList();
+            return listContrat;
         }
         public List<Contrat> ConsulterContratParClient(int idclient)
         {
-            List<Contrat> listcont = listeContrat.FindAll(delegate (Contrat c) { return c.Client.NumClient == idclient; });
-            return listcont;
-        }
 
-        public int EnregistrerContrat(Contrat contrat)
-        {
-            dalContrat = new DalContrat();
-            return dalContrat.AddContrat(contrat);
+            var contratByClient = context.Contrats
+                .Where(c => c.ClientId.Equals(idclient))
+                .OrderBy(c => c.CentreInformatique.VilleCentre)
+                .ToList();
+            return contratByClient;
            
         }
 
-        public bool ModifierContrat(Contrat contrat)
-        {
-            return true;
-        }
+    //    public int EnregistrerContrat(Contrat contrat)
+    //    {
+    //        dalContrat = new DalContrat();
+    //        return dalContrat.AddContrat(contrat);
+           
+    //    }
 
-        public bool supprimerContrat(Contrat contrat)
-        {
-            return true;
-        }
+    //    public bool ModifierContrat(Contrat contrat)
+    //    {
+    //        return true;
+    //    }
 
-    // méthodes pour calculer automatiquement les montants du contrat en fonction des equipements
-        public decimal CalculerMontantHt(List<LigneEquipement> listequip)
-        {
-            decimal montantHt = 0;
-            foreach (LigneEquipement equip in listequip)
-            {
+    //    public bool SupprimerContrat(Contrat contrat)
+    //    {
+    //        return true;
+    //    }
 
-                montantHt += equip.Tarif;
-            }
-            return montantHt;
+    //// méthodes pour calculer automatiquement les montants du contrat en fonction des equipements
+    //    public decimal CalculerMontantHt(List<LigneEquipement> listequip)
+    //    {
+    //        decimal montantHt = 0;
+    //        foreach (LigneEquipement equip in listequip)
+    //        {
+
+    //            montantHt += equip.Tarif;
+    //        }
+    //        return montantHt;
 
 
 
-        }
-        public decimal CalculerMontantTtc(decimal montantHt)
-        {
+    //    }
+    //    public decimal CalculerMontantTtc(decimal montantHt)
+    //    {
             
-            montantTtc = (montantHt + (montantHt * tva));            
-            return montantTtc;
-        }
+    //        montantTtc = (montantHt + (montantHt * tva));            
+    //        return montantTtc;
+    //    }
 
-        public decimal AppliquerRemise(decimal remise)
-        {
-            if (remise != 0)
-            {
-                return montantTtc - (montantTtc * remise);
-            }
-            else
-                return montantTtc;
-        }
+    //    public decimal AppliquerRemise(decimal remise)
+    //    {
+    //        if (remise != 0)
+    //        {
+    //            return montantTtc - (montantTtc * remise);
+    //        }
+    //        else
+    //            return montantTtc;
+    //    }
 
-        public DateTime CalculerDateEcheance(DateTime datedebut)
-        {
-            return datedebut.AddYears(1);
-        }
+    //    public DateTime CalculerDateEcheance(DateTime datedebut)
+    //    {
+    //        return datedebut.AddYears(1);
+    //    }
     }
 }

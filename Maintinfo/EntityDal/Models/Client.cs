@@ -38,5 +38,25 @@ namespace EntityDal
 
         
         public virtual ICollection<Contrat> Contrats { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is Client && Id == ((Client)obj).Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public Client Self
+        {
+            get { return this; }
+        }
     }
 }

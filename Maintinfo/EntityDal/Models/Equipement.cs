@@ -23,5 +23,18 @@ namespace EntityDal
         public virtual Contrat Contrat { get; set; }
 
         public virtual Modele Modele { get; set; }
+
+        public override bool Equals(Object obj)
+        {
+            return obj is Equipement && Id == ((Equipement)obj).Id;
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

@@ -38,5 +38,19 @@ namespace EntityDal
 
         
         public virtual ICollection<Equipement> Equipements { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        public override bool Equals(Object obj)
+        {
+            return obj is Contrat && Id == ((Contrat)obj).Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
