@@ -1,4 +1,8 @@
-﻿namespace IHM
+﻿
+
+using BO;
+
+namespace IHM
 {
     partial class FrmGestionContrat
     {
@@ -103,7 +107,7 @@
             // 
             // contratBindingSource
             // 
-            this.contratBindingSource.DataSource = typeof(EntityDal.Contrat);
+           
             // 
             // dataGridView1
             // 
@@ -126,7 +130,7 @@
             // 
             // centreInformatiqueBindingSource
             // 
-            this.centreInformatiqueBindingSource.DataSource = typeof(EntityDal.CentreInformatique);
+            this.centreInformatiqueBindingSource.DataSource = typeof(CentreInformatique);
             // 
             // centreInformatiqueDataGridViewTextBoxColumn
             // 

@@ -156,16 +156,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{be20900f-d732-43df-bf9f-e846a80da518}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
+      <Project>{72efc2ca-c4cb-4ab1-9776-e80607b6b5a1}</Project>
       <Name>BO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
+      <Project>{396b3323-9620-42ae-a33e-3fe213853338}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityDal\EntityDal.csproj">
-      <Project>{2F2B8523-3913-4EEC-BAE8-E5353E8D935A}</Project>
+      <Project>{2f2b8523-3913-4eec-bae8-e5353e8d935a}</Project>
       <Name>EntityDal</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace EntityDal.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class PopulateContrats : DbMigration
     {
         public override void Up()

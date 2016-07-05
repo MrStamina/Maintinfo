@@ -60,7 +60,7 @@
       <Name>BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
+      <Project>{72efc2ca-c4cb-4ab1-9776-e80607b6b5a1}</Project>
       <Name>BO</Name>
     </ProjectReference>
   </ItemGroup>

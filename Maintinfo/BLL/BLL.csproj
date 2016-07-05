@@ -59,9 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagerClient.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="ICentreInformatiqueRepository.cs" />
+    <Compile Include="IClientRepository.cs" />
+    <Compile Include="IContratRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="GestionnaireContrat.cs" />
-    <Compile Include="ManagerCentreInformatique.cs" />
     <Compile Include="ManagerContrat.cs" />
     <Compile Include="ManagerEquipement.cs" />
     <Compile Include="ManagerLigneEquipement.cs" />
@@ -71,12 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{d4e2703f-c282-4122-99a1-5202d6401c8d}</Project>
+      <Project>{72efc2ca-c4cb-4ab1-9776-e80607b6b5a1}</Project>
       <Name>BO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDal\EntityDal.csproj">
-      <Project>{2F2B8523-3913-4EEC-BAE8-E5353E8D935A}</Project>
-      <Name>EntityDal</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

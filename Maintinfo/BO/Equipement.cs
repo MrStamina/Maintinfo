@@ -1,41 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace BO
 {
-    public class Equipement 
+    public partial class Equipement
     {
-        public int NumeroSerie { get; set; }
-        public Modele Modele { get; set; }
-        public CentreInformatique Centre { get; set; }
-        public Contrat Contrat { get; set; }
-
         
-        public Equipement()
-        {
+        public int Id { get; set; }
 
-        }
+        public int ModeleId { get; set; }
 
-        public Equipement(int numserie, Modele mod)
-        {
-            this.NumeroSerie = numserie;
-            this.Modele = mod;
-          
-            
-        }
-        public Equipement(int numserie, Modele mod, CentreInformatique centre)
-        {
-            this.NumeroSerie = numserie;
-            this.Modele = mod;
-            this.Centre = centre;
-        }
+        public int CentreInformatiqueId { get; set; }
+
+        public int? ContratId { get; set; }
+
+        public virtual CentreInformatique CentreInformatique { get; set; }
+
+        public virtual Contrat Contrat { get; set; }
+
+        public virtual Modele Modele { get; set; }
 
         public override bool Equals(Object obj)
         {
-            return obj is Equipement && NumeroSerie == ((Equipement)obj).NumeroSerie;
+            return obj is Equipement && Id == ((Equipement)obj).Id;
         }
         public override string ToString()
         {

@@ -122,7 +122,7 @@ namespace IHM
             var tarifs = Application.OpenForms.OfType<FrmGererTarifs>().FirstOrDefault();
             if (tarifs != null)
             {
-               tarifs.Activate();
+                tarifs.Activate();
             }
             else
             {

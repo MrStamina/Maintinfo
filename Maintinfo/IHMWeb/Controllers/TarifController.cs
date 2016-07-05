@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EntityDal;
 using System.Windows.Forms;
+using BO;
+using EntityDal;
 
 namespace IHMWeb.Controllers
 {

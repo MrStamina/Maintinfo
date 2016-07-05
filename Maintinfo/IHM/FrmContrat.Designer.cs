@@ -314,7 +314,7 @@
             // 
             // equipementByCentreBindingSource
             // 
-            this.equipementByCentreBindingSource.DataSource = typeof(BO.LigneEquipement);
+            
             // 
             // labelMessage
             // 

@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EntityDal;
-
-
-namespace BLL
+﻿namespace BLL
 {
-   public class ManagerLigneEquipement
+    public class ManagerLigneEquipement
     {
         //public ManagerLigneEquipement()
         //{
@@ -43,8 +35,8 @@ namespace BLL
         //    return listLigne;
         //}
 
-        
-           
-       
+
+
+
     }
 }

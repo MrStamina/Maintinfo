@@ -1,44 +1,39 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Modele
+    public partial class Modele
     {
-        public int IdModele { get; set; }
-        public string LibelleModele { get; set; }
-
-        public Type Type { get; set; }
-
-        public Tarif Tarif { get; set; }
-
+        
         public Modele()
         {
-
-        }
-        public Modele Self
-        {
-            get { return this; }
+            
         }
 
-        public Modele(int id, string nomMod, Type type, Tarif tarif)
-        {
-            this.IdModele = id;
-            this.LibelleModele = nomMod;
-            this.Type = type;
-            this.Tarif = tarif;
-        }
+        public int Id { get; set; }
+
+        public int TypeId { get; set; }
+
+        public byte TarifId { get; set; }
+
+        
+        public string Libelle { get; set; }
+
+       
+        public virtual ICollection<Equipement> Equipements { get; set; }
+
+        public virtual TypeEquipement TypeEquipement { get; set; }
+
+        public virtual Tarif Tarif { get; set; }
 
         public override bool Equals(Object obj)
         {
-            return obj is Modele && IdModele == ((Modele)obj).IdModele;
+            return obj is Modele && Id == ((Modele)obj).Id;
         }
         public override string ToString()
         {
-            return LibelleModele;
+            return Libelle;
         }
         public override int GetHashCode()
         {

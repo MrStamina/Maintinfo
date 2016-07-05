@@ -12,10 +12,12 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 
-using BLL;
 
-using EntityDal;
 
+
+using BO;
+using BusinessLogicLayer;
+using EntityDal.Exceptions;
 
 namespace IHM
 {
@@ -23,15 +25,13 @@ namespace IHM
     public partial class FrmContrat : Form
     {
         private GestionnaireContrat gesContrat;
-        private List<Equipement> listEquip;
-        //private List<LigneEquipement> listEquipByCentre;
-        private List<CentreInformatique> listCentre;
+        
         private decimal montantHt;
         private decimal montantTtc;
         public FrmContrat()
         {
             InitializeComponent();
-            //chargement();
+            Chargement();
         }
 
         #region Gestion des bouton vers d'autres formes
@@ -63,121 +63,123 @@ namespace IHM
         #endregion
 
         #region Gestion du chargement de la form
-        //private void chargement()
-        //{
-        //    gesContrat = new GestionnaireContrat();
-        //    //listEquip = new List<Equipement>();
-        //    listEquipByCentre = new List<LigneEquipement>();
-        //    try
-        //    {
-        //        clientBindingSource.DataSource = gesContrat.ChargerClient();
-        //        modeleBindingSource.DataSource = gesContrat.ChargerModele();
+        private void Chargement()
+        {
+            gesContrat = new GestionnaireContrat();
+            
+            //listEquip = new List<Equipement>();
+            //listEquipByCentre = new List<LigneEquipement>();
+            try
+            {
+                clientBindingSource.DataSource = gesContrat.GetAllClients();
+                //modeleBindingSource.DataSource = gesContrat.ChargerModele();
 
 
-        //    }
-        //    catch (DalExceptionAfficheMessage deaf)
-        //    {
-        //        MessageBox.Show(deaf.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    comboBoxSelectionnerClient.SelectedItem = null;            
+            }
+            catch (DalExceptionAfficheMessage deaf)
+            {
+                MessageBox.Show(deaf.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            comboBoxSelectionnerClient.SelectedItem = null;
 
-        //}
+        }
         #endregion
 
-        //#region Gestion des deux comboboxs
-        //private void alimenterCentre()
-        //{
-        //    if(comboBoxSelectionnerClient.SelectedItem != null)
-        //    {
-        //        try
-        //        {
-        //            listCentre = gesContrat.AfficherCentreParClient(((Client)comboBoxSelectionnerClient.SelectedItem).NumClient);
+        #region Gestion des deux comboboxs
+        private void AlimenterCentre()
+        {
+            if (comboBoxSelectionnerClient.SelectedItem != null)
+            {
+                try
+                {
+                    var listCentre = gesContrat.GetCentreByClient(((Client)comboBoxSelectionnerClient.SelectedItem).Id);
+                    GestionAffichageCentre(listCentre);
 
-        //        }
-        //        catch (DalExceptionAfficheMessage deaf)
-        //        {
-        //            MessageBox.Show(deaf.Message);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
+                }
+                catch (DalExceptionAfficheMessage deaf)
+                {
+                    MessageBox.Show(deaf.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+        }
+
+        private void GestionAffichageCentre(IEnumerable<CentreInformatique> listCentreInformatiques)
+        {
+            if (!listCentreInformatiques.Any())
+            {
+                string message = "Les centres rattachés au client possèdent déja un contrat de maintenance. \n Souhaitez-vous créer un nouveau centre ?";
+                string caption = "Information";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var centre = Application.OpenForms.OfType<FrmGestionCentre>().FirstOrDefault();
+                    if (centre != null)
+                    {
+                        centre.Activate();
+                    }
+                    else
+                    {
+                        new FrmGestionCentre().Show();
+                    }
+                }
+
+            }
+            else
+            {
+                labelMessage.ForeColor = Color.Red;
+                labelMessage.Text = "Il y a " + listCentreInformatiques.Count().ToString() + " centre(s) disponible(s) pour un contrat de maintenance";
+                centreInformatiqueBindingSource.DataSource = listCentreInformatiques;
+            }
+        }
+        private void AlimenterEquipement()
+        {
+            //if (comboBoxCentreInfo.SelectedItem != null)
+            //{
+            //    try
+            //    {
+            //        listEquip = gesContrat.ChargerEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
+            //    }
+            //    catch (DalExceptionAfficheMessage deaf)
+            //    {
+            //        MessageBox.Show(deaf.Message);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+
+            //    listEquipByCentre = gesContrat.AfficherEquipementParCentre(listEquip);
+            //    equipementByCentreBindingSource.DataSource = listEquipByCentre;
+            //    labelMessage.ResetText();
 
 
-        //        if(listCentre.Count == 0)
-        //        {
-        //            string message = "Les centres rattachés au client possèdent déja un contrat de maintenance. \n Souhaitez-vous créer un nouveau centre ?";
-        //            string caption = "Information";
-        //            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        //            if (result == DialogResult.Yes)
-        //            {
-        //                var centre = Application.OpenForms.OfType<FrmGestionCentre>().FirstOrDefault();
-        //                if (centre != null)
-        //                {
-        //                    centre.Activate();
-        //                }
-        //                else
-        //                {
-        //                    new FrmGestionCentre().Show();
-        //                }
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            labelMessage.ForeColor = Color.Red;
-        //            labelMessage.Text = "Il y a " + listCentre.Count.ToString() + " centre(s) disponible(s) pour un contrat de maintenance";
-        //            centreInformatiqueBindingSource.DataSource = listCentre;
-        //        }
-
-
-        //    }
-
-        //}
-        //private void alimenterEquipement()
-        //{
-        //    if (comboBoxCentreInfo.SelectedItem != null)
-        //    {
-        //        try
-        //        {
-        //            listEquip = gesContrat.ChargerEquipementParCentre(((CentreInformatique)comboBoxCentreInfo.SelectedItem).NumCentre);
-        //        }
-        //        catch (DalExceptionAfficheMessage deaf)
-        //        {
-        //            MessageBox.Show(deaf.Message);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-
-        //        listEquipByCentre = gesContrat.AfficherEquipementParCentre(listEquip);
-        //        equipementByCentreBindingSource.DataSource = listEquipByCentre;
-        //        labelMessage.ResetText();
-
-
-        //    }
-        //}
+            //}
+        }
 
         private void comboBoxSelectionnerClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //equipementByCentreBindingSource.Clear();
-            //alimenterCentre();
-            //comboBoxCentreInfo.SelectedItem = null;
+            equipementByCentreBindingSource.Clear();
+            AlimenterCentre();
+            comboBoxCentreInfo.SelectedItem = null;
 
         }
 
         private void comboBoxCentreInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //equipementByCentreBindingSource.Clear();
-            //alimenterEquipement();
+            equipementByCentreBindingSource.Clear();
+            AlimenterEquipement();
 
         }
-        //#endregion
+        #endregion
 
 
 

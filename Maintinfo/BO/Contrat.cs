@@ -1,44 +1,39 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Contrat
+    public partial class Contrat
     {
-        public int NumeroContrat { get; set; }
-
-        public CentreInformatique CentreInfo { get; set; }
-        public Client Client { get; set; }
-        public decimal MontantTtc { get; set; }
-
-        public DateTime DateDebut { get; set; }
-        public DateTime DateEcheance { get; set; }
-
-        public string Commentaire { get; set; }
-
-        public StatutContrat statut { get; set; }
-        //si le contrat ne concerne pas tous les équipements
-
-        public List<Equipement> Equipement { get; set; }
-
+       
         public Contrat()
         {
+            
+        }
 
-        }
-        public Contrat(int id,Client client, CentreInformatique centre, decimal montant, DateTime dateDebut, DateTime dateEcheance,string comment)
-        {
-            this.NumeroContrat = id;
-            this.Client = client;
-            this.CentreInfo = centre;
-            this.MontantTtc = montant;
-            this.DateDebut = dateDebut;
-            this.DateEcheance = dateEcheance;
-            this.Commentaire = comment;
-       
-        }
+        
+        public int Id { get; set; }
+
+        public int ClientId { get; set; }
+
+        public int CentreInformatiqueId { get; set; }
+
+        
+        public decimal Montant { get; set; }
+
+        public DateTime DateDebut { get; set; }
+
+        public DateTime DateEcheance { get; set; }
+
+        
+        public string Commentaire { get; set; }
+
+        public virtual CentreInformatique CentreInformatique { get; set; }
+
+        public virtual Client Client { get; set; }
+
+        
+        public virtual ICollection<Equipement> Equipements { get; set; }
 
         public override string ToString()
         {
@@ -46,14 +41,12 @@ namespace BO
         }
         public override bool Equals(Object obj)
         {
-            return obj is Contrat && NumeroContrat == ((Contrat)obj).NumeroContrat;
+            return obj is Contrat && Id == ((Contrat)obj).Id;
         }
 
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-
-
     }
 }
