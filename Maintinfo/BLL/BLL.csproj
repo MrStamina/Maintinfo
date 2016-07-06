@@ -59,11 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="ICentreInformatiqueRepository.cs" />
-    <Compile Include="IClientRepository.cs" />
-    <Compile Include="IContratRepository.cs" />
-    <Compile Include="IRepository.cs" />
     <Compile Include="GestionnaireContrat.cs" />
     <Compile Include="ManagerContrat.cs" />
     <Compile Include="ManagerEquipement.cs" />

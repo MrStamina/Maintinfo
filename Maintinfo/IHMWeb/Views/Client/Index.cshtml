@@ -1,0 +1,86 @@
+﻿@model IEnumerable<BO.Client>
+
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rechercher un client</h2>
+<p>
+    @Html.ActionLink("Nouveau Client", "New", "Client", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Ville</th>
+        <th>Téléphone</th>
+        @*<th>Contrat(s)</th>*@
+        <th>Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document)
+            .ready(function() {
+                var table = $("#customers")
+                    .DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                        },
+                        ajax: {
+                            url: "/api/client",
+                            dataSrc: ""
+                        },
+                        columns: [
+                            {
+                                data: "nomClient",
+                                render: function(data, type, client) {
+                                    return "<a href='/client/edit/" + client.id + "'>" + client.nomClient + "</a>";
+
+                                }
+
+                            },
+                            {
+                                data: "ville"
+                            },
+                            {
+                                data: "telephone"
+                            },
+                            {
+                                data: "id",
+                                render: function(data) {
+                                    return "<button class='btn-link js-delete'data-client-id=" +
+                                        data +
+                                        ">Supprimer</button>";
+                                }
+                            }
+                        ]
+                    });
+                $("#customers").on("click", ".js-delete",
+                       function () {
+                           var button = $(this);
+
+                           bootbox.confirm("Etes-vous sûr de vouloir supprimer ce client?",
+                               function (result) {
+                                   if (result) {
+                                       $.ajax({
+                                           url: "/api/client/" + button.attr("data-client-id"),
+                                           method: "DELETE",
+                                           success: function () {
+                                               table.row(button.parents("tr")).remove().draw();
+
+                                           }
+
+                                       });
+                                   }
+                               });
+                       });
+            });
+  </script>
+}

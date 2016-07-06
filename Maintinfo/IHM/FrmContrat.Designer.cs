@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxSelectionnerClient = new System.Windows.Forms.ComboBox();
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonCreateClient = new System.Windows.Forms.Button();
@@ -41,13 +40,11 @@
             this.textBoxMontantTtc = new System.Windows.Forms.TextBox();
             this.labelMontantTTC = new System.Windows.Forms.Label();
             this.comboBoxCentreInfo = new System.Windows.Forms.ComboBox();
-            this.centreInformatiqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelCentreInformatique = new System.Windows.Forms.Label();
             this.buttonGererCentre = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.modeleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.equipementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelEquipements = new System.Windows.Forms.Label();
             this.textBoxCommentaire = new System.Windows.Forms.TextBox();
             this.labelCommentaire = new System.Windows.Forms.Label();
@@ -56,20 +53,17 @@
             this.buttonAppliquer = new System.Windows.Forms.Button();
             this.buttonValider = new System.Windows.Forms.Button();
             this.dataGridViewEquipement = new System.Windows.Forms.DataGridView();
+            this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
             this.equipementByCentreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelMessage = new System.Windows.Forms.Label();
-            this.qteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.libelleModeleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Retirer = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.centreInformatiqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).BeginInit();
             this.groupBoxRemise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementByCentreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxSelectionnerClient
@@ -160,17 +154,13 @@
             // comboBoxCentreInfo
             // 
             this.comboBoxCentreInfo.DataSource = this.centreInformatiqueBindingSource;
-            this.comboBoxCentreInfo.DisplayMember = "Ville";
+            this.comboBoxCentreInfo.DisplayMember = "VilleCentre";
             this.comboBoxCentreInfo.FormattingEnabled = true;
             this.comboBoxCentreInfo.Location = new System.Drawing.Point(386, 45);
             this.comboBoxCentreInfo.Name = "comboBoxCentreInfo";
             this.comboBoxCentreInfo.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCentreInfo.TabIndex = 12;
             this.comboBoxCentreInfo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCentreInfo_SelectedIndexChanged);
-            // 
-            // centreInformatiqueBindingSource
-            // 
-            this.centreInformatiqueBindingSource.DataSource = typeof(BO.CentreInformatique);
             // 
             // labelCentreInformatique
             // 
@@ -214,10 +204,6 @@
             // modeleBindingSource
             // 
             this.modeleBindingSource.DataSource = typeof(BO.Modele);
-            // 
-            // equipementBindingSource
-            // 
-            this.equipementBindingSource.DataSource = typeof(BO.Equipement);
             // 
             // labelEquipements
             // 
@@ -300,9 +286,6 @@
             this.dataGridViewEquipement.AutoGenerateColumns = false;
             this.dataGridViewEquipement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEquipement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.qteDataGridViewTextBoxColumn,
-            this.libelleModeleDataGridViewTextBoxColumn,
-            this.tarifDataGridViewTextBoxColumn,
             this.Retirer});
             this.dataGridViewEquipement.DataSource = this.equipementByCentreBindingSource;
             this.dataGridViewEquipement.Location = new System.Drawing.Point(107, 108);
@@ -312,9 +295,14 @@
             this.dataGridViewEquipement.TabIndex = 23;
             this.dataGridViewEquipement.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEquipement_CellContentClick);
             // 
-            // equipementByCentreBindingSource
+            // Retirer
             // 
-            
+            this.Retirer.HeaderText = "";
+            this.Retirer.Name = "Retirer";
+            this.Retirer.ReadOnly = true;
+            this.Retirer.Text = "Retirer";
+            this.Retirer.UseColumnTextForButtonValue = true;
+            this.Retirer.Width = 80;
             // 
             // labelMessage
             // 
@@ -324,42 +312,9 @@
             this.labelMessage.Size = new System.Drawing.Size(0, 13);
             this.labelMessage.TabIndex = 24;
             // 
-            // qteDataGridViewTextBoxColumn
+            // centreInformatiqueBindingSource
             // 
-            this.qteDataGridViewTextBoxColumn.DataPropertyName = "Qte";
-            this.qteDataGridViewTextBoxColumn.HeaderText = "Quantité";
-            this.qteDataGridViewTextBoxColumn.Name = "qteDataGridViewTextBoxColumn";
-            this.qteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qteDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // libelleModeleDataGridViewTextBoxColumn
-            // 
-            this.libelleModeleDataGridViewTextBoxColumn.DataPropertyName = "Libelle_Modele";
-            this.libelleModeleDataGridViewTextBoxColumn.HeaderText = "      Modele";
-            this.libelleModeleDataGridViewTextBoxColumn.Name = "libelleModeleDataGridViewTextBoxColumn";
-            this.libelleModeleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.libelleModeleDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // tarifDataGridViewTextBoxColumn
-            // 
-            this.tarifDataGridViewTextBoxColumn.DataPropertyName = "Tarif";
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.tarifDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.tarifDataGridViewTextBoxColumn.HeaderText = "Tarif";
-            this.tarifDataGridViewTextBoxColumn.Name = "tarifDataGridViewTextBoxColumn";
-            this.tarifDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tarifDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // Retirer
-            // 
-            this.Retirer.HeaderText = "";
-            this.Retirer.Name = "Retirer";
-            this.Retirer.ReadOnly = true;
-            this.Retirer.Text = "Retirer";
-            this.Retirer.UseColumnTextForButtonValue = true;
-            this.Retirer.Width = 80;
+            this.centreInformatiqueBindingSource.DataSource = typeof(BO.CentreInformatique);
             // 
             // FrmContrat
             // 
@@ -390,13 +345,12 @@
             this.Name = "FrmContrat";
             this.Text = "Enregistrer Contrat";
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipementBindingSource)).EndInit();
             this.groupBoxRemise.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRemise)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipementByCentreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centreInformatiqueBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,12 +375,10 @@
         private System.Windows.Forms.Label labelEquipements;
         private System.Windows.Forms.TextBox textBoxCommentaire;
         private System.Windows.Forms.BindingSource clientBindingSource;
-        private System.Windows.Forms.BindingSource equipementBindingSource;
         private System.Windows.Forms.Label labelCommentaire;
         private System.Windows.Forms.GroupBox groupBoxRemise;
         private System.Windows.Forms.NumericUpDown numericUpDownRemise;
         private System.Windows.Forms.Button buttonAppliquer;
-        private System.Windows.Forms.BindingSource centreInformatiqueBindingSource;
         private System.Windows.Forms.BindingSource modeleBindingSource;
         private System.Windows.Forms.Button buttonValider;
         private System.Windows.Forms.DataGridView dataGridViewEquipement;
@@ -437,5 +389,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleModeleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarifDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Retirer;
+        private System.Windows.Forms.BindingSource centreInformatiqueBindingSource;
     }
 }

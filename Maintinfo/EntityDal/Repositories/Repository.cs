@@ -7,7 +7,7 @@ using BLL;
 
 namespace EntityDal.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : Interfaces.IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
 
@@ -49,6 +49,11 @@ namespace EntityDal.Repositories
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public TEntity Single(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().Single(predicate);
         }
     }
 }

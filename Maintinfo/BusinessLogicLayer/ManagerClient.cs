@@ -25,6 +25,23 @@ namespace BusinessLogicLayer
            
         }
 
+        public Client GetClient(int idClient)
+        {
+            return unitOfWork.Clients.Get(idClient);
+
+        }
+
+        public void AddClient(Client client)
+        {
+            unitOfWork.Clients.Add(client);
+            unitOfWork.Complete();
+        }
+
+        public int ValiderChangement()
+        {
+            return unitOfWork.Complete();
+        }
+
         //Ajout Client
     }
 }

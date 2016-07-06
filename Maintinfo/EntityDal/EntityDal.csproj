@@ -54,6 +54,11 @@
     <Compile Include="Exceptions\DalException.cs" />
     <Compile Include="Exceptions\DalExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\DalFinApplication.cs" />
+    <Compile Include="Interfaces\ICentreInformatiqueRepository.cs" />
+    <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\IContratRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\201607050804094_UpdateCentre.cs" />
     <Compile Include="Migrations\201607050804094_UpdateCentre.Designer.cs">
       <DependentUpon>201607050804094_UpdateCentre.cs</DependentUpon>

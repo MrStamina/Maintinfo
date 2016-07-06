@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using BLL;
 using BO;
+using ICentreInformatiqueRepository = EntityDal.Interfaces.ICentreInformatiqueRepository;
 
 namespace EntityDal.Repositories
 {
@@ -18,11 +21,13 @@ namespace EntityDal.Repositories
 
         public IEnumerable<CentreInformatique> GetCentreByClient(int idClient)
         {
-            var centreWithContrat = MaintinfoContext.CentreInformatiques
+            var query = MaintinfoContext.CentreInformatiques
                 .Where(c => c.ClientId == idClient)
-                .OrderBy(c => c.VilleCentre);
+                .OrderBy(c => c.VilleCentre)
+                .ToList();
 
-            return centreWithContrat;
+            return query;
+
         }
     }
 }

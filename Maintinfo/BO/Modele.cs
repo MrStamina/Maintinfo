@@ -20,6 +20,8 @@ namespace BO
         
         public string Libelle { get; set; }
 
+        
+
        
         public virtual ICollection<Equipement> Equipements { get; set; }
 

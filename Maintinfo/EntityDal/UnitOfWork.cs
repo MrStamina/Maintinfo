@@ -1,5 +1,9 @@
 ﻿using BLL;
 using EntityDal.Repositories;
+using ICentreInformatiqueRepository = EntityDal.Interfaces.ICentreInformatiqueRepository;
+using IClientRepository = EntityDal.Interfaces.IClientRepository;
+using IContratRepository = EntityDal.Interfaces.IContratRepository;
+using IUnitOfWork = EntityDal.Interfaces.IUnitOfWork;
 
 namespace EntityDal
 {

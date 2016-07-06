@@ -96,8 +96,8 @@ namespace IHM
             {
                 try
                 {
-                    var listCentre = gesContrat.GetCentreByClient(((Client)comboBoxSelectionnerClient.SelectedItem).Id);
-                    GestionAffichageCentre(listCentre);
+                    centreInformatiqueBindingSource.DataSource = gesContrat.GetCentreByClient(((Client)comboBoxSelectionnerClient.SelectedItem).Id);
+                    //GestionAffichageCentre(listCentre);
 
                 }
                 catch (DalExceptionAfficheMessage deaf)
@@ -114,31 +114,31 @@ namespace IHM
 
         private void GestionAffichageCentre(IEnumerable<CentreInformatique> listCentreInformatiques)
         {
-            if (!listCentreInformatiques.Any())
-            {
-                string message = "Les centres rattachés au client possèdent déja un contrat de maintenance. \n Souhaitez-vous créer un nouveau centre ?";
-                string caption = "Information";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    var centre = Application.OpenForms.OfType<FrmGestionCentre>().FirstOrDefault();
-                    if (centre != null)
-                    {
-                        centre.Activate();
-                    }
-                    else
-                    {
-                        new FrmGestionCentre().Show();
-                    }
-                }
+            //if (!listCentreInformatiques.Any())
+            //{
+            //    string message = "Les centres rattachés au client possèdent déja un contrat de maintenance. \n Souhaitez-vous créer un nouveau centre ?";
+            //    string caption = "Information";
+            //    var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        var centre = Application.OpenForms.OfType<FrmGestionCentre>().FirstOrDefault();
+            //        if (centre != null)
+            //        {
+            //            centre.Activate();
+            //        }
+            //        else
+            //        {
+            //            new FrmGestionCentre().Show();
+            //        }
+            //    }
 
-            }
-            else
-            {
-                labelMessage.ForeColor = Color.Red;
-                labelMessage.Text = "Il y a " + listCentreInformatiques.Count().ToString() + " centre(s) disponible(s) pour un contrat de maintenance";
-                centreInformatiqueBindingSource.DataSource = listCentreInformatiques;
-            }
+            //}
+            //else
+            //{
+            //    labelMessage.ForeColor = Color.Red;
+            //    labelMessage.Text = "Il y a " + listCentreInformatiques.Count().ToString() + " centre(s) disponible(s) pour un contrat de maintenance";
+            //    centreInformatiqueBindingSource.DataSource = listCentreInformatiques;
+            //}
         }
         private void AlimenterEquipement()
         {

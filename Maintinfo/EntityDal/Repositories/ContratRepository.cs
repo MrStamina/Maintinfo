@@ -2,6 +2,7 @@
 using System.Linq;
 using BLL;
 using BO;
+using IContratRepository = EntityDal.Interfaces.IContratRepository;
 
 namespace EntityDal.Repositories
 {

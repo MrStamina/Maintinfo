@@ -1,5 +1,6 @@
 ﻿using BLL;
 using BO;
+using IClientRepository = EntityDal.Interfaces.IClientRepository;
 
 namespace EntityDal.Repositories
 {

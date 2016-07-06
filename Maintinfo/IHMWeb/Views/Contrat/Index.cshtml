@@ -1,0 +1,19 @@
+﻿@using System.Web.UI.WebControls
+@model IHMWeb.ViewModels.ContratViewModel
+@{
+    ViewBag.Title = "Contrats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consulter les Contrats</h2>
+<p>
+    @*@Html.ActionLink("Nouveau Contrat","New","Contrat", null, new {@class="btn btn-primary"})*@
+    @*@Html.ActionLink("Nouveau Client","New","Client", null, new {@class="btn btn-primary"})*@
+    @*@Html.ActionLink("Nouveau Centre","New","Centre", null, new {@class="btn btn-primary"})*@
+</p>
+
+<div class="form-group">
+    <label for="NomClient">Les Clients</label>
+    @Html.DropDownListFor(p => p.Clients, new SelectList(Model.Clients, "Id", "NomClient"), "Selectionnez un client", new {@class = "form-control"})
+</div>
+

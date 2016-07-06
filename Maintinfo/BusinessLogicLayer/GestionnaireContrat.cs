@@ -13,12 +13,19 @@ namespace BusinessLogicLayer
         private ManagerClient manClient;
         private ManagerCentreInfo manCentre;
         private ManagerContrat manContrat;
+       
 
         public GestionnaireContrat()
         {
             manClient = new ManagerClient();
             manCentre = new ManagerCentreInfo();
             manContrat = new ManagerContrat();
+          
+        }
+
+        public int ValiderChangement()
+        {
+            return manClient.ValiderChangement();
         }
 
         #region Gestion Client
@@ -26,6 +33,18 @@ namespace BusinessLogicLayer
         {
             return manClient.GetAllClients();
         }
+
+        public Client GetClient(int idClient)
+        {
+            return manClient.GetClient(idClient);
+        }
+
+        public void AddClient(Client client)
+        {
+            manClient.AddClient(client);
+        }
+
+        
 
         #endregion
 
@@ -39,6 +58,7 @@ namespace BusinessLogicLayer
         {
             return manCentre.GetCentreByClient(idClient);
         }
+       
         #endregion
 
         #region Gestion Contrats
