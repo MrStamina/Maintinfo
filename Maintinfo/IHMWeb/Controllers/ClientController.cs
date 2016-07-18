@@ -81,8 +81,11 @@ namespace IHMWeb.Controllers
             if ((int) Session["Centre"] == 1)
             {
                 return RedirectToAction("New", "CentreInformatique");
+                
             }
+            Session["Centre"] = null;
             return RedirectToAction("Index", "Client");
+           
         }
     }
 }
