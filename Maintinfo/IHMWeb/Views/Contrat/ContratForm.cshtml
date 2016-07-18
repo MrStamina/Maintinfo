@@ -1,0 +1,110 @@
+﻿@model IHMWeb.ViewModels.ContratViewModel
+@{
+    if (Session["Count"] != null)
+    {
+        Session["Count"] = (int)Session["Count"] +1;
+    }
+    else
+    {
+        Session["Count"] = 1;
+    }
+
+   
+}
+@{
+    ViewBag.Title = "ContratForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ajouter un nouveau contrat</h2>
+
+<div class="col-lg-6">
+
+    @using (Html.BeginForm("Save", "Contrat", FormMethod.Post))
+    {
+
+
+
+        <div class="form-group">
+            <label for="DateDebut">Date de début du contrat</label>
+            @Html.EditorFor(c => c.DateDebut)
+        </div>
+
+        <div class="form-group">
+            <label for="MontantHt">Montant Ht</label>
+            @Html.EditorFor(model => model.MontantHt)
+        </div>
+
+        <div class="form-group">
+            <label for="MontantTtc">Montant Ttc </label>
+            @Html.EditorFor(model => model.MontantTtc)
+        </div>
+        <div class="form-group">
+            <label for="Commentaire">Commentaire</label>
+            @Html.TextBoxFor(c => c.Commentaire, new {@class="form-control"})
+             @Html.ValidationMessageFor(c => c.Commentaire)
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a type="button" class="btn btn-primary" href="@Request.UrlReferrer">Retour</a>
+
+        @Html.HiddenFor(c => c.CentreInformatiqueId)
+        @Html.HiddenFor(c=> c.ClientId)
+        @Html.HiddenFor(c => c.MontantTtc)
+      
+
+    }
+
+</div>
+
+    <div class="col-lg-6">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Quantité</th>
+                <th>Modeles</th>
+                <th>Montant</th>
+                <th>Retirer</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var ligneEquip in Model.LigneEquipements)
+            {
+                <tr>
+                    <td>@ligneEquip.Quantite</td>
+                    <td>@ligneEquip.Libelle</td>
+                    <td>@ligneEquip.Montant.ToString("F") €</td>
+                    <td>@Html.ActionLink("Retirer","Remove","Contrat", new {count = Session["Count"], modele=ligneEquip.Libelle, idClient= @Model.ClientId, idCentre=@Model.CentreInformatiqueId}, null)</td>
+
+                </tr>
+
+            }
+
+            </tbody>
+        </table>
+    </div>
+    
+
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+            var today = year + "-" + month + "-" + day;
+            $('#datePicker').attr("value", today);
+           
+
+        })
+    </script>
+}
+

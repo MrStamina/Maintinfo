@@ -70,7 +70,7 @@
 
   var defaults = {
     // default language
-    locale: "en",
+    locale: "fr",
     // show backdrop or not
     backdrop: true,
     // animate the modal in/out
@@ -807,7 +807,7 @@
     fr : {
       OK      : "OK",
       CANCEL  : "Annuler",
-      CONFIRM : "D'accord"
+      CONFIRM : "OK"
     },
     he : {
       OK      : "אישור",

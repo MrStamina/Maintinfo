@@ -1,4 +1,4 @@
-﻿@using System.Web.UI.HtmlControls
+﻿
 @model IHMWeb.ViewModels.ClientFormViewModel
 
 @{
@@ -8,33 +8,74 @@
 
 <h2>@Model.Titre</h2>
 
-@using (Html.BeginForm("Save", "Client"))
+@using (Html.BeginForm("Save", "Client", FormMethod.Post, new {@id = "myForm"}))
 {
     <div class="form-group">
         <label for="NomClient">Nom</label>
-        @Html.TextBoxFor(c => c.NomClient, new {@class = "form-control"})
+        @Html.TextBoxFor(c => c.NomClient, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.NomClient)
     </div>
     <div class="form-group">
         <label for="Adresse">Adresse</label>
         @Html.TextBoxFor(c => c.Adresse, new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.Adresse)
     </div>
     <div class="form-group">
         <label for="CodePostal">CodePostal</label>
-        @Html.TextBoxFor(c => c.CodePostal, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.CodePostal, new { @class = "form-control", @name="zip", @id="zip" })
+        @Html.ValidationMessageFor(c => c.CodePostal)
     </div>
     <div class="form-group">
         <label for="Ville">Ville</label>
         @Html.TextBoxFor(c => c.Ville, new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.Ville)
     </div>
     
     <div class="form-group">
         <label for="Telephone">Telephone</label>
         @Html.TextBoxFor(c => c.Telephone, new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.Telephone)
     </div>
     @Html.HiddenFor(c => c.Id)
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-    
+
+    if (Model.Id == 0)
+    {
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    }
+    else
+    {
+        <button id="mySubmitButton" value="Submit" type="submit" class="btn btn-primary">Valider</button>
+    }
+    <a type="button" class="btn btn-primary" href="@Request.UrlReferrer">Retour</a>
 }
 
-@Scripts.Render("~/bundles/jqueryval")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script>
+        $(document)
+            .ready(function() {
+                $('#myForm')
+                    .submit(function(e) {
+                        e.preventDefault();
+                        var currentForm = this;
+                        bootbox.confirm("Etes-vous sûr de vouloir modifier le client ?",
+                            function(result) {
+                                if (result) {
+
+                                    currentForm.submit();
+
+                                }
+                            });
+
+
+                    
+                    });
+            })
+    </script>*@
+}
+    
+ 
+  
 

@@ -7,6 +7,8 @@ namespace BO
         
         public int Id { get; set; }
 
+        public string NumeroSerie { get; set; }
+
         public int ModeleId { get; set; }
 
         public int CentreInformatiqueId { get; set; }

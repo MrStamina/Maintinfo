@@ -18,6 +18,7 @@ namespace EntityDal.EntityConfigurations
                 .IsRequired();
             Property(t => t.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            
         }
     }
 }

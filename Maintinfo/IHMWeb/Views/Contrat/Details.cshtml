@@ -1,0 +1,43 @@
+﻿@model IHMWeb.ViewModels.ContratViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contrat(s) de maintenance rattaché(s) à Monsieur @Model.Client.NomClient</h2>
+
+@if (!Model.Contrats.Any())
+{
+
+    <label>Le client ne possède actuellement aucun contrat</label>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Centre Informatique</th>
+                <th>MontantTtc</th>
+                <th>Date de début</th>
+                <th>Date d'échéance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contrat in Model.Contrats)
+            {
+            <tr>
+                <td>@contrat.CentreInformatique.VilleCentre</td>
+                <td>@contrat.Montant.ToString("F") €</td>
+                <td>@contrat.DateDebut.ToShortDateString()</td>
+                <td>@contrat.DateEcheance.ToShortDateString()</td>
+            </tr>
+            
+            }
+
+        </tbody>
+    </table>
+}
+<div align="center">
+    <a href="/contrat/new/@Model.ClientId" class="btn btn-primary">Ajouter</a>
+    @Html.ActionLink("Retour", "Index","Client", null, new {@class="btn btn-primary"})
+</div>

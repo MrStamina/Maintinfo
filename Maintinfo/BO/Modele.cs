@@ -12,15 +12,9 @@ namespace BO
         }
 
         public int Id { get; set; }
-
-        public int TypeId { get; set; }
-
-        public byte TarifId { get; set; }
-
+       
         
         public string Libelle { get; set; }
-
-        
 
        
         public virtual ICollection<Equipement> Equipements { get; set; }

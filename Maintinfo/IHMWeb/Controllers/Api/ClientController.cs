@@ -46,7 +46,20 @@ namespace IHMWeb.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             Mapper.Map(clientDto, clientInDb);
-            gesContrat.ValiderChangement();
+            gesContrat.ValiderChangementClient();
+
+            return Ok();
+
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteClient(int id)
+        {
+            var clientInDb = gesContrat.GetClient(id);
+            if (clientInDb == null)
+                return NotFound();
+            gesContrat.RemoveClient(clientInDb);
+            gesContrat.ValiderChangementClient();
 
             return Ok();
 

@@ -55,10 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{BE20900F-D732-43DF-BF9F-E846A80DA518}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
       <Project>{72efc2ca-c4cb-4ab1-9776-e80607b6b5a1}</Project>
       <Name>BO</Name>

@@ -17,6 +17,7 @@ namespace BO
 
        
         public decimal TarifModele { get; set; }
+      
 
         
         public virtual Modele Modele { get; set; }

@@ -30,6 +30,7 @@ namespace EntityDal
             modelBuilder.Configurations.Add(new SecteurConfiguration());
             modelBuilder.Configurations.Add(new TarifConfiguration());
             modelBuilder.Configurations.Add(new TypeEquipementConfiguration());
+            modelBuilder.Configurations.Add(new EquipementConfiguration());
 
             base.OnModelCreating(modelBuilder);
 

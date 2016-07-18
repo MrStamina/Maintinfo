@@ -51,13 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityConfigurations\EquipementConfiguration.cs" />
     <Compile Include="Exceptions\DalException.cs" />
     <Compile Include="Exceptions\DalExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\DalFinApplication.cs" />
     <Compile Include="Interfaces\ICentreInformatiqueRepository.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IContratRepository.cs" />
+    <Compile Include="Interfaces\IEquipementRepository.cs" />
+    <Compile Include="Interfaces\IModeleRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\ISecteurRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\201607050804094_UpdateCentre.cs" />
     <Compile Include="Migrations\201607050804094_UpdateCentre.Designer.cs">
@@ -91,6 +95,38 @@
     <Compile Include="Migrations\201607041223129_PopulateContrats.Designer.cs">
       <DependentUpon>201607041223129_PopulateContrats.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607080902493_AddNumSerie.cs" />
+    <Compile Include="Migrations\201607080902493_AddNumSerie.Designer.cs">
+      <DependentUpon>201607080902493_AddNumSerie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607080907174_AddNumSerie1.cs" />
+    <Compile Include="Migrations\201607080907174_AddNumSerie1.Designer.cs">
+      <DependentUpon>201607080907174_AddNumSerie1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081658103_UpdateTarif.cs" />
+    <Compile Include="Migrations\201607081658103_UpdateTarif.Designer.cs">
+      <DependentUpon>201607081658103_UpdateTarif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081709225_AnOtherUpdateOnModele.cs" />
+    <Compile Include="Migrations\201607081709225_AnOtherUpdateOnModele.Designer.cs">
+      <DependentUpon>201607081709225_AnOtherUpdateOnModele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081715436_PopulateModele.cs" />
+    <Compile Include="Migrations\201607081715436_PopulateModele.Designer.cs">
+      <DependentUpon>201607081715436_PopulateModele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081730372_PopulateModele1.cs" />
+    <Compile Include="Migrations\201607081730372_PopulateModele1.Designer.cs">
+      <DependentUpon>201607081730372_PopulateModele1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081731549_PopulateTarif.cs" />
+    <Compile Include="Migrations\201607081731549_PopulateTarif.Designer.cs">
+      <DependentUpon>201607081731549_PopulateTarif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607110800329_SomeChangeInModeleTable.cs" />
+    <Compile Include="Migrations\201607110800329_SomeChangeInModeleTable.Designer.cs">
+      <DependentUpon>201607110800329_SomeChangeInModeleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -101,7 +137,10 @@
     <Compile Include="Repositories\CentreInformatiqueRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\ContratRepository.cs" />
+    <Compile Include="Repositories\EquipementRepository.cs" />
+    <Compile Include="Repositories\ModeleRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\SecteurRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +170,32 @@
     <EmbeddedResource Include="Migrations\201607050804094_UpdateCentre.resx">
       <DependentUpon>201607050804094_UpdateCentre.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607080902493_AddNumSerie.resx">
+      <DependentUpon>201607080902493_AddNumSerie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607080907174_AddNumSerie1.resx">
+      <DependentUpon>201607080907174_AddNumSerie1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081658103_UpdateTarif.resx">
+      <DependentUpon>201607081658103_UpdateTarif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081709225_AnOtherUpdateOnModele.resx">
+      <DependentUpon>201607081709225_AnOtherUpdateOnModele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081715436_PopulateModele.resx">
+      <DependentUpon>201607081715436_PopulateModele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081730372_PopulateModele1.resx">
+      <DependentUpon>201607081730372_PopulateModele1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081731549_PopulateTarif.resx">
+      <DependentUpon>201607081731549_PopulateTarif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607110800329_SomeChangeInModeleTable.resx">
+      <DependentUpon>201607110800329_SomeChangeInModeleTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{be20900f-d732-43df-bf9f-e846a80da518}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
       <Project>{72efc2ca-c4cb-4ab1-9776-e80607b6b5a1}</Project>
       <Name>BO</Name>

@@ -27,13 +27,21 @@ namespace BusinessLogicLayer
         public IEnumerable<Contrat> GetContratByClient(int idClient)
         {
             return unitOfWork.Contrats.GetContratByClient(idClient);
+                
         }
 
         public void AddContrat(Contrat contrat)
         {
             unitOfWork.Contrats.Add(contrat);
-            unitOfWork.Complete();
+            
         }
+
+        public int ValiderChangement()
+        {
+            return unitOfWork.Complete();
+        }
+
+
 
     }
 }

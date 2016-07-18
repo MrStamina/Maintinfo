@@ -37,6 +37,11 @@ namespace BusinessLogicLayer
             unitOfWork.Complete();
         }
 
+        public void RemoveClient(Client client)
+        {
+            unitOfWork.Clients.Remove(client);
+        }
+
         public int ValiderChangement()
         {
             return unitOfWork.Complete();

@@ -9,15 +9,17 @@ namespace IHMWeb
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
-                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/bootbox.js",
-                        "~/Scripts/respond.js",
-                        "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js",
-                        "~/Scripts/typeahead.bundle.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.js",
-                        "~/Scripts/toastr.js"));
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/bootbox.js",
+                "~/Scripts/respond.js",
+                "~/Scripts/datatables/jquery.datatables.js",
+                "~/Scripts/datatables/datatables.bootstrap.js",
+                "~/Scripts/typeahead.bundle.js",
+                "~/Scripts/jquery.unobtrusive-ajax.js",
+                "~/Scripts/toastr.js",
+                "~/Scripts/eflexis/eflexis.dialog.min.js",
+                "~/Scripts/eflexis/jquery.eflexis.dialog.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

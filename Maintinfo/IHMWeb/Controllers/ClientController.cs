@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using AutoMapper;
 using BO;
 using BusinessLogicLayer;
 using IHMWeb.ViewModels;
@@ -42,6 +43,13 @@ namespace IHMWeb.Controllers
 
         }
 
+        public ActionResult New()
+        {
+            var viewModel = new ClientFormViewModel();
+            return View("ClientForm", viewModel);
+        }
+
+        [HttpPost]
         public ActionResult Save(Client client)
         {
             if (!ModelState.IsValid)
@@ -51,6 +59,8 @@ namespace IHMWeb.Controllers
                     CentreInformatiques = gesContrat.GetCentreByClient(client.Id),
                     Contrats = gesContrat.GetContratByClient(client.Id)
                 };
+
+                return View("ClientForm", viewModel);
             }
 
             if (client.Id == 0)
@@ -65,8 +75,13 @@ namespace IHMWeb.Controllers
                 clientInDb.Ville = client.Ville;
                 clientInDb.CodePostal = client.CodePostal;
                 clientInDb.Telephone = client.Telephone;
+
             }
-            gesContrat.ValiderChangement();
+            gesContrat.ValiderChangementClient();
+            if ((int) Session["Centre"] == 1)
+            {
+                return RedirectToAction("New", "CentreInformatique");
+            }
             return RedirectToAction("Index", "Client");
         }
     }

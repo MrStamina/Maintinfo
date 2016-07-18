@@ -14,10 +14,12 @@
     <thead>
     <tr>
         <th>Nom</th>
+        <th>Adresse</th>
+        <th>Code Postal</th>
         <th>Ville</th>
         <th>Téléphone</th>
-        @*<th>Contrat(s)</th>*@
-        <th>Supprimer</th>
+        <th>Contrat(s)</th>
+        <th>Gestion</th>
     </tr>
     </thead>
     <tbody>
@@ -39,25 +41,41 @@
                         },
                         columns: [
                             {
-                                data: "nomClient",
-                                render: function(data, type, client) {
-                                    return "<a href='/client/edit/" + client.id + "'>" + client.nomClient + "</a>";
-
-                                }
-
+                                data: "nomClient"
+                               
                             },
+                        {
+                            data : "adresse"
+                        },
+                        {
+                            data : "codePostal"
+                        },
                             {
-                                data: "ville"
+                                data: "ville" 
                             },
                             {
                                 data: "telephone"
                             },
+                        {
+                            data: "contrats",
+                            render: function(data, type, client) {
+                                return "<a href='/contrat/details/" + client.id + "'>" + 'Voir contrat(s)' + "</a>"
+                                +' - ' + "<a href='/centreInformatique/details/"+client.id + "'>"+ 'Voir centre(s)'+ "</a>";
+                            }
+                        },
                             {
                                 data: "id",
-                                render: function(data) {
-                                    return "<button class='btn-link js-delete'data-client-id=" +
+                                render: function(data,type, client) {
+                                    return  "<a href='/client/edit/" +
+                                        client.id +
+                                        "'>" +
+                                        'Modifier' +
+                                        "</a>" + ' -' +
+                                        "<button class='btn-link js-delete'data-client-id=" +
                                         data +
                                         ">Supprimer</button>";
+
+
                                 }
                             }
                         ]
@@ -65,19 +83,25 @@
                 $("#customers").on("click", ".js-delete",
                        function () {
                            var button = $(this);
-
+                           
                            bootbox.confirm("Etes-vous sûr de vouloir supprimer ce client?",
                                function (result) {
                                    if (result) {
                                        $.ajax({
-                                           url: "/api/client/" + button.attr("data-client-id"),
-                                           method: "DELETE",
-                                           success: function () {
-                                               table.row(button.parents("tr")).remove().draw();
+                                               url: "/api/client/" + button.attr("data-client-id"),
+                                               method: "DELETE",
+                                               success: function() {
+                                                   table.row(button.parents("tr")).remove().draw();
 
-                                           }
+                                               }
 
-                                       });
+                                           })
+                                           .done(function() {
+                                               toastr.success("Le client a été supprimé avec succés");
+                                           })
+                                           .fail(function() {
+                                               toastr.error("Un problème est survenu");
+                                           });
                                    }
                                });
                        });

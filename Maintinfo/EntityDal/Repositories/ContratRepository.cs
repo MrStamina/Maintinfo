@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BLL;
 using BO;
 using IContratRepository = EntityDal.Interfaces.IContratRepository;
 

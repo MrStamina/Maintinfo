@@ -1,0 +1,67 @@
+﻿@model IHMWeb.ViewModels.EquipementFormViewModel
+@{
+    ViewBag.Title = "Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gérer la configuration du centre</h2>
+<div class="col-lg-6">
+    @using (Html.BeginForm("Save", "CentreInformatique", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="ModeleId">Liste des modèles</label>
+            @Html.DropDownListFor(m => m.ModeleId, new SelectList(Model.Modeles, "Id", "Libelle"), "Selectionnez le type de modele", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="Quantite">Saisir la quantité</label>
+            @Html.TextBoxFor(m => m.Quantite, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m => m.CentreInformatiqueId)
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <a type="button" class="btn btn-primary" href="@Request.UrlReferrer">Retour</a>
+    }
+</div>
+
+@if (Model.LigneEquipements.Any())
+{
+    <div class="col-lg-6">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Quantité</th>
+                <th>Modeles</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var ligneEquip in Model.LigneEquipements)
+            {
+                <tr>
+                    <td>@ligneEquip.Quantite</td>
+                    <td>@ligneEquip.Libelle</td>
+
+                </tr>
+
+            }
+
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="/client/index/">Terminer</a>
+    </div>
+}
+
+
+
+@*@section scripts{
+    <script>
+        $(document).ready(function() {
+            $("#backButton")
+                .click(function() {
+                    $.post("/centreInformatique/details/",
+                        function(data) {
+                            window.location.href = data;
+                        });
+                });
+        })
+    </script>*@

@@ -1,0 +1,53 @@
+﻿@model IHMWeb.ViewModels.CentreInformatiqueFormViewModel
+@{
+    ViewBag.Title = "CentreInformatiqueForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Session["Centre"] = 1;
+}
+
+<h2>Nouveau Centre Informatique</h2>
+
+@using (Html.BeginForm("Register", "CentreInformatique", FormMethod.Post))
+{
+    if (Model.ClientId == null)
+    {
+        <div class="form-group">
+            <label for="Clients"> Liste de clients</label>
+            @Html.DropDownListFor(c => c.ClientId, new SelectList(Model.Clients, "Id", "NomClient"), "Selectionnez le client", new {@class = "form-control"})
+            @Html.ValidationMessageFor(c => c.ClientId)
+
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Ajouter", "New", "Client", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+
+    <div class="form-group">
+        <label for="Secteurs">Les Secteurs</label>
+        @Html.DropDownListFor(c => c.SecteurId, new SelectList(Model.Secteurs,"Id","Libelle"),"Selectionnez le secteur", new {@class="form-control"})
+        @Html.ValidationMessageFor(c=> c.SecteurId)
+    </div>
+
+    <div class="form-group">
+        <label for="VilleCentre">Ville</label>
+        @Html.TextBoxFor(c => c.VilleCentre, new {@class = "form-control"})
+        @Html.ValidationMessageFor(c => c.VilleCentre)
+    </div>
+    <div class="form-group">
+        <label for="Adresse">Adresse du centre</label>
+        @Html.TextBoxFor(c => c.AdresseCentre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.AdresseCentre)
+    </div>
+    <div class="form-group">
+        <label for="TelCentre"> Téléphone du centre</label>
+        @Html.TextBoxFor(c => c.TelCentre, new {@class="form-control"})
+        @Html.ValidationMessageFor(c => c.TelCentre)
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a type="button" class="btn btn-primary" href="@Request.UrlReferrer">Retour</a>
+    if (Model.Id != 0)
+    {
+        @Html.ActionLink("Configuration","Config","CentreInformatique", new {id=@Model.Id}, new {@class="btn btn-primary", id=@Model.Id})
+    }
+}
+

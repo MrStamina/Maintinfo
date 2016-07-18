@@ -1,0 +1,54 @@
+﻿@using System.ServiceModel.Configuration
+@model IHMWeb.ViewModels.ContratViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Centre(s) informatique(s) rattaché(s) à Mr @Model.Client.NomClient</h2>
+
+@if (!Model.CentreInformatiques.Any())
+{
+
+    <label>Aucun centre n'est actuellement rattaché à ce client</label>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Télephone</th>
+                <th>Gestion Configuration</th>
+                <th>Gestion Contrat</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var centre in Model.CentreInformatiques)
+            {
+                <tr>
+                    <td>@centre.VilleCentre</td>
+                    <td>@centre.AdresseCentre</td>
+                    <td>@centre.TelCentre</td>
+                    <th><a href="/centreInformatique/config/@centre.Id"> Gérer la configuration du centre </a></th>
+                    <th>
+                        @(centre.Contrat.Any() ? Html.ActionLink("Consulter", "Details", "Contrat", new {id=centre.ClientId}, null) : Html.ActionLink("Ajouter Contrat", "New", "Contrat", new {idClient = centre.ClientId, idCentre = centre.Id}, null))
+                    </th>
+
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+}
+<div align="center">
+    @Html.ActionLink("Nouveau Centre","New","CentreInformatique",new {id=@Model.Client.Id}, new {@class="btn btn-primary"})
+    @Html.ActionLink("Retour", "Index", "Client", null, new {@class = "btn btn-primary"})
+
+</div>
+
+

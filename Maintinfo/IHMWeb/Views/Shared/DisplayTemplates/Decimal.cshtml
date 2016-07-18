@@ -1,0 +1,7 @@
+﻿@model decimal?
+    
+   
+@if (Model.HasValue)
+{
+    <span>@Model.Value.ToString("##.##"+" €")</span>
+}

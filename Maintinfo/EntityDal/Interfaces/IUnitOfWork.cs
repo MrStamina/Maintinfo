@@ -8,6 +8,10 @@ namespace EntityDal.Interfaces
         IClientRepository Clients { get; set; }
 
         ICentreInformatiqueRepository CentreInformatiques { get; set; }
+
+        IModeleRepository Modeles { get; set; }
+
+        IEquipementRepository Equipements { get; set; }
         int Complete();
     }
 }

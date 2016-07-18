@@ -30,6 +30,15 @@ namespace BusinessLogicLayer
         {
             return unitOfWork.CentreInformatiques.GetCentreByClient(idClient);
         }
-        // CentrebyClient
+
+        public void AddCentre(CentreInformatique centre)
+        {
+            unitOfWork.CentreInformatiques.Add(centre);
+        }
+
+        public int ValiderChangementCentre()
+        {
+            return unitOfWork.Complete();
+        }
     }
 }
