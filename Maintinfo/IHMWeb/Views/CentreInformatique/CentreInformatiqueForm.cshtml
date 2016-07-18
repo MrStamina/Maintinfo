@@ -18,8 +18,12 @@
 
         </div>
         <div class="form-group">
-            @Html.ActionLink("Ajouter", "New", "Client", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Ajouter", "New", "Client", null, new {@class = "btn btn-primary"})
         </div>
+    }
+    else
+    {
+        @Html.HiddenFor(c => c.ClientId)
     }
 
     <div class="form-group">
